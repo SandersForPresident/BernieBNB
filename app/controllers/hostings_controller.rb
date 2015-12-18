@@ -1,0 +1,2 @@
+class HostingsController < ApplicationController
+end
