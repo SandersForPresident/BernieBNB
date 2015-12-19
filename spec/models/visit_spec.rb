@@ -19,4 +19,12 @@ RSpec.describe Visit, type: :model do
     expect { FactoryGirl.create(:visit, start_date: Faker::Date.backward(1)) }
       .to raise_error ActiveRecord::RecordInvalid
   end
+  
+  it "requires an end date after start date" do
+    expect do
+      FactoryGirl.create(:visit, 
+                         start_date: Date.today + 5.days,
+                         end_date: Date.today)
+    end.to raise_error ActiveRecord::RecordInvalid
+  end
 end
