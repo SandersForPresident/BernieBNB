@@ -3,4 +3,10 @@ class Hosting < ActiveRecord::Base
 
   geocoded_by :zipcode
   after_validation :geocode
+
+  def self.can_host(visitor)
+    self
+      .near(visitor.zipcode, 25)
+      .where("max_guests >= ?", visitor.num_travelers)
+  end
 end
