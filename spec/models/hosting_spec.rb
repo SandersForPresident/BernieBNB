@@ -12,7 +12,7 @@ RSpec.describe Hosting, type: :model do
   end
 
   it "is invalid with an invalid zipcode" do
-    expect { FactoryGirl.create(:hosting, zipcode: "00000")}.to raise_error ActiveRecord::StatementInvalid
+    expect { FactoryGirl.create(:hosting, zipcode: "00000") }.to raise_error ActiveRecord::StatementInvalid
   end
 
   describe "::can_host" do
