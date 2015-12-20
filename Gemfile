@@ -25,9 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'geocoder'
+gem 'geocode'
 gem 'figaro'
 gem 'validates_timeliness', '~> 3.0'
+gem 'rails_12factor'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
