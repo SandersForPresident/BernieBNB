@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'geocode'
+gem 'geocoder'
 gem 'figaro'
 gem 'validates_timeliness', '~> 3.0'
 gem 'rails_12factor'
