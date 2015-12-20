@@ -21,12 +21,7 @@
         </table>
     </section>
     <section class="sign-up">
-        <h1>Sign In</h1>
-        <div
-          class="fb-like"
-          data-share="true"
-          data-width="450"
-          data-show-faces="true">
-        </div>
+        <h1>Sign In Using...</h1>
+        <%= link_to "Facebook", user_omniauth_authorize_path(:facebook) %>
     </section>
-</di>v
+</di>
