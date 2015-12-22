@@ -1,5 +1,6 @@
 
-== Bernie BNB
+Bernie BNB
+==========
 
 ## Goal
 We want to build an app to allow supporters to share their homes with others from out
