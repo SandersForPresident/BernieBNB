@@ -3,6 +3,8 @@ class Hosting < ActiveRecord::Base
 
   geocoded_by :zipcode
   after_validation :geocode
+  
+  belongs_to :user
 
   def self.can_host(visitor)
     self

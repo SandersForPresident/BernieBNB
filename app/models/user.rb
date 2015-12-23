@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
   validates :phone, length: { is: 10 }
   
+  has_many :visits
+  has_many :hostings
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
