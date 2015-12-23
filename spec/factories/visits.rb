@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :visit do |f|
+    f.user_id { rand(1..5) }
     f.zipcode { Faker::Address.zip }
     f.num_travelers { rand(1..5) }
     start = Faker::Date.forward(20)
