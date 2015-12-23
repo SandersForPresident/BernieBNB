@@ -14,3 +14,7 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Added these files to not force others to use them.
+.overcommit.yml
+.rvmrc
