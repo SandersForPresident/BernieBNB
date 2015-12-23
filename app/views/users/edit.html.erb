@@ -2,8 +2,16 @@
   <a class="btn btn-info btn-sm" href="/">Home</a>
   <p class="lead text-center">Profile</p>
   
-  <% form_for @user, url: { action: 'update' } do |f| %>
-    <%= f.text_field :first_name %>
-    <%= f.text_field :phone %>
+  <%= form_for @user, url: { action: 'update' } do |f| %>
+    <%= f.label :email, "Your email address:" %>
+    <%= f.email_field :email %>
+  
+    <%= f.label :first_name, "What's your first name?" %>
+    <%= f.text_field :first_name, placeholder: "First name" %>
+    
+    <%= f.label :phone, "What's your phone number?" %>
+    <%= f.phone_field :phone, placeholder: "Phone number" %>
+    
+    <%= f.submit %>
   <% end %>
 </div>
