@@ -1,4 +1,5 @@
 require "capybara/rspec"
+require "omniauth"
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -75,3 +76,12 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+      :provider => 'facebook',
+      :uid => '123545',
+      :info => {
+        email: 'mockuser@fakemail.co'
+      }
+    })
