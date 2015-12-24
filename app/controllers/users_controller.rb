@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   def edit
     @user = current_user
   end
-  
+
   def show
     @user = User.find(params[:id])
   end
-  
+
   def update
     @user = current_user
     
@@ -17,9 +17,9 @@ class UsersController < ApplicationController
       redirect_to edit_user_url(@user)
     end
   end
-  
+
   private
-  
+
   def user_params
     params.require(:user).permit(:first_name, :phone)
   end

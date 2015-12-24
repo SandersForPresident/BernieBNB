@@ -1,0 +1,51 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @font-face {
+  font-family: 'freightsans';
+  src: url(font-path('freightsans_bold-webfont.eot'));
+  src: url(font-path('freightsans_bold-webfont.eot?#iefix')) format('embedded-opentype'),
+    url(font-path('freightsans_bold-webfont.woff2')) format('woff2'),
+    url(font-path('freightsans_bold-webfont.woff')) format('woff'),
+    url(font-path('freightsans_bold-webfont.ttf')) format('truetype'),
+    url(font-path('freightsans_bold-webfont.svg#freightsans_boldregular')) format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'freightsans';
+  src: url(font-path('freightsans_medium-webfont.eot'));
+  src: url(font-path('freightsans_medium-webfont.eot?#iefix')) format('embedded-opentype'),
+    url(font-path('freightsans_medium-webfont.woff2')) format('woff2'),
+    url(font-path('freightsans_medium-webfont.woff')) format('woff'),
+    url(font-path('freightsans_medium-webfont.ttf')) format('truetype'),
+    url(font-path('freightsans_medium-webfont.svg#freightsans_mediumregular')) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'jubilat';
+  src: url(font-path('jubilatmedium-roman-webfont.eot'));
+  src: url(font-path('jubilatmedium-roman-webfont.eot?#iefix')) format('embedded-opentype'),
+    url(font-path('jubilatmedium-roman-webfont.woff2')) format('woff2'),
+    url(font-path('jubilatmedium-roman-webfont.woff')) format('woff'),
+    url(font-path('jubilatmedium-roman-webfont.ttf')) format('truetype'),
+    url(font-path('jubilatmedium-roman-webfont.svg#jubilat_mediumregular')) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
