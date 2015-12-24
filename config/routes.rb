@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root to: "home#sign_in"
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  
+  match "/auth/:provider/callback" => "sessions#create", via: [:get, :post]
+  match "/signout" => "sessions#destroy", :as => :signout, via: [:delete]
 
   resources :visits
   resources :hostings
-  resources :users, only: [:edit, :update]
+  resources :users
   
   resources :users do
     resources :visits, only: [:new, :show, :index]

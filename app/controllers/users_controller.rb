@@ -9,10 +9,12 @@ class UsersController < ApplicationController
   
   def update
     @user = current_user
+    
     if @user.update(user_params)
       redirect_to user_url(@user)
     else
-      flash.now[:errors] = @user.errors.full_messages
+      flash[:errors] = @user.errors.full_messages
+      redirect_to edit_user_url(@user)
     end
   end
   
