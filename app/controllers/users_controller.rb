@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  decorates_assigned :user
+
   def edit
     @user = current_user
   end
@@ -9,7 +11,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    
+
     if @user.update(user_params)
       redirect_to user_url(@user)
     else
