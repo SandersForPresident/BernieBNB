@@ -1,17 +1,20 @@
-<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-  <a class="btn btn-info btn-sm" href="/">Home</a>
+<div class="profile-page">
+  <a class="home btn btn-info btn-sm" href="/"> << Home </a>
   <p class="lead text-center">Profile</p>
-  
+
   <%= form_for @user, url: { action: 'update' } do |f| %>
     <%= f.label :email, "Your email address:" %>
     <%= f.email_field :email %>
-  
+    <span>We'll send you email notifications.</span>
+
     <%= f.label :first_name, "What's your first name?" %>
     <%= f.text_field :first_name, placeholder: "First name" %>
+    <span></span>
     
     <%= f.label :phone, "What's your phone number?" %>
     <%= f.phone_field :phone, placeholder: "Phone number" %>
-    
-    <%= f.submit %>
+    <span>We'll send this when you contact someone.</span>
+
+    <%= f.submit "Save", :class => 'submit' %>
   <% end %>
 </div>
