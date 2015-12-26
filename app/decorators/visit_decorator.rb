@@ -1,13 +1,10 @@
 class VisitDecorator < Draper::Decorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def short_details
+    starting = start_date.strftime("%m/%d")
+    ending = end_date.strftime("%m/%d")
 
+    "#{zipcode[0...5]} (#{starting} - #{ending})"
+  end
 end

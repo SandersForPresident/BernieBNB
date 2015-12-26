@@ -5,17 +5,14 @@
 
   <section class="user-travels">
     <header>
-      <%= link_to "Find A Host", "#" %>
+      <%= link_to "Find A Host", new_user_visit_url(user) %>
       <small>"On the road for Bernie?"</small>
     </header>
-    <% unless @user.visits.empty? %>
+    <% unless user.visits.empty? %>
       <ul>
-        <% @user.visits.each do |visit| %>
+        <% user.visits.each do |visit| %>
           <li>
-            <% link_to visits_url(visit) do %>
-              <span><%= visit.zipcode %></span>
-            <% end %>
-            </a>
+            <%= link_to visit.short_details, visit_url(visit) %>
           </li>
         <% end %>
       </ul>
@@ -25,8 +22,17 @@
 
   <section class="user-hostings">
     <header>
-      <%= link_to "I Can Host", "#" %>
+      <%= link_to "I Can Host", new_user_hosting_url(user) %>
       <small>"Have room to share?"</small>
     </header>
+    <% unless user.hostings.empty? %>
+      <ul>
+        <% user.hostings.each do |hosting| %>
+          <li>
+            <%= link_to hosting.short_details, hosting_url(hosting) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   </section>
 </div>
