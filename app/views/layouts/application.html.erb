@@ -12,7 +12,9 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 <% if flash[:errors] %>
-  <p><%= flash[:errors] %></p>
+  <% flash[:errors].each do |error| %>
+    <p><%= error %></p>
+  <% end %>
 <% end %>
 
 <%= yield %>

@@ -3,6 +3,10 @@ require 'spec_helper'
 require 'visit'
 
 RSpec.describe Hosting, type: :model do
+
+  # To avoid going over geocoding api limits
+  before(:each) { sleep(1.0 / 5.0) }
+
   it "has a valid factory" do
     expect(FactoryGirl.create(:hosting)).to be_valid
   end
@@ -17,7 +21,6 @@ RSpec.describe Hosting, type: :model do
 
   describe "::can_host" do
     before :each do
-      sleep(1.0 / 2.0)
       @denver_three = FactoryGirl.create :hosting,
         max_guests: 3,
         zipcode: "80220"
