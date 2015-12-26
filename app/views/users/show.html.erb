@@ -1,0 +1,32 @@
+<div class="user-home">
+  <header>
+    <h1>Bernie BNB</h1>
+  </header>
+
+  <section class="user-travels">
+    <header>
+      <%= link_to "Find A Host", "#" %>
+      <small>"On the road for Bernie?"</small>
+    </header>
+    <% unless @user.visits.empty? %>
+      <ul>
+        <% @user.visits.each do |visit| %>
+          <li>
+            <% link_to visits_url(visit) do %>
+              <span><%= visit.zipcode %></span>
+            <% end %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </section>
+
+
+  <section class="user-hostings">
+    <header>
+      <%= link_to "I Can Host", "#" %>
+      <small>"Have room to share?"</small>
+    </header>
+  </section>
+</div>
