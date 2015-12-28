@@ -9,6 +9,12 @@
 </head>
 <body>
 
+<% unless current_user.nil? %>
+  <header>
+    <%= button_to "Sign Out", signout_url, method: :delete %>
+  </header>
+<% end %>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 <% if flash[:errors] %>
