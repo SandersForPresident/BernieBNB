@@ -24,4 +24,9 @@ RSpec.describe User, type: :model do
       .to be_valid
     expect { FactoryGirl.create(:user, phone: "") }.to raise_error ActiveRecord::RecordInvalid
   end
+
+  it "automatically generates a session token on creation" do
+    user = FactoryGirl.create(:user)
+    expect(user.session_token).to_not be_nil
+  end
 end
