@@ -1,0 +1,49 @@
+<div class="available-hosts">
+  <% if @visit.available_hosts.empty? %>
+    <header>
+      <h1><strong>Nobody here, yet.<strong></h1>
+      <span>
+        We've got your email and we'll contact you when we have a possible match.
+      </span>
+    </header>
+  <% else %>
+    <header>
+      <h1>Hosts near <%= @visit.zipcode %></h1>
+      <span>Contact any good matches below</span>
+      <div id="accordion">
+        <% @visit.available_hosts.each do |host| %>
+          <% host_name = host.first_name %>
+          <div>
+            <ul>
+              <li><h2><%= host_name %></h2></li>
+              <li>
+                <span>
+                  <%= "#{host.zipcode} - #{host.distance} miles" %>
+                </span>
+              </li>
+              <li><small>Space for <%= host.max_guests %></small></li>
+            </ul>
+            <button>Contact</button>
+          </div>
+          <div>
+            <h2>Contact <%= host_name %></h2>
+            <p>We'll email <% host_name %> your contact info, saying:</p>
+            <ul>
+              <li>You need a place to stay</li>
+              <li>Your total number of travelers</li>
+              <li>Your arrival/ departure dates</li>
+              <li>Your name</li>
+              <li>Your email address</li>
+              <li>Your phone number</li>
+            </ul>
+            <p>
+              Then, <%= host_name %> should contact you to work out the details.
+            </p>
+            <button>Send my contact info</button>
+          </div>
+        <% end %>
+      </div>
+    </header>
+  <% end %>
+
+</div>

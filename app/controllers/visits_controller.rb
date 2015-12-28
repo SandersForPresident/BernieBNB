@@ -8,12 +8,15 @@ class VisitsController < ApplicationController
     @visit.user_id = current_user
 
     if @visit.save
-      @possible_hosts = Hosting.can_host(@visitor)
       redirect_to visit_url(@visit)
     else
       flash[:errors] = @visit.errors.full_messages
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @visit = Visit.find(params[:id])
   end
 
   private
