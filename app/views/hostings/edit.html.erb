@@ -5,5 +5,5 @@
   </header>
 
   <%= render "hosting_form" %>
-  <%= link_to "Cancel", user_url(current_user) %>
+  <%= button_to "Delete", hosting_path(@hosting), method: "delete" %>
 </div>

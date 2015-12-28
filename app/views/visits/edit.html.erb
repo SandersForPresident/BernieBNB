@@ -6,5 +6,5 @@
 
   <%= render "visit_form" %>
 
-  <%= link_to "Cancel", user_url(current_user) %>
+  <%= button_to "Delete", visit_path(@visit), method: "delete" %>
 </div>

@@ -13,7 +13,7 @@
       <ul>
         <% user.visits.each do |visit| %>
           <li>
-            <%= link_to visit.short_details, visit_url(visit) %>
+            <%= link_to visit.short_details, edit_visit_url(visit) %>
           </li>
         <% end %>
       </ul>
@@ -30,7 +30,7 @@
       <ul>
         <% user.hostings.each do |hosting| %>
           <li>
-            <%= link_to hosting.short_details, hosting_url(hosting) %>
+            <%= link_to hosting.short_details, edit_hosting_url(hosting) %>
           </li>
         <% end %>
       </ul>

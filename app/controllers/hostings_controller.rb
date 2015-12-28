@@ -15,8 +15,30 @@ class HostingsController < ApplicationController
     end
   end
 
-  def show
-    @hosting = hosting.find(params[:id])
+  def update
+    @hosting = Hosting.find(params[:id])
+
+    if @hosting.save
+      redirect_to user_url(current_user)
+    else
+      flash[:errors] = @hosting.errors.full_messages
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @hosting = Hosting.find(params[:id])
+  end
+
+  def destroy
+    @hosting = Hosting.find(params[:id])
+
+    if @hosting.destroy
+      redirect_to user_url(current_user)
+    else
+      flash[:errors] = @hosting.errors.full_messages
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
