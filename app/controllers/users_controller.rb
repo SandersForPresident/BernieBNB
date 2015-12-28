@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :require_complete_profile, only: [:edit, :update]
   decorates_assigned :user
 
   def edit
@@ -7,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    redirect_to user_url(current_user) if @user.id != current_user.id
   end
 
   def update

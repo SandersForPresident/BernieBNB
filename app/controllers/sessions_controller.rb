@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_current_user
+  skip_before_action :require_complete_profile
+
   def create
     auth = request.env["omniauth.auth"]
     @user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) ||
