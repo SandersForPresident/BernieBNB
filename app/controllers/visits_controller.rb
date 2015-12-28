@@ -5,7 +5,7 @@ class VisitsController < ApplicationController
 
   def create
     @visit = Visit.new(visit_params)
-    @visit.user_id = current_user
+    @visit.user_id = current_user.id
 
     if @visit.save
       redirect_to visit_url(@visit)

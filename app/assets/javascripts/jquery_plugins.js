@@ -18,4 +18,9 @@ $(document).ready(function () {
   $('#visit_end_date').datepicker({
     dateFormat: "dd-M-yy"
   });
+
+  $('#accordion').accordion({
+    active: false,
+    collapsible: true
+  });
 });

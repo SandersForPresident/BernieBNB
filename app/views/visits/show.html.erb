@@ -1,7 +1,8 @@
 <div class="available-hosts">
+  <a class="home btn btn-info btn-sm" href="<%= user_url(current_user) %>"> << Back </a>
   <% if @visit.available_hosts.empty? %>
     <header>
-      <h1><strong>Nobody here, yet.<strong></h1>
+      <h1><strong>Nobody here, yet.</strong></h1>
       <span>
         We've got your email and we'll contact you when we have a possible match.
       </span>
@@ -45,5 +46,7 @@
       </div>
     </header>
   <% end %>
-
+  <footer>
+    <button>Submit Feedback</button>
+  </footer>
 </div>

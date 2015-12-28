@@ -5,4 +5,8 @@ class Hosting < ActiveRecord::Base
   after_validation :geocode
 
   belongs_to :user
+
+  def first_name
+    self.user.first_name
+  end
 end
