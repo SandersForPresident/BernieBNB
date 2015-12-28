@@ -1,0 +1,9 @@
+<div class="user-new-hosting">
+  <a class="home btn btn-info btn-sm" href="<%= user_url(current_user) %>"> << Back </a>
+  <header>
+    <h1>Host</h1>
+  </header>
+
+  <%= render "hosting_form" %>
+  <%= button_to "Delete", hosting_path(@hosting), method: "delete" %>
+</div>

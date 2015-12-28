@@ -1,0 +1,10 @@
+<div class="user-new-visit">
+  <a class="home btn btn-info btn-sm" href="<%= user_url(current_user) %>"> << Back </a>
+  <header>
+    <h1>Travel</h1>
+  </header>
+
+  <%= render "visit_form" %>
+
+  <%= link_to "Cancel", user_url(current_user) %>
+</div>
