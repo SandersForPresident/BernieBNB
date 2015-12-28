@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby "2.2.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
@@ -29,9 +29,9 @@ gem 'geocoder'
 gem 'figaro'
 gem 'validates_timeliness', '~> 3.0'
 gem 'rails_12factor'
-# Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'draper'
+gem 'jquery-ui-rails'
 
 # Use Unicorn as the app servre
 # gem 'unicorn'
