@@ -8,16 +8,28 @@ $lightgray: #F1F1F1;
 $gray: #CFCFCF;
 $darkgray: #8A8A8A;
 
-html {
-  font-family: "Lato",Helvetica,Arial,sans-serif;
-  font-weight: 300;
+.button-special {
+  display: block;
+  box-sizing: border-box;
+  margin: 1rem auto;
+  background-color: $orange;
+  color: white;
+  height: 42px;
+  font-size: 1.2em;
+  font-family: freightsans;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  border-radius: 3px;
+  border: none;
+  width: 100%;
+  max-width: 300px;
+  padding-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 div.sign-in  {
-  width: 100%;
-  margin: auto;
-  text-align: center;
-
   h1 {
     font-weight: normal;
     letter-spacing: 0.1rem;
@@ -62,24 +74,7 @@ div.sign-in  {
       }
 
       a {
-        display: block;
-        box-sizing: border-box;
-        margin: 1rem auto;
-        background-color: $orange;
-        color: white;
-        height: 42px;
-        font-size: 1.2em;
-        font-family: freightsans;
-        font-weight: 700;
-        letter-spacing: 0.15em;
-        text-decoration: none;
-        border-radius: 3px;
-        border: none;
-        width: 100%;
-        max-width: 300px;
-        padding-top: 10px;
-        text-align: center;
-        text-transform: uppercase;
+        @extend .button-special;
 
         &:hover {
           cursor: pointer;
@@ -93,83 +88,4 @@ div.sign-in  {
       max-width: 600px;
       border-color: $lightgray;
     }
-}
-
-div.profile-page {
-  width: 100%;
-  max-width: 300px;
-  margin: auto;
-
-  a.home {
-    background-color: $lightgray;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: $blue;
-    padding: 0.4rem 0.4rem;
-    border-radius: 0.8;
-
-    &:hover {
-      box-shadow: 1px 1px 1px $gray;
-    }
-  }
-
-  p.lead {
-    text-align: center;
-    font-size: 2em;
-    margin: 1.8rem auto;
-  }
-
-  form.edit_user {
-    label {
-      font-size: 1.5em;
-      margin-bottom: 0.3rem;
-      display: block;
-    }
-
-    input {
-      font-size: 1.3em;
-      width: 94%;
-      height: 37px;
-      border-radius: 3px;
-      border: 1px solid black;
-      padding-left: 1rem;
-      margin-bottom: 0.3rem;
-
-      &:hover {
-        box-shadow: 1px 1px 1px $gray;
-      }
-    }
-
-    input.submit {
-      display: block;
-      box-sizing: border-box;
-      margin: 1rem auto;
-      background-color: $green;
-      color: white;
-      height: 42px;
-      font-size: 1.2em;
-      font-family: freightsans;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-decoration: none;
-      border-radius: 3px;
-      border: none;
-      width: 100%;
-      max-width: 300px;
-      padding-top: 10px;
-      text-align: center;
-      text-transform: uppercase;
-
-      &:hover {
-        cursor: pointer;
-        background-color: $lightgreen;
-      }
-    }
-
-    span {
-      display: block;
-      margin-bottom: 1.8rem;
-      color: $darkgray;
-    }
-  }
 }

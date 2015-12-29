@@ -16,6 +16,37 @@
  *= require jquery-ui/accordion
  */
 
+ $orange: #EA504E;
+ $lightorange: #F55B5B;
+ $blue: #147FD7;
+ $lightblue: #8ABFEB;
+ $green: #20c361;
+ $lightgreen: #30DF76;
+ $lightgray: #F1F1F1;
+ $gray: #CFCFCF;
+ $darkgray: #8A8A8A;
+
+ .button-special {
+   display: block;
+   box-sizing: border-box;
+   margin: 1rem auto;
+   background-color: $orange;
+   color: white;
+   height: 42px;
+   font-size: 1.2em;
+   font-family: freightsans;
+   font-weight: 700;
+   letter-spacing: 0.15em;
+   text-decoration: none;
+   border-radius: 3px;
+   border: none;
+   width: 100%;
+   max-width: 300px;
+   padding-top: 10px;
+   text-align: center;
+   text-transform: uppercase;
+ }
+
  @font-face {
   font-family: 'freightsans';
   src: url(font-path('freightsans_bold-webfont.eot'));
@@ -50,4 +81,81 @@
     url(font-path('jubilatmedium-roman-webfont.svg#jubilat_mediumregular')) format('svg');
   font-weight: normal;
   font-style: normal;
+}
+
+html {
+  font-family: "Lato",Helvetica,Arial,sans-serif;
+  font-weight: 300;
+}
+
+div {
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+}
+
+p.lead {
+  text-align: center;
+  font-size: 2em;
+  margin: 1.8rem auto;
+}
+
+a.home {
+  background-color: $lightgray;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $blue;
+  padding: 0.4rem 0.4rem;
+  border-radius: 0.8;
+
+  &:hover {
+    box-shadow: 1px 1px 1px $gray;
+  }
+}
+
+form:not(.button_to) {
+  label {
+    font-size: 1.5em;
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+
+  input, select {
+    font-size: 1.3em;
+    width: 94%;
+    height: 37px;
+    border-radius: 3px;
+    border: 1px solid black;
+    padding-left: 1rem;
+    margin-bottom: 0.3rem;
+
+    &:hover {
+      box-shadow: 1px 1px 1px $gray;
+    }
+  }
+
+  select {
+    width: 100%;
+    background-color: white;
+  }
+
+  input.submit {
+    @extend .button-special;
+    background-color: $green;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $lightgreen;
+    }
+  }
+
+  span {
+    display: block;
+    margin-bottom: 1.8rem;
+    color: $darkgray;
+  }
+
+  span.hosting {
+    margin-bottom: 2.8rem;
+  }
 }

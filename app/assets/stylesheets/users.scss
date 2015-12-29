@@ -1,0 +1,109 @@
+$orange: #EA504E;
+$lightorange: #F55B5B;
+$blue: #147FD7;
+$lightblue: #8ABFEB;
+$green: #20c361;
+$lightgreen: #30DF76;
+$lightgray: #F1F1F1;
+$gray: #CFCFCF;
+$darkgray: #8A8A8A;
+$purple: #8A2BE2;
+$lightpurple: #932EF1;
+
+.button-special {
+  display: block;
+  box-sizing: border-box;
+  margin: 1rem auto;
+  background-color: $orange;
+  color: white;
+  height: 42px;
+  font-size: 1.2em;
+  font-family: freightsans;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  border-radius: 3px;
+  border: none;
+  width: 100%;
+  max-width: 300px;
+  padding-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+div.user-home {
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+
+  header.heading {
+    margin: 3.2em auto;
+  }
+
+  section.user-travels {
+    border-bottom: 1px solid $gray;
+    max-width: 600px;
+    width: 95%;
+    padding-bottom: 1em;
+    margin: auto;
+  }
+
+  section.user-hostings {
+    padding-top: 1.6em;
+  }
+
+  a.find {
+    @extend .button-special;
+    background-color: $green;
+    margin-bottom: 0.7rem;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $lightgreen;
+    }
+  }
+
+  a.host {
+    @extend .button-special;
+    margin-bottom: 0.7rem;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $lightorange;
+    }
+  }
+
+  p.lead {
+    text-align: center;
+    font-size: 2em;
+    margin: 1.8rem auto;
+  }
+
+  span {
+    text-align: center;
+    display: block;
+    margin-bottom: 1.8rem;
+    color: $darkgray;
+  }
+
+  ul {
+    padding: 0;
+    text-align: center;
+
+    li {
+      display: block;
+
+      a {
+        @extend .button-special;
+        margin-bottom: 0.7rem;
+        background-color: $purple;
+        text-transform: none;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $lightpurple;
+        }
+      }
+    }
+  }
+}

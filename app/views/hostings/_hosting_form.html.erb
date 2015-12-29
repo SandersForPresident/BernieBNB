@@ -3,11 +3,11 @@
 <%= form_for @hosting, url: { action: action } do |f| %>
   <%= f.label :zipcode, "Where are you located?" %>
   <%= f.text_field :zipcode %>
-  <span>Your zip code.</span>
+  <span class="hosting">Your zip code.</span>
 
   <%= f.label :max_guests, "How many can you host?" %>
   <%= f.select :max_guests, (1..7).zip(1..7) %>
-  <span>Preferred maximum number of guests.</span>
+  <span class="hosting">Preferred maximum number of guests.</span>
 
   <%= f.submit "Save", class: 'submit' %>
 <% end %>

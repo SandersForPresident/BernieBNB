@@ -1,3 +1,71 @@
 // Place all the styles related to the Hostings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$orange: #EA504E;
+$lightorange: #F55B5B;
+$blue: #147FD7;
+$lightblue: #8ABFEB;
+$green: #20c361;
+$lightgreen: #30DF76;
+$lightgray: #F1F1F1;
+$gray: #CFCFCF;
+$darkgray: #8A8A8A;
+
+.button-special {
+  display: block;
+  box-sizing: border-box;
+  margin: 1rem auto;
+  background-color: $orange;
+  color: white;
+  height: 42px;
+  font-size: 1.2em;
+  font-family: freightsans;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  border-radius: 3px;
+  border: none;
+  width: 100%;
+  max-width: 300px;
+  padding-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+div.user-new-hosting {
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+
+  a.home {
+    background-color: $lightgray;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $blue;
+    padding: 0.4rem 0.4rem;
+    border-radius: 0.8;
+
+    &:hover {
+      box-shadow: 1px 1px 1px $gray;
+    }
+  }
+
+  p.lead {
+    text-align: center;
+    font-size: 2em;
+    margin: 1.8rem auto;
+  }
+
+  a.cancel {
+    @extend .button-special;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $lightorange;
+    }
+  }
+
+  span:last-child {
+    margin-bottom: 10px;
+  }
+}

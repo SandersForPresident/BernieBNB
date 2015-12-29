@@ -3,19 +3,19 @@
 <%= form_for @visit, url: { action: action } do |f| %>
   <%= f.label :zipcode, "Where are you going?" %>
   <%= f.text_field :zipcode %>
-  <span>Zipcode near your destination</span>
+  <span>Zipcode near your destination.</span>
 
   <%= f.label :start_date, "Starting when?" %>
   <%= f.text_field :start_date %>
-  <span>Arrival date</span>
+  <span>Arrival date.</span>
 
   <%= f.label :end_date, "Ending when?" %>
   <%= f.text_field :end_date %>
-  <span>Departure date</span>
+  <span>Departure date.</span>
 
   <%= f.label :num_travelers, "How many total travelers?" %>
   <%= f.select :num_travelers, (1..7).zip(1..7) %>
-  <span>Including yourself</span>
+  <span>Including yourself.</span>
 
   <%= f.submit "Contact Hosts", class: 'submit' %>
 <% end %>
