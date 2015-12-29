@@ -1,13 +1,13 @@
 <div class="user-home">
   <a class="home btn btn-info btn-sm" href="<%= user_url(current_user) %>"> << Home </a>
-  <header>
-    <h1>Bernie BNB</h1>
+  <header class="heading">
+    <p class="lead text-center">Bernie BNB</p>
   </header>
 
   <section class="user-travels">
     <header>
-      <%= link_to "Find A Host", new_user_visit_url(user) %>
-      <small>"On the road for Bernie?"</small>
+      <%= link_to "Find A Host", new_user_visit_url(user), class: "find" %>
+      <span>On the road for Bernie?</span>
     </header>
     <% unless user.visits.empty? %>
       <ul>
@@ -23,8 +23,8 @@
 
   <section class="user-hostings">
     <header>
-      <%= link_to "I Can Host", new_user_hosting_url(user) %>
-      <small>"Have room to share?"</small>
+      <%= link_to "I Can Host", new_user_hosting_url(user), class: "host" %>
+      <span>Have room to share?</span>
     </header>
     <% unless user.hostings.empty? %>
       <ul>

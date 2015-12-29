@@ -1,3 +1,95 @@
 // Place all the styles related to the Visits controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$orange: #EA504E;
+$lightorange: #F55B5B;
+$blue: #147FD7;
+$lightblue: #8ABFEB;
+$green: #20c361;
+$lightgreen: #30DF76;
+$lightgray: #F1F1F1;
+$gray: #CFCFCF;
+$darkgray: #8A8A8A;
+
+.button-special {
+  display: block;
+  box-sizing: border-box;
+  margin: 1rem auto;
+  background-color: $orange;
+  color: white;
+  height: 42px;
+  font-size: 1.2em;
+  font-family: freightsans;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  border-radius: 3px;
+  border: none;
+  width: 100%;
+  max-width: 300px;
+  padding-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+div.user-new-visit {
+  a.cancel {
+    @extend .button-special;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $lightorange;
+    }
+  }
+}
+
+div.available-hosts {
+  header {
+    text-align: center;
+    h1 {
+      font-weight: 300;
+      margin: 2.8rem auto;
+    }
+
+    h1.hosts-heading {
+      margin-bottom: 0.3rem;
+    }
+
+    strong {
+      font-weight: 300;
+      font-size: 2em;
+    }
+
+    span {
+      display: block;
+      margin-bottom: 1.8rem;
+    }
+  }
+
+  a.cancel {
+    @extend .button-special;
+    background: white;
+    color: black;
+    border: 2px solid black;
+    margin: 2em auto;
+    width: 85%;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $lightgray;
+    }
+  }
+
+  div.ui-accordion {
+    width: inherit;
+
+    div.ui-accordion-header {
+      width: inherit;
+    }
+
+    div.ui-accordion-content {
+      width: inherit;
+    }
+  }
+}

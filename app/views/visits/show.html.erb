@@ -9,7 +9,7 @@
     </header>
   <% else %>
     <header>
-      <h1>Hosts near <%= @visit.zipcode %></h1>
+      <h1 class="hosts-heading">Hosts near <%= @visit.zipcode %></h1>
       <span>Contact any good matches below</span>
       <div id="accordion">
         <% @visit.available_hosts.each do |host| %>
@@ -47,6 +47,6 @@
     </header>
   <% end %>
   <footer>
-    <button>Submit Feedback</button>
+    <a class="cancel">Submit Feedback</a>
   </footer>
 </div>
