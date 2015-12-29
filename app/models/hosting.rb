@@ -19,7 +19,7 @@ class Hosting < ActiveRecord::Base
       .where("num_travelers <= ?", max_guests)
 
     nearby_visits.each do |visit|
-      UserMailer.new_host_email(visit, self).deliver
+      UserMailer.new_host_email(visit, self).deliver_now
     end
   end
 end
