@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contacts
   root to: "home#sign_in"
 
   match "/auth/:provider/callback" => "sessions#create", via: [:get, :post]
