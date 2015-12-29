@@ -19,7 +19,7 @@
               <li><h2><%= host_name %></h2></li>
               <li>
                 <span>
-                  <%= "#{host.zipcode} - #{host.distance} miles" %>
+                  <%= "#{host.zipcode} - #{host.distance.round(1)} miles" %>
                 </span>
               </li>
               <li><small>Space for <%= host.max_guests %></small></li>
