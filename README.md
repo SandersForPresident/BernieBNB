@@ -18,8 +18,9 @@ We would love your help.
 
 ### Steps
   1. Set up Facebook Developer account at https://developers.facebook.com then get your FACEBOOK_KEY and FACEBOOK_SECRET.
-  2. Create Bing Maps key (BING_GEOCODE_ID) at https://msdn.microsoft.com/en-us/library/ff428642.aspx
-  3. Based on figaro gem, create a config/application.yml file and set values.
+  2. Set up Google Developer account at https://developers.google.com/ and get your GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET.
+  3. Create Bing Maps key (BING_GEOCODE_ID) at https://msdn.microsoft.com/en-us/library/ff428642.aspx
+  4. Based on figaro gem, create a config/application.yml file and set values.
 
 > USERNAME: TBD - Used in config/database.yml file.
 
@@ -31,12 +32,16 @@ We would love your help.
 
 > FACEBOOK_SECRET: TBD - Used in config/initializers/omniauth.rb file.
 
+> GOOGLE_CLIENT_ID: "TBD" - Used in config/initializers/omniauth.rb file.
+
+> GOOGLE_CLIENT_SECRET: TBD - Used in config/initializers/omniauth.rb file.
+
 > BING_GEOCODE_ID: TBD - Used in config/initializers/geocoder.rb file.
 
   4. To set up development environment, do the following:
     * Fork the repo at https://github.com/SandersForPresident/BernieBNB
     * Cloned it locally.
-    * Do above steps 1-3. 
+    * Do above steps 1-3.
     * Run "rake db:create".
     * Run "rake db:migrate".
     * Run "rake db:setup".
