@@ -12,6 +12,18 @@ feature "User signs up" do
     expect(page).to have_content('Please fill out a few more')
   end
 
+  scenario 'completing registration information' do
+    visit root_path
+    click_link 'Facebook'
+
+    fill_in "What's your first name?", with: 'Jane'
+    fill_in "What's your phone number?", with: '555-555-5555'
+
+    click_button "Save"
+
+    expect(page).to have_content('Find A Host')
+  end
+
   scenario 'facebook fails' do
     OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
 
