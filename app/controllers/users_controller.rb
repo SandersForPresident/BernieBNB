@@ -13,8 +13,10 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+    new_account = @user.first_name.nil? # Won't send welcome email without first name
 
     if @user.update(user_params)
+      UserMailer.welcome_email(@user).deliver_now if new_account
       redirect_to user_url(@user)
     else
       flash[:errors] = @user.errors.full_messages
