@@ -16,7 +16,7 @@ before_script:
   - psql -c 'create database bbnb_test;' -U postgres
 
 script:
-  - RAILS_ENV=test bundle exec rake --trace db:migrate
+  - RAILS_ENV=test bundle exec rake --trace db:migrate spec
 
 cache: bundler
 
