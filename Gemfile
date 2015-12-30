@@ -44,11 +44,12 @@ group :development, :test do
   gem 'faker'
   gem 'guard-rspec'
   gem 'letter_opener'
+  gem 'launchy'
+  gem 'email_spec'
 end
 
 group :test do
   gem 'capybara'
-  gem 'launchy'
 end
 
 # See https://github.com/rails/execjs#readme for more supported runtimes

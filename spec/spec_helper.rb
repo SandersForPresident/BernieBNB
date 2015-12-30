@@ -1,5 +1,7 @@
 require "capybara/rspec"
 require "omniauth"
+require "action_mailer"
+require "email_spec"
 
 OmniAuth.config.test_mode = true
 omniauth_hash = { 'provider' => 'facebook',
