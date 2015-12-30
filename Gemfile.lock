@@ -101,6 +101,8 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    haml (4.0.7)
+      tilt
     hashie (3.4.3)
     i18n (0.7.0)
     jbuilder (2.4.0)
@@ -282,6 +284,7 @@ DEPENDENCIES
   figaro
   geocoder
   guard-rspec
+  haml
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
