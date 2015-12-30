@@ -1,0 +1,34 @@
+language: ruby
+
+rvm:
+- 2.3.0
+
+env:
+  - DB=postgresql
+
+addons:
+  postgresql: "9.3"
+
+before_install: gem update bundler
+
+before_script: 
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database bbnb_test;' -U postgres
+
+script:
+  - RAILS_ENV=test bundle exec rake --trace db:migrate
+
+cache: bundler
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/04f07b2eeecfad3cf278
+    on_success: change
+  email:
+    recipients:
+    - jasnow@hotmail.com
+    on_success: change
+    on_failure: always
+
+sudo: false
