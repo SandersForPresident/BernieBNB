@@ -1,5 +1,5 @@
 Hi <%= @visitor.first_name %>,
-
+<br><br>
 <%= @host.first_name %> just signed up with BernieBNB as a host <%= @hosting.distance_from(@visit).round(1) %> mi. from <%= @visit.zipcode %>.
-
-Send your contact info here: x<%= link_to "Bernie BNB - Results for #{ @visit.zipcode }", visit_url(@visit) %>
+<br><br>
+Send your contact info here: <%= link_to "Bernie BNB - Results for #{ @visit.zipcode }", visit_url(@visit) %>
