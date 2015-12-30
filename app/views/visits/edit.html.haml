@@ -1,0 +1,7 @@
+.user-new-visit
+  %a.home.btn.btn-info.btn-sm{href: user_url(current_user)} << Back
+  %header
+    %p.lead Travel
+
+  = render "visit_form"
+  = link_to "Delete", visit_path(@visit), method: "DELETE", class: "cancel"
