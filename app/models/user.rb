@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
   after_initialize :ensure_session_token
-  after_create :send_welcome_email
 
   has_many :visits
   has_many :hostings
@@ -37,9 +36,5 @@ class User < ActiveRecord::Base
 
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
-  end
-
-  def send_welcome_email
-    UserMailer.welcome_email(self).deliver_now
   end
 end
