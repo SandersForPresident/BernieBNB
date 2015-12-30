@@ -18,7 +18,7 @@ class HostingsController < ApplicationController
   def update
     @hosting = Hosting.find(params[:id])
 
-    if @hosting.save
+    if @hosting.update(hosting_params)
       redirect_to user_url(current_user)
     else
       flash[:errors] = @hosting.errors.full_messages

@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-feature "User signs up" do
+feature "User signs up with facebook" do
   before do
     Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
   end
 
-  scenario 'with facebook' do
+  scenario 'starts session' do
     visit root_path
     click_link 'Facebook'
 

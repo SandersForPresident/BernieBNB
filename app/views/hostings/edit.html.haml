@@ -1,0 +1,7 @@
+.user-new-hosting
+  %a.home.btn.btn-info.btn-sm{:href => user_url(current_user)} << Back
+  %header
+    %p.lead Host
+
+  = render 'hosting_form'
+  = link_to "Delete", hosting_path(@hosting), method: "DELETE", class: "cancel"
