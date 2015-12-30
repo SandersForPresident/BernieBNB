@@ -1,0 +1,24 @@
+.user-home
+  %a.home.btn.btn-info.btn-sm{ href: user_url(current_user) } > << Home
+  %header.heading
+    %p.lead.text-center Bernie BNB
+
+  %section.user-travels
+    %header
+      = link_to 'Find A Host', new_user_visit_url(user), class: 'find'
+      %span On the road for Bernie?
+    - unless user.visits.empty?
+      %ul
+        - user.visits.each do |visit|
+          %li
+            = link_to visit.short_details, edit_visit_url(visit)
+
+  %section.user-hostings
+    %header>
+      = link_to 'I Can Host', new_user_hosting_url(user), class: 'host'
+      %span>Have room to share?
+    - unless user.hostings.empty?
+      %ul
+        - user.hostings.each do |hosting|
+          %li
+            = link_to hosting.short_details, edit_hosting_url(hosting)

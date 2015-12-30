@@ -1,0 +1,17 @@
+.profile-page
+  %a.home.btn.btn-info.btn-sm << Home
+  %p.lead.text-center Profile
+
+  = form_for @user, url: { action: 'update' } do |f|
+    = f.label :email, 'Your email address:'
+    = f.email_field :email
+    %span We'll send you email notifications.
+
+    = f.label :first_name, 'What\'s your first name?'
+    = f.text_field :first_name, placeholder: 'First name'
+
+    = f.label :phone, 'What\'s your phone number?'
+    = f.phone_field :phone, placeholder: 'Phone number'
+    %span We'll send this when you contact someone.
+
+    = f.submit 'Save', class: 'submit'
