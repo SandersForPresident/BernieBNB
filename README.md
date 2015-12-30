@@ -21,17 +21,17 @@ We would love your help.
   2. Create Bing Maps key (BING_GEOCODE_ID) at https://msdn.microsoft.com/en-us/library/ff428642.aspx
   3. Based on figaro gem, create a config/application.yml file and set values.
 
-> USERNAME: TBD
+> USERNAME: TBD - Used in config/database.yml file.
 
-> PASSWORD: TBD
+> PASSWORD: TBD - Used in config/database.yml file.
 
 > IP: http://localhost:3000/
 
-> FACEBOOK_KEY: "TBD"
+> FACEBOOK_KEY: "TBD" - Used in config/initializers/omniauth.rb file.
 
-> FACEBOOK_SECRET: TBD
+> FACEBOOK_SECRET: TBD - Used in config/initializers/omniauth.rb file.
 
-> BING_GEOCODE_ID: TBD
+> BING_GEOCODE_ID: TBD - Used in config/initializers/geocoder.rb file.
 
   4. To set up development environment, do the following:
     * Fork the repo at https://github.com/SandersForPresident/BernieBNB
