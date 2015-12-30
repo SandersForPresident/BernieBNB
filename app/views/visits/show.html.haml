@@ -1,0 +1,33 @@
+%div.available_hosts
+  %a.home.btn.btn-info.btn-sm{href: user_url(current_user)} << Back
+  - if @visit.available_hosts.empty?
+    %header
+      %span We've got your email and we'll contact you when we have a possible match.
+  - else
+    %header
+      %h1.hosts-heading Hosts near #{ @visit.zipcode }
+      %span Contact any good matches below
+      %div#accordion
+        - @visit.available_hosts.each do |host|
+          - host_name = host.first_name
+          %div
+            %ul
+              %li
+                %h2 #{ host_name }
+              %li
+                %span #{ host.zipcode } - #{ host.distance.round(1) } miles
+              %li
+                %small Space for #{ host.max_guests }
+              %button Contact
+          %div
+            %h2 Contact #{ host_name }
+            %p We'll email #{ host_name } your contact info, saying:
+            %ul
+              %li You need a place to stay
+              %li Your total number of travelers
+              %li Your arrival/departure dates
+              %li Your name
+              %li Your email address
+              %li Your phone number
+            %p Then, #{ host_name } should contact you to work out the details.
+            %button Send my contact info
