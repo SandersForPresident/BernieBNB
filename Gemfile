@@ -35,6 +35,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'draper'
 gem 'jquery-ui-rails'
 
+gem 'haml'
+
 # Use Unicorn as the app servre
 # gem 'unicorn'
 
