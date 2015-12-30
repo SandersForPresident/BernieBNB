@@ -4,14 +4,22 @@ require "action_mailer"
 require "email_spec"
 
 OmniAuth.config.test_mode = true
-omniauth_hash = { 'provider' => 'facebook',
+facebook_hash = { 'provider' => 'facebook',
                   'uid' => '12345',
                   'info' => {
-                      'email' => 'mock@fakemail.com',
+                      'email' => 'facebook_user@fakemail.com'
                   },
 }
 
-OmniAuth.config.add_mock(:facebook, omniauth_hash)
+OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({
+      'provider' => 'twitter',
+      'uid' => '123545',
+      'info' => {
+        'email' => 'google_user@gmail.com'
+      }
+})
+
+OmniAuth.config.add_mock(:facebook, facebook_hash)
 
 
 RSpec.configure do |config|
