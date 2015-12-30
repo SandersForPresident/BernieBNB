@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  has_many :visits
-  has_many :hostings
+  has_many :visits, dependent: :destroy
+  has_many :hostings, dependent: :destroy
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
