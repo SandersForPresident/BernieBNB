@@ -2,7 +2,7 @@
 
 .profile-page
   %div.group
-    %a.home.btn.btn-info.btn-sm << Home
+    %a.home.btn.btn-info.btn-sm{ href: root_url } << Home
   %p.lead.text-center Profile
 
   = form_for @user, url: { action: 'update' } do |f|
