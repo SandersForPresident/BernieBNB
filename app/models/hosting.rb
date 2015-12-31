@@ -8,7 +8,7 @@ class Hosting < ActiveRecord::Base
   belongs_to :host, class_name: "User", foreign_key: :host_id
 
   def first_name
-    self.user.first_name
+    host.first_name
   end
 
   private
