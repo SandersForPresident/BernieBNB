@@ -1,8 +1,9 @@
-$orange: #EA504E;
+$orange: #F44343;
 $lightorange: #F55B5B;
 $blue: #147FD7;
 $lightblue: #8ABFEB;
-$green: #20c361;
+$green: #4ACC66;
+$darkgreen: #32b14d;
 $lightgreen: #30DF76;
 $lightgray: #F1F1F1;
 $gray: #CFCFCF;
@@ -14,13 +15,13 @@ $lightpurple: #932EF1;
   display: block;
   box-sizing: border-box;
   margin: 1rem auto;
-  background-color: $orange;
+  background-color: $lightorange;
   color: white;
   height: 42px;
   font-size: 1.2em;
-  font-family: freightsans;
-  font-weight: 700;
-  letter-spacing: 0.15em;
+  font-family: "Lato";
+  font-weight: 600;
+  letter-spacing: 3px;
   text-decoration: none;
   border-radius: 3px;
   border: none;
@@ -55,21 +56,23 @@ div.user-home {
   a.find {
     @extend .button-special;
     background-color: $green;
+    border: 1px solid #38c556;
     margin-bottom: 0.7rem;
 
     &:hover {
       cursor: pointer;
-      background-color: $lightgreen;
+      background-color: $darkgreen;
     }
   }
 
   a.host {
     @extend .button-special;
     margin-bottom: 0.7rem;
+    border: 1px solid #f44343;
 
     &:hover {
       cursor: pointer;
-      background-color: $lightorange;
+      background-color: $orange;
     }
   }
 
@@ -96,12 +99,16 @@ div.user-home {
       a {
         @extend .button-special;
         margin-bottom: 0.7rem;
-        background-color: $purple;
+        letter-spacing: 1px;
+        background-color: white;
+        border: 1px solid black;
+        color: black;
         text-transform: none;
+        padding-bottom: 10px;
 
         &:hover {
           cursor: pointer;
-          background-color: $lightpurple;
+          background-color: $lightgray;
         }
       }
     }
