@@ -19,9 +19,9 @@ $lightpurple: #932EF1;
   color: white;
   height: 42px;
   font-size: 1.2em;
-  font-family: freightsans;
+  font-family: "Lato";
   font-weight: 600;
-  letter-spacing: 0.15em;
+  letter-spacing: 3px;
   text-decoration: none;
   border-radius: 3px;
   border: none;
@@ -99,6 +99,7 @@ div.user-home {
       a {
         @extend .button-special;
         margin-bottom: 0.7rem;
+        letter-spacing: 1px;
         background-color: white;
         border: 1px solid black;
         color: black;
