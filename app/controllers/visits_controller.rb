@@ -10,7 +10,7 @@ class VisitsController < ApplicationController
     if @visit.save
       redirect_to visit_url(@visit)
     else
-      flash[:errors] = @visit.errors.full_messages
+      flash.now[:errors] = @visit.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
@@ -30,7 +30,7 @@ class VisitsController < ApplicationController
     if @visit.save
       redirect_to visit_url(@visit)
     else
-      flash[:errors] = @visit.errors.full_messages
+      flash.now[:errors] = @visit.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end
@@ -41,7 +41,7 @@ class VisitsController < ApplicationController
     if @visit.destroy
       redirect_to user_url(current_user)
     else
-      flash[:errors] = @visit.errors.full_messages
+      flash.now[:errors] = @visit.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end

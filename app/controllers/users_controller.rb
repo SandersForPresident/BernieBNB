@@ -35,9 +35,10 @@ class UsersController < ApplicationController
     @user = User.find_by_confirm_token(params[:id])
 
     if @user
-      UserMailer.welcome_email(@user).deliver_now
       @user.email_activate
       sign_in!(@user)
+
+      UserMailer.welcome_email(@user).deliver_now
 
       redirect_to user_url(@user)
     else
