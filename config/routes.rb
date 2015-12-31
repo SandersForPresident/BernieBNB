@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :show, :update, :destroy]
 
   resources :users do
+    member do
+      get :confirm_email
+    end
+
     resources :visits, only: [:new, :index]
     resources :hostings, only: [:new, :index]
   end

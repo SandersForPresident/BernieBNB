@@ -4,12 +4,14 @@ class User < ActiveRecord::Base
   validates :uid, :email, :session_token, presence: true, uniqueness: true
   validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
+  before_create :create_confirmation_token
+
   after_initialize :ensure_session_token
 
   has_many :visits, dependent: :destroy
   has_many :hostings, dependent: :destroy
 
-  def self.generate_session_token
+  def self.generate_secure_token
     SecureRandom::urlsafe_base64(16)
   end
 
@@ -29,12 +31,22 @@ class User < ActiveRecord::Base
   end
 
   def reset_session_token!
-    self.session_token ||= self.class.generate_session_token
+    self.session_token ||= self.class.generate_secure_token
     self.save!
     self.session_token
   end
 
   def ensure_session_token
-    self.session_token ||= self.class.generate_session_token
+    self.session_token ||= self.class.generate_secure_token
+  end
+
+  def create_confirmation_token
+    self.confirm_token ||= self.class.generate_secure_token
+  end
+
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(validate: false)
   end
 end
