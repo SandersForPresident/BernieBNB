@@ -9,7 +9,13 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   has_many :visits, dependent: :destroy
-  has_many :hostings, dependent: :destroy
+  has_many :contacts, class_name: "Contact", foreign_key: :visitor_id
+  has_many :contacted_host_listings, through: :contacts, source: :hosting
+  has_many :contacted_hosts, through: :contacted_host_listings, source: :host
+
+  has_many :hostings, class_name: "Hosting", foreign_key: :host_id, dependent: :destroy
+  has_many :prospective_visitor_contacts, through: :hostings, source: :contacts
+  has_many :prospective_visitors, through: :prospective_visitor_contacts, source: :visitor
 
   def self.generate_secure_token
     SecureRandom::urlsafe_base64(16)

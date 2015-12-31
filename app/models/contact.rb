@@ -1,4 +1,7 @@
 class Contact < ActiveRecord::Base
-  validates :visitor_id, :host_id, presence: true
-  validates_uniqueness_of :visitor_id, scope: :host_id
+  validates :visitor_id, :hosting_id, presence: true
+  validates :visitor_id, uniqueness: { scope: :hosting_id }
+
+  belongs_to :visitor, class_name: "User", foreign_key: :visitor_id
+  belongs_to :hosting
 end

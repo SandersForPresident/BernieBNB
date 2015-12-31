@@ -1,11 +1,11 @@
 class HostingsController < ApplicationController
   def new
-    @hosting ||= Hosting.new(user_id: params[:user_id])
+    @hosting ||= Hosting.new(host_id: params[:user_id])
   end
 
   def create
     @hosting = Hosting.new(hosting_params)
-    @hosting.user_id = current_user.id
+    @hosting.host_id = current_user.id
 
     if @hosting.save
       redirect_to user_url(current_user)
