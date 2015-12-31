@@ -25,9 +25,8 @@ class VisitsController < ApplicationController
 
   def update
     @visit = Visit.find(params[:id])
-    @visit.update(visit_params)
-
-    if @visit.save
+    
+    if @visit.user_id == current_user.id && @visit.update(visit_params)
       redirect_to visit_url(@visit)
     else
       flash.now[:errors] = @visit.errors.full_messages
@@ -38,7 +37,7 @@ class VisitsController < ApplicationController
   def destroy
     @visit = Visit.find(params[:id])
 
-    if @visit.destroy
+    if @visit.user_id == current_user.id && @visit.destroy
       redirect_to user_url(current_user)
     else
       flash.now[:errors] = @visit.errors.full_messages
