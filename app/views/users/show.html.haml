@@ -1,27 +1,27 @@
 %div.user-home
   %div.group
-    %a.home.btn.btn-info.btn-sm{ href: edit_user_url(current_user) } « Profile
-    =link_to("Sign Out", signout_url, method: :delete, class: "signout")
+    =link_to("« Profile", edit_user_url(current_user), class: 'btn btn-info btn-sm left')
+    =link_to("Sign Out", signout_url, method: :delete, class: "btn btn-info btn-sm right")
 
   %header.heading
     %p.lead.text-center Bernie BNB
 
   %section.user-travels
     %header
-      = link_to 'Find A Host', new_user_visit_url(user), class: 'find'
+      = link_to 'Find A Host', new_user_visit_url(user), class: 'btn btn-success btn-block btn-lg'
       %span On the road for Bernie?
     - unless user.visits.empty?
       %ul
         - user.visits.each do |visit|
           %li
-            = link_to visit.short_details, edit_visit_url(visit)
+            = link_to visit.short_details, edit_visit_url(visit), class: 'btn btn-default btn-block btn-lg'
 
   %section.user-hostings
     %header>
-      = link_to 'I Can Host', new_user_hosting_url(user), class: 'host'
+      = link_to 'I Can Host', new_user_hosting_url(user), class: 'btn btn-danger btn-block btn-lg'
       %span>Have room to share?
     - unless user.hostings.empty?
       %ul
         - user.hostings.each do |hosting|
           %li
-            = link_to hosting.short_details, edit_hosting_url(hosting)
+            = link_to hosting.short_details, edit_hosting_url(hosting), class: 'btn btn-default btn-block btn-lg'

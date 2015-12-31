@@ -24,6 +24,11 @@ html, body {
   font-size: 19px;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+}
+
 small, .help-block {
   font-size: 16px;
 }
@@ -113,6 +118,19 @@ hr {
 
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic);
 
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
 
 
 
