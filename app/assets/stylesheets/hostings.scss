@@ -1,3 +1,20 @@
 // Place all the styles related to the Hostings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.user-new-hosting {
+  p {
+    text-align: center;
+  }
+
+  span {
+    color: gray;
+  }
+
+  a.btn {
+    margin-top: 20px;
+  }
+
+
+
+}
