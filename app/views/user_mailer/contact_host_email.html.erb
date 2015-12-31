@@ -2,12 +2,12 @@ Hi <%= @host.first_name %>,
 <br><br>
 You’ve been contacted by a traveler!
 <br><br>
-<%= @visitor.first_name %>
-<%= @visitor.phone %>
-<%= @visitor.email %>
-<%= "#{@visit.start_date} - #{visit.end_date}" %>
+<%= @visitor.first_name %><br>
+<%= @visitor.formatted_phone %><br>
+<%= @visitor.email %><br>
+<%= @visit.start_and_end_dates %><br>
 Group of <%= @visit.num_travelers %>
 <br><br>
-Reply to this email, or contact <%= @visitor.first_name %> at <%= @visitor.phone %> for more details!
+Reply to this email, or contact <%= @visitor.first_name %> at <%= @visitor.formatted_phone %> for more details!
 <br><br>
 You can add, edit or delete your host offers anytime here: <%= link_to "Bernie BNB - Profile", hosting_url(@host) %>

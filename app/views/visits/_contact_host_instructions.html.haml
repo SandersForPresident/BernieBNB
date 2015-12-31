@@ -1,0 +1,14 @@
+%div
+  %h2 Contact #{ host_name }
+  %p We'll email #{ host_name } your contact info, saying:
+  %ul
+    %li You need a place to stay
+    %li Your total number of travelers
+    %li Your arrival/departure dates
+    %li Your name
+    %li Your email address
+    %li Your phone number
+  %p Then, #{ host_name } should contact you to work out the details.
+  = link_to "Send my contact info",
+            "/contacts/#{ @visit.id }/#{ hosting.id }",
+            method: "POST"

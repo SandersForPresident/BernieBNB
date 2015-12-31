@@ -12,6 +12,10 @@ class Hosting < ActiveRecord::Base
     host.first_name
   end
 
+  def was_contacted_by?(visitor)
+    Contact.exists?(visitor_id: visitor.id, hosting_id: self.id)
+  end
+
   private
 
   def notify_nearby_visitors

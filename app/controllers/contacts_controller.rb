@@ -2,10 +2,16 @@ class ContactsController < ApplicationController
 
   def create
     @contact = current_user.contacts.new(hosting_id: params[:hosting_id])
+    visit = Visit.find(params[:visit_id])
+    hosting = Hosting.find(params[:hosting_id])
+
     if @contact.save
-      redirect_to contact_url(@contact)
+      UserMailer.contact_host_email(visit, hosting).deliver_now
+      redirect_to visit_url(visit),
+        notice: "Successfully contacted #{hosting.first_name}!"
     else
-      redirect_to user_url(current_user)
+      flash[:errors] = ["Could not contact #{hosting.first_name}"]
+      redirect_to visit_url(visit), status: :unprocessable_entity
     end
   end
 

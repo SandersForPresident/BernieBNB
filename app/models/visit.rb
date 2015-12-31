@@ -7,7 +7,7 @@ class Visit < ActiveRecord::Base
   geocoded_by :zipcode
   after_validation :geocode
 
-  def available_hosts
+  def available_hostings
     Hosting
       .near(self.zipcode, 25, order: "distance")
       .where("max_guests >= ?", num_travelers)
