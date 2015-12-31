@@ -4,18 +4,19 @@ require 'visit'
 
 RSpec.describe Hosting, type: :model do
 
-  # To avoid going over geocoding api limits
-  before(:each) { sleep(1.0 / 5.0) }
+  before(:each) do
+    Geocoder.configure(:lookup => :test)
+
+    Geocoder::Lookup::Test.add_stub(
+      "11211", [{'latitude' => 40.7093358, 'longitude' => -73.9565551}]
+    )
+  end
 
   it "has a valid factory" do
-    expect(FactoryGirl.create(:hosting)).to be_valid
+    expect(FactoryGirl.create(:hosting, zipcode: "11211")).to be_valid
   end
 
   it "is invalid without a zipcode" do
     expect { FactoryGirl.create(:hosting, zipcode: nil) }.to raise_error ActiveRecord::RecordInvalid
-  end
-
-  it "is invalid with an invalid zipcode" do
-    expect { FactoryGirl.create(:hosting, zipcode: "00000") }.to raise_error ActiveRecord::StatementInvalid
   end
 end
