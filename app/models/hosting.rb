@@ -17,6 +17,7 @@ class Hosting < ActiveRecord::Base
     nearby_visits = Visit
       .near(self.zipcode, 25, order: "distance")
       .where("num_travelers <= ?", max_guests)
+      .where("start_date >= ?", Date.today)
 
     nearby_visits.each do |visit|
       UserMailer.new_host_email(visit, self).deliver_now
