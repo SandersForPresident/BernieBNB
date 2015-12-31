@@ -6,6 +6,7 @@ class Hosting < ActiveRecord::Base
   after_save :notify_nearby_visitors
 
   belongs_to :host, class_name: "User", foreign_key: :host_id
+  has_many :contacts
 
   def first_name
     host.first_name
