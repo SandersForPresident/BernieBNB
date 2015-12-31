@@ -2,7 +2,7 @@
   %div.group
     %a.home.btn.btn-info.btn-sm{ href: user_url(current_user) } « Back
     =link_to("Sign Out", signout_url, method: :delete, class: "signout")
-  - if @visit.available_hosts.empty?
+  - if @visit.available_hostings.empty?
     %header
       %h1
         %strong Nobody here, yet.
@@ -12,28 +12,24 @@
       %h1.hosts-heading Hosts near #{ @visit.zipcode }
       %span Contact any good matches below
       %div#accordion
-        - @visit.available_hosts.each do |host|
-        - host_name = host.first_name
+        - @visit.available_hostings.each do |hosting|
+        - host_name = hosting.first_name
+        - button_text = hosting.was_contacted_by?(current_user) ? "Contacted" : "Contact"
           %div
             %ul
               %li
                 %h2 #{ host_name }
               %li
-                %span #{ host.zipcode } - #{ host.distance.round(1) } miles
+                %span #{ hosting.zipcode } - #{ hosting.distance.round(1) } miles
               %li
-                %small Space for #{ host.max_guests }
-            %button Contact
-          %div
-            %h2 Contact #{ host_name }
-            %p We'll email #{ host_name } your contact info, saying:
-            %ul
-              %li You need a place to stay
-              %li Your total number of travelers
-              %li Your arrival/departure dates
-              %li Your name
-              %li Your email address
-              %li Your phone number
-            %p Then, #{ host_name } should contact you to work out the details.
-            %button Send my contact info
+                %small Space for #{ hosting.max_guests }
+            %button #{ button_text }
+          - if hosting.was_contacted_by?(current_user)
+            %div
+          - else
+            = render 'contact_host_instructions',
+              host_name: host_name,
+              hosting: hosting,
+              visit: @visit
   %footer
     %a.cancel Submit Feedback

@@ -5,6 +5,17 @@ class VisitDecorator < Draper::Decorator
     starting = start_date.strftime("%m/%d")
     ending = end_date.strftime("%m/%d")
 
-    "#{zipcode[0...5]} (#{starting} - #{ending})"
+    "#{formatted_zip} (#{start_and_end_dates})"
+  end
+
+  def start_and_end_dates
+    starting = start_date.strftime("%m/%d")
+    ending = end_date.strftime("%m/%d")
+
+    "#{starting} - #{ending}"
+  end
+
+  def formatted_zip
+    zipcode[0...5]
   end
 end
