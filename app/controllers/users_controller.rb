@@ -31,13 +31,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = current_user
+
+    if @user.destroy
+      redirect_to root_url,
+        notice: "Successfully deleted account"
+    else
+      flash[:errors] = @user.errors.full_messages
+      redirect_to edit_user_url(@user)
+    end
+  end
+
   def confirm_email
     @user = User.find_by_confirm_token(params[:id])
 
     if @user
-      UserMailer.welcome_email(@user).deliver_now
       @user.email_activate
       sign_in!(@user)
+
+      UserMailer.welcome_email(@user).deliver_now
 
       redirect_to user_url(@user)
     else

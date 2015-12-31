@@ -1,7 +1,8 @@
 - button_text = @user.email_confirmed ? 'Save' : 'Send Email Confirmation'
 
 .profile-page
-  %a.home.btn.btn-info.btn-sm << Home
+  %div.group
+    %a.home.btn.btn-info.btn-sm << Home
   %p.lead.text-center Profile
 
   = form_for @user, url: { action: 'update' } do |f|
@@ -17,3 +18,8 @@
     %span We'll send this when you contact someone.
 
     = f.submit button_text, class: 'submit'
+  - if @user.email_confirmed
+    = button_to 'Delete Account',
+      { action: 'destroy', id: @user.id },
+        method: 'delete',
+        data: { confirm: "Are you sure? This will permanently delete your account." }

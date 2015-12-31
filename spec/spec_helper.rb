@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start if ENV["COVERAGE"]
+
 require "capybara/rspec"
 require "omniauth"
 require "action_mailer"
