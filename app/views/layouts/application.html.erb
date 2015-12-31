@@ -1,24 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>BernieBNB</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<meta property="og:title" content="BernieBNB.com" />
+  <meta property="og:description" content="Home sharing for Bernie volunteers! Sign up as a host or traveler." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://berniebnb.com" />
+  <meta property="og:image" content=".../app/assets/images/logo.png" />-->
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<% if flash[:errors] %>
-  <% flash[:errors].each do |error| %>
-    <p><%= error %></p>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">   
+  
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <p><%= error %></p>
+    <% end %>
   <% end %>
-<% end %>
 
-<%= yield %>
+  <%= yield %>
 
+  </div>
+</div>
+    
 </body>
 </html>

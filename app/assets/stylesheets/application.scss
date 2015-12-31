@@ -11,10 +11,116 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require bootstrap
  *= require_self
  *= require jquery-ui/datepicker
  *= require jquery-ui/accordion
  */
+
+
+/* RWB STYLES */
+
+html, body {
+  font-size: 19px;
+}
+
+small, .help-block {
+  font-size: 16px;
+}
+
+.header {
+  padding: 5px 0;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  small { font-size: 12px; }
+  .btn { margin-right: 3px; }
+}
+
+.btn-info,
+.btn-info:hover, .btn-info:active, .btn-info:focus,
+.btn-info:active:hover,
+.btn-info.active:hover,
+.btn-info:active:focus,
+.btn-info.active:focus,
+.btn-info:active.focus,
+.btn-info.active.focus {
+  background-color: #EFF3F7;
+  color: #147fd7;
+  border: none;
+}
+
+span.big-number {
+  padding: 5px;
+  background-color: #147FDF;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 50%;
+}
+
+section.instructions {
+  clear: right;
+  table { margin-top: 30px; }
+  table td { padding: 5px 5px 20px; }
+}
+
+.lead {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.form-group {
+  margin-bottom: 31px;
+}
+
+.form-group.has-error .text-muted { color: #777; }
+
+label {
+  font-weight: normal;
+}
+
+ul.profile-results {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  > li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    > p { margin: 0; }
+    div.contact-form {
+      margin-top: 10px;
+      padding: 10px 0;
+      border-top: 1px solid #ccc;
+      ul {
+        margin: 9px 0;
+      }
+    }
+  }
+  > li:first-child { border-top: 1px solid #ccc; }
+}
+
+.bump {
+  margin-top: 30px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic);
+
+
+
+
+
+
+
+
+ /* OLD STYLES
 
  $orange: #F44343;
  $lightorange: #F55B5B;
@@ -192,4 +298,4 @@ form:not(.button_to) {
   span.hosting {
     margin-bottom: 2.8rem;
   }
-}
+} */
