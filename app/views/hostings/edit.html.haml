@@ -1,5 +1,7 @@
 .user-new-hosting
-  %a.home.btn.btn-info.btn-sm{:href => user_url(current_user)} << Back
+  %div.group
+    %a.home.btn.btn-info.btn-sm{:href => user_url(current_user)} << Back
+    =link_to("Sign Out", signout_url, method: :delete, class: "signout")
   %header
     %p.lead Host
 
