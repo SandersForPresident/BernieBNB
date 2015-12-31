@@ -20,7 +20,7 @@ class UsersController < ApplicationController
         redirect_to user_url(@user),
           notice: "Account updated"
       else
-        UserMailer.registration_confirmation(@user).deliver
+        UserMailer.registration_confirmation(@user).deliver_now
         redirect_to root_url,
           notice: "Email confirmation sent, check your email for instructions"
       end
@@ -35,6 +35,7 @@ class UsersController < ApplicationController
     @user = User.find_by_confirm_token(params[:id])
 
     if @user
+      UserMailer.welcome_email(@user).deliver_now
       @user.email_activate
       sign_in!(@user)
 
