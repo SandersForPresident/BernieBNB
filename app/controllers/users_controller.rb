@@ -21,6 +21,7 @@ class UsersController < ApplicationController
           notice: "Account updated"
       else
         UserMailer.registration_confirmation(@user).deliver_now
+        sign_out!
         redirect_to root_url,
           notice: "Email confirmation sent, check your email for instructions"
       end
