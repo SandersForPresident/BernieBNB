@@ -94,6 +94,12 @@ div {
   margin: auto;
 }
 
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 p.lead {
   text-align: center;
   font-size: 2em;
@@ -105,8 +111,24 @@ a.home {
   text-transform: uppercase;
   text-decoration: none;
   color: $blue;
-  padding: 0.4rem 0.4rem;
+  padding: 0.4rem 0.5rem;
   border-radius: 0.8;
+  float: left;
+
+  &:hover {
+    box-shadow: 1px 1px 1px $gray;
+  }
+}
+
+a.signout {
+  background-color: $lightgray;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $blue;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.8;
+  float: right;
+
 
   &:hover {
     box-shadow: 1px 1px 1px $gray;
