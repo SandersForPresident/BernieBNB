@@ -17,8 +17,8 @@
     %span We'll send this when you contact someone.
 
     = f.submit button_text, class: 'submit'
-
-  = button_to 'Delete Account',
-    { action: 'destroy', id: @user.id },
-      method: 'delete',
-      data: { confirm: "Are you sure? This will permanently delete your account." }
+  - if @user.email_confirmed
+    = button_to 'Delete Account',
+      { action: 'destroy', id: @user.id },
+        method: 'delete',
+        data: { confirm: "Are you sure? This will permanently delete your account." }
