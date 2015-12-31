@@ -1,9 +1,8 @@
 .sign-in
-  %header
-    %h1 Bernie
+  %p.lead.text-center.bump Bernie BNB
 
   %section.instructions
-    %h1 How Home Sharing Works
+    %p.lead.text-center How Home Sharing Works
     %table.bump
       %tr
         %td
@@ -18,7 +17,10 @@
         %td
           %span.big-number 3
         %td Confirm with text messages / phone calls.
-  %section.sign-up
-    %h1 Sign In Using...
-    = link_to "Facebook", "/auth/facebook"
-    = link_to "Google", "/auth/google_oauth2"
+        
+  %hr.bump
+     
+  %section.sign-up.bump
+    %p.lead.text-center Sign In Using...
+    = link_to "Facebook", "/auth/facebook", {class: 'bump btn btn-success btn-block btn-lg'}
+    = link_to "Google", "/auth/google_oauth2", {class: 'btn btn-danger btn-block btn-lg'}
