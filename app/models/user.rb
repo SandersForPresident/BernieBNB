@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   has_many :visits, dependent: :destroy
-  has_many :hostings, dependent: :destroy
+  has_many :hostings, class_name: "Hosting", foreign_key: :host_id, dependent: :destroy
 
   def self.generate_secure_token
     SecureRandom::urlsafe_base64(16)

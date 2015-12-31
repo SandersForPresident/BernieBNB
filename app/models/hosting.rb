@@ -5,7 +5,7 @@ class Hosting < ActiveRecord::Base
   after_validation :geocode
   after_save :notify_nearby_visitors
 
-  belongs_to :user
+  belongs_to :host, class_name: "User", foreign_key: :host_id
 
   def first_name
     self.user.first_name
