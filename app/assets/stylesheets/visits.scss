@@ -7,6 +7,7 @@ $lightorange: #F55B5B;
 $blue: #147FD7;
 $lightblue: #8ABFEB;
 $green: #4ACC66;
+$darkgreen: #2a9541;
 $lightgreen: #30DF76;
 $lightgray: #F1F1F1;
 $gray: #CFCFCF;
@@ -21,9 +22,10 @@ $darkgray: #8A8A8A;
   height: 42px;
   font-size: 1.2em;
   font-family: freightsans;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.15em;
   text-decoration: none;
+  border-radius: 3px;
   border: none;
   width: 100%;
   max-width: 300px;
@@ -35,10 +37,12 @@ $darkgray: #8A8A8A;
 div.user-new-visit {
   a.cancel {
     @extend .button-special;
+    background-color: $lightorange;
+    border: 1px solid #f44343;
 
     &:hover {
       cursor: pointer;
-      background-color: $lightorange;
+      background-color: $orange;
     }
   }
 }

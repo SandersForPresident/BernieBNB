@@ -21,8 +21,9 @@
  $blue: #147FD7;
  $lightblue: #8ABFEB;
  $green: #4ACC66;
+ $darkgreen: #32b14d;
  $lightgreen: #30DF76;
- $lightgray: #F1F1F1;
+ $lightgray: #EFF3F7;
  $gray: #CFCFCF;
  $darkgray: #8A8A8A;
 
@@ -30,16 +31,17 @@
    display: block;
    box-sizing: border-box;
    margin: 1rem auto;
-   background-color: $orange;
+   background-color: $lightorange;
    color: white;
    height: 42px;
-   font-size: 1.2em;
+   font-size: 18px;
    font-family: freightsans;
-   font-weight: 700;
+   font-weight: 600;
    letter-spacing: 0.15em;
    text-decoration: none;
    border: none;
    width: 100%;
+   border-radius: 3px;
    max-width: 300px;
    padding-top: 10px;
    text-align: center;
@@ -110,9 +112,15 @@ a.home {
   text-transform: uppercase;
   text-decoration: none;
   color: $blue;
-  padding: 0.4rem 0.5rem;
+  padding: 5px 10px;
   border-radius: 0.8;
   float: left;
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  vertical-align: middle;
 
   &:hover {
     box-shadow: 1px 1px 1px $gray;
@@ -124,9 +132,15 @@ a.signout {
   text-transform: uppercase;
   text-decoration: none;
   color: $blue;
-  padding: 0.4rem 0.5rem;
+  padding: 5px 10px;
   border-radius: 0.8;
+  font-size: 12px;
   float: right;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  vertical-align: middle;
 
   &:hover {
     box-shadow: 1px 1px 1px $gray;
@@ -144,7 +158,6 @@ form:not(.button_to) {
     font-size: 1.3em;
     width: 94%;
     height: 37px;
-    border-radius: 3px;
     border: 1px solid black;
     padding-left: 1rem;
     margin-bottom: 0.3rem;
@@ -162,10 +175,11 @@ form:not(.button_to) {
   input.submit {
     @extend .button-special;
     background-color: $green;
+    border: 1px solid #38c556;
 
     &:hover {
       cursor: pointer;
-      background-color: $lightgreen;
+      background-color: $darkgreen;
     }
   }
 
