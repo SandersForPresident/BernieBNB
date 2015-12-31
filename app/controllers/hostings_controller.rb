@@ -10,7 +10,7 @@ class HostingsController < ApplicationController
     if @hosting.save
       redirect_to user_url(current_user)
     else
-      flash[:errors] = @hosting.errors.full_messages
+      flash.now[:errors] = @hosting.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
@@ -21,7 +21,7 @@ class HostingsController < ApplicationController
     if @hosting.update(hosting_params)
       redirect_to user_url(current_user)
     else
-      flash[:errors] = @hosting.errors.full_messages
+      flash.now[:errors] = @hosting.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
@@ -36,7 +36,7 @@ class HostingsController < ApplicationController
     if @hosting.destroy
       redirect_to user_url(current_user)
     else
-      flash[:errors] = @hosting.errors.full_messages
+      flash.now[:errors] = @hosting.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end

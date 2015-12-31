@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :visits, only: [:create, :destroy, :update, :show, :edit]
   resources :hostings, only: [:create, :destroy, :edit, :update]
   resources :users, only: [:edit, :show, :update, :destroy]
-
+  resources :contacts, only: [:create, :destroy]
   resources :users do
     member do
       get :confirm_email
