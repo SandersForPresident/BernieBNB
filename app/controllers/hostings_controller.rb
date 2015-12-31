@@ -18,7 +18,7 @@ class HostingsController < ApplicationController
   def update
     @hosting = Hosting.find(params[:id])
 
-    if @hosting.update(hosting_params)
+    if @hosting.host_id == current_user.id && @hosting.update(hosting_params)
       redirect_to user_url(current_user)
     else
       flash.now[:errors] = @hosting.errors.full_messages
@@ -33,7 +33,7 @@ class HostingsController < ApplicationController
   def destroy
     @hosting = Hosting.find(params[:id])
 
-    if @hosting.destroy
+    if @hosting.host_id == current_user.id && @hosting.destroy
       redirect_to user_url(current_user)
     else
       flash.now[:errors] = @hosting.errors.full_messages
