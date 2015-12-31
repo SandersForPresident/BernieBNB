@@ -19,9 +19,9 @@ feature "User signs up with facebook" do
     fill_in "What's your first name?", with: 'Jane'
     fill_in "What's your phone number?", with: '555-555-5555'
 
-    click_button "Save"
+    click_button "Send Email Confirmation"
 
-    expect(page).to have_content('Find A Host')
+    expect(page).to have_content('Email confirmation sent')
   end
 
   scenario 'facebook fails' do

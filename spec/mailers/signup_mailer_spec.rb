@@ -18,7 +18,7 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it "expect to have the correct subject" do
-      expect(@email).to have_subject(/BernieBNB: Thanks for signing up!/)
+      expect(@email).to have_subject(/Bernie BNB - Thanks for signing up!/)
     end
 
     it "expect to contain the user's message in the mail body" do
