@@ -1,7 +1,7 @@
 %div.available-hosts
   %div.group
-    %a.home.btn.btn-info.btn-sm{ href: user_url(current_user) } « Back
-    =link_to("Sign Out", signout_url, method: :delete, class: "signout")
+    =link_to("« Profile", edit_user_url(current_user), class: 'btn btn-info btn-sm left')
+    =link_to("Sign Out", signout_url, method: :delete, class: "btn btn-info btn-sm right")
   - if @visit.available_hostings.empty?
     %header
       %h1
