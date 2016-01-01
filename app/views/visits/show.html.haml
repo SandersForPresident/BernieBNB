@@ -11,7 +11,7 @@
     %header
       %h1.hosts-heading Hosts near #{ @visit.zipcode }
       %span Contact any good matches below
-      %div#accordion
+      %div.accordion
         - @visit.available_hostings.each do |hosting|
         - host_name = hosting.first_name
         - button_text = hosting.was_contacted_by?(current_user) ? "Contacted" : "Contact"
