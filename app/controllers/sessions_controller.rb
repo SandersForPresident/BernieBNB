@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         notice: "Signed in!"
     else
       redirect_to edit_user_url(@user),
-        notice: "Please fill out a few more details"
+        notice: "Please fill out a few more details."
     end
   end
 
