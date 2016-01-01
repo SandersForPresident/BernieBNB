@@ -9,7 +9,7 @@ feature "User signs up with facebook" do
     visit root_path
     click_link 'Facebook'
 
-    expect(page).to have_content('Please fill out a few more')
+    expect(page).to have_content('Please fill out a few more details.')
   end
 
   scenario 'completing registration information' do

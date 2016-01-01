@@ -12,8 +12,7 @@ addons:
 before_install: gem update bundler
 
 before_script: 
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database bbnb_test;' -U postgres
+  - rake db:setup
 
 script:
   - RAILS_ENV=test COVERAGE=true bundle exec rake --trace db:migrate spec

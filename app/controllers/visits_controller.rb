@@ -25,7 +25,7 @@ class VisitsController < ApplicationController
 
   def update
     @visit = Visit.find(params[:id])
-    
+
     if @visit.user_id == current_user.id && @visit.update(visit_params)
       redirect_to visit_url(@visit)
     else
