@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
             User.create_with_omniauth(auth)
 
     sign_in!(@user)
-    
+
     if @user.email_confirmed
       redirect_to user_url(@user),
         notice: "Signed in!"
