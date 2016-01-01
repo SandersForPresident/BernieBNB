@@ -1,12 +1,14 @@
 - action = @hosting.persisted? ? "update" : "create"
 
 = form_for @hosting, url: { action: action } do |f|
-  = f.label :zipcode, "Where are you located?"
-  = f.text_field :zipcode
-  %span.hosting Your zip code.
+  .form-group
+    = f.label :zipcode, "Where are you located?"
+    = f.text_field :zipcode, class: 'form-control'
+    %span.hosting Your zip code.
 
-  = f.label :max_guests, "How many can you host?"
-  = f.select :max_guests, (1..7).zip(1..7)
-  %span.hosting Preferred maximum number of guests.
+  .form-group
+    = f.label :max_guests, "How many can you host?"
+    = f.select :max_guests, options_for_select((1..7).zip(1..7)), {}, {class: 'form-control'}
+    %span.hosting Preferred maximum number of guests.
 
-  = f.submit "Save", class: 'submit'
+  = f.submit "Save", class: 'btn btn-success btn-block btn-lg'
