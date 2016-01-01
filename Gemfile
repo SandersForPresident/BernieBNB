@@ -52,6 +52,7 @@ end
 group :test do
   gem 'capybara'
   gem 'simplecov'
+  gem 'email_spec'
 end
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
