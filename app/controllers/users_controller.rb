@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :require_complete_profile, only: [:edit, :update]
+  skip_before_action :require_complete_profile, only: [:edit, :update, :confirm_email]
+  skip_before_action :require_current_user, only: :confirm_email
   decorates_assigned :user
 
   def edit
