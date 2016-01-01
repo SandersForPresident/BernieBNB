@@ -7,18 +7,22 @@
   %p.lead.text-center Profile
 
   = form_for @user, url: { action: 'update' } do |f|
-    = f.label :email, 'Your email address:'
-    = f.email_field :email
-    %span We'll send you email notifications.
+    .form-fields
+      .form-group
+        = f.label :email, 'Your email address:'
+        = f.email_field :email, class: 'form-control'
+        %span We'll send you email notifications.
 
-    = f.label :first_name, 'What\'s your first name?'
-    = f.text_field :first_name, placeholder: 'First name'
-
-    = f.label :phone, 'What\'s your phone number?'
-    = f.phone_field :phone, placeholder: 'Phone number'
-    %span We'll send this when you contact someone.
+      .form-group
+        = f.label :first_name, 'What\'s your first name?'
+        = f.text_field :first_name, placeholder: 'First name', class: 'form-control'
+      .form-group
+        = f.label :phone, 'What\'s your phone number?'
+        = f.phone_field :phone, placeholder: 'Phone number', class: 'form-control'
+        %span We'll send this when you contact someone.
 
     = f.submit button_text, class: 'btn btn-success btn-block btn-lg'
+
   - if @user.email_confirmed
     = button_to 'Delete Account',
       { action: 'destroy', id: @user.id },
