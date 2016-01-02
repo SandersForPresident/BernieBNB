@@ -9,7 +9,8 @@ RSpec.describe UserMailer, type: :mailer do
     include Rails.application.routes.url_helpers
 
     before(:all) do
-      @user = FactoryGirl.create(:user, email: "jojo@yahoo.com", first_name: "Jojo")
+      @user = FactoryGirl.create(:user, email: "jojo@yahoo.com", first_name: "Jojo",
+        phone: "2345678901")
       @email = UserMailer.welcome_email(@user).deliver_now
     end
 

@@ -6,7 +6,7 @@ module FeatureTestHelper
 
   def fill_in_user_details
     fill_in "What's your first name?", with: 'Jane'
-    fill_in "What's your phone number?", with: '555-555-5555'
+    fill_in "What's your phone number?", with: '5555555555'
 
     click_button "Send Email Confirmation"
   end
@@ -20,8 +20,8 @@ module FeatureTestHelper
   def create_visit(start_date, end_date, zipcode='11211', num_travelers=2)
     click_link "Find A Host"
     fill_in "Where are you going?", with: zipcode
-    fill_in "Starting when?", with: start_date
-    fill_in "Ending when?", with: end_date
+    fill_in "Arriving when?", with: start_date
+    fill_in "Departing when?", with: end_date
     find('#visit_num_travelers').select(num_travelers)
     click_button "Contact Hosts"
   end

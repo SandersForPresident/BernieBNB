@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  errors:
+    messages:
+      invalid_zipcode: Your zipcode is invalid.
