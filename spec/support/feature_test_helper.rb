@@ -16,6 +16,22 @@ module FeatureTestHelper
     fill_in_user_details
     visit confirm_email_user_url(User.last.confirm_token)
   end
+
+  def create_visit(start_date, end_date, zipcode='11211', num_travelers=2)
+    click_link "Find A Host"
+    fill_in "Where are you going?", with: zipcode
+    fill_in "Starting when?", with: start_date
+    fill_in "Ending when?", with: end_date
+    find('#visit_num_travelers').select(num_travelers)
+    click_button "Contact Hosts"
+  end
+
+  def create_host(zipcode='11211', max_guests=2)
+    click_link "I Can Host"
+    fill_in "Where are you located?", with: zipcode
+    find('#hosting_max_guests').select(max_guests)
+    click_button("Save")
+  end
 end
 
 RSpec.configure do |config|
