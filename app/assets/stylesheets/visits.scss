@@ -14,6 +14,28 @@
   .form-fields {
     margin-bottom: 60px;
   }
+}
 
+.available-hosts {
+
+  h2 {
+    margin-top: 0;
+  }
+
+  header {
+    border-bottom: 1px solid gray;
+    text-align: center;
+    padding-bottom: 30px;
+  }
+
+  footer {
+    a {
+      max-width: 250px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      border-width: 2px;
+      margin-bottom: 10px;
+    }
+  }
 
 }
