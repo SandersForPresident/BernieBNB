@@ -111,6 +111,10 @@ ul.profile-results {
   margin-top: 30px;
 }
 
+.half-bump {
+  margin-top: 15px;
+}
+
 hr {
   border: 0;
   border-bottom: 1px solid #ccc;
@@ -124,6 +128,10 @@ hr {
 
 .left {
   float: left;
+}
+
+.hide {
+  display: none;
 }
 
 .group:after {

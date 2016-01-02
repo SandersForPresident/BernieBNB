@@ -19,8 +19,13 @@ $(document).ready(function () {
     dateFormat: "dd-M-yy"
   });
 
-  $('#accordion').accordion({
-    active: false,
-    collapsible: true
+  $(".contact-button").on('click', function (e) {
+    if ($(this).text() == "✔ Contacted") {
+      e.preventDefault();
+    }
+    var text = $(this).text() == "Contact" ? "Cancel" : "Contact";
+    if ($(this).text() != "✔ Contacted") {
+      $(this).text(text);
+    }
   });
 });
