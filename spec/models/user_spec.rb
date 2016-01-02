@@ -11,8 +11,9 @@ RSpec.describe User, type: :model do
       .to raise_error ActiveRecord::RecordInvalid
   end
 
-  it "is not valid without an email" do
-    expect { FactoryGirl.create(:user, email: nil, phone: "2345678901") }
+  it "allows no email, but if present, can't be blank" do
+    expect(FactoryGirl.create(:user, phone: "2345678901", email: nil)).to be_valid
+    expect { FactoryGirl.create(:user, email: "", phone: "2345678901") }
       .to raise_error ActiveRecord::RecordInvalid
   end
 
