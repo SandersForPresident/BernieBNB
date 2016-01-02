@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_complete_profile
-    unless current_user.phone && current_user.first_name
+    unless current_user.phone && current_user.first_name && current_user.email_confirmed
       redirect_to edit_user_url(current_user)
     end
   end
