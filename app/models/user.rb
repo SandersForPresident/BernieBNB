@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   def phone=(number)
     number = number[1..-1] if number[0] == "1" # Alway remove leading "1".
-    super(number_to_phone(number, raise:true))
+    super(number_to_phone(number.gsub(/\D/, ''), raise:true))
   end
 
   def reset_session_token!
