@@ -17,7 +17,8 @@ class UserMailer < ApplicationMailer
     @visit, @hosting, @visitor, @host =
       visit.decorate, hosting.decorate, visit.user.decorate, hosting.host.decorate
     @results_url = visit_url(@visit)
-    mail(to: @visitor.email, subject: "Bernie BNB - New host near #{@visit.zipcode}!",
+    mail(to: @visitor.email, reply_to: @host.email,
+      subject: "Bernie BNB - New host near #{@visit.zipcode}!",
       template_path: 'user_mailer', template_name: 'new_host_email')
   end
 
