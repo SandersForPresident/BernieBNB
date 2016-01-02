@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  validates :phone, length: { is: 10, allow_nil: true }
+  include ActionView::Helpers::NumberHelper
+
+  validates :phone, length: { is: 12, allow_nil: true }
   validates :first_name, presence: true, allow_nil: true
   validates :uid, :email, :session_token, presence: true, uniqueness: true
   validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
@@ -30,10 +32,8 @@ class User < ActiveRecord::Base
   end
 
   def phone=(number)
-    digits = number.gsub(/\D/, '').split(//)
-    digits.shift if digits.length == 11 && digits[0] == "1"
-
-    super(digits.join)
+    number = number[1..-1] if number[0] == "1" # Alway remove leading "1".
+    super(number_to_phone(number, raise:true))
   end
 
   def reset_session_token!
