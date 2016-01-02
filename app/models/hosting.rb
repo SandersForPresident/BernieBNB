@@ -1,5 +1,6 @@
 class Hosting < ActiveRecord::Base
   validates :zipcode, :max_guests, presence: true
+  validates :zipcode, zipcode: { country_code: :es }
 
   geocoded_by :zipcode
   after_validation :geocode

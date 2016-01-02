@@ -18,6 +18,7 @@ gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 
 gem 'geocoder'
+gem 'validates_zipcode'
 gem 'figaro'
 gem 'validates_timeliness', '~> 3.0'
 gem 'rails_12factor'

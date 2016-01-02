@@ -9,6 +9,10 @@ RSpec.describe Visit, type: :model do
       "11211", [{'latitude' => 40.7093358, 'longitude' => -73.9565551}]
     )
 
+    Geocoder::Lookup::Test.add_stub(
+      "9131", [{'latitude' => 0, 'longitude' => 0}]
+    )
+
   end
 
   it "has a valid factory" do
@@ -17,7 +21,12 @@ RSpec.describe Visit, type: :model do
 
   it "is invalid without a zipcode" do
     expect { FactoryGirl.create(:visit, zipcode: nil) }
-      .to raise_error ActiveRecord::StatementInvalid
+      .to raise_error ActiveRecord::RecordInvalid
+  end
+
+  it "is invalid with bad zipcode" do
+    expect { FactoryGirl.create(:visit, zipcode: "9131") }
+      .to raise_error ActiveRecord::RecordInvalid
   end
 
   it "is invalid with a start date in the past" do
