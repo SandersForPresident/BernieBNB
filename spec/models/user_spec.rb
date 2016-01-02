@@ -43,4 +43,28 @@ RSpec.describe User, type: :model do
     user = FactoryGirl.create(:user, phone: "2345678901")
     expect(user.session_token).to_not be_nil
   end
+
+  it "has a valid factory - with hyphens/dashes" do
+    expect(FactoryGirl.create(:user, phone: "404-555-1212")).to be_valid
+  end
+
+  it "has a valid factory - with hyphens/dashes and leadinig '1'" do
+    expect(FactoryGirl.create(:user, phone: "1-404-555-1212")).to be_valid
+  end
+
+  it "has a valid factory - with paraentheses" do
+    expect(FactoryGirl.create(:user, phone: "(404)555-1212")).to be_valid
+  end
+
+  it "has a valid factory - with paraentheses and blank" do
+    expect(FactoryGirl.create(:user, phone: "(404) 555-1212")).to be_valid
+  end
+
+  it "has a valid factory - with periods" do
+    expect(FactoryGirl.create(:user, phone: "404.555-1212")).to be_valid
+  end
+
+  it "has a valid factory - with periods and leadning '1'" do
+    expect(FactoryGirl.create(:user, phone: "1.404.555-1212")).to be_valid
+  end
 end
