@@ -19,4 +19,8 @@ Rails.application.routes.draw do
     resources :visits, only: [:new, :index]
     resources :hostings, only: [:new, :index]
   end
+
+  # FEEDBACK
+  get  'feedback', to: 'feedbacks#new', as: 'contact'
+  post 'feedback', to: 'feedbacks#create'
 end
