@@ -28,6 +28,19 @@
     padding-bottom: 30px;
   }
 
+  header.empty {
+    border-bottom: 0px;
+    width: 350px;
+    margin: 0 auto;
+
+    h1 {
+      margin-bottom: 50px;
+      font-size: 50px;
+      font-weight: 300;
+    }
+
+  }
+
   footer {
     a {
       max-width: 250px;
