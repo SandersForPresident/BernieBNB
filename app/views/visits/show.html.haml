@@ -1,10 +1,7 @@
 %div.available-hosts
   = render "home/navbuttons"
   - if @visit.available_hostings.empty?
-    %header
-      %h1
-        %strong Nobody here, yet.
-      %span We've got your email and we'll contact you when we have a possible match.
+    = render 'empty_visits'
   - else
     %header
       %h1.hosts-heading Hosts near #{ @visit.zipcode }
