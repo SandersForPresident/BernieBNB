@@ -3,11 +3,11 @@ Hi <%= @host.first_name %>,
 You’ve been contacted by a traveler!
 
 <%= @visitor.first_name %>
-<%= @visitor.formatted_phone %>
+<%= @visitor.phone %>
 <%= @visitor.email %>
 <%= @visit.start_and_end_dates %>
 Group of <%= @visit.num_travelers %>
 
-Reply to this email, or contact <%= @visitor.first_name %> at <%= @visitor.formatted_phone %> for more details!
+Reply to this email, or contact <%= @visitor.first_name %> at <%= @visitor.phone %> for more details!
 
 You can add, edit or delete your host offers anytime here: <%= edit_hosting_url(@hosting) %>
