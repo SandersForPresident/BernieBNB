@@ -25,6 +25,10 @@ class Hosting < ActiveRecord::Base
       .where("num_travelers <= ?", max_guests)
       .where("start_date >= ?", Date.today)
 
+    if Rails.env.production?
+      nearby_visits = nearby_visits.where("host_id != (?)", current_user.id)
+    end
+
     nearby_visits.each do |visit|
       UserMailer.new_host_email(visit, self).deliver_now
     end

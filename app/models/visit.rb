@@ -9,9 +9,14 @@ class Visit < ActiveRecord::Base
   after_validation :geocode
 
   def available_hostings(current_user)
-    Hosting
+    available_hostings = Hosting
       .near(self.zipcode, 25, order: "distance")
       .where("max_guests >= ?", num_travelers)
-      .where("host_id != (?)", current_user.id)
+      
+    if Rails.env.production?
+      return available_hostings.where("host_id != (?)", current_user.id)
+    else
+      return available_hostings
+    end
   end
 end
