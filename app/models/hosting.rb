@@ -4,7 +4,7 @@ class Hosting < ActiveRecord::Base
 
   geocoded_by :zipcode
   after_validation :geocode
-  after_save :notify_nearby_visitors
+  after_create :notify_nearby_visitors
 
   belongs_to :host, class_name: "User", foreign_key: :host_id
   has_many :contacts
