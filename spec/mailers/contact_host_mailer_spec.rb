@@ -50,10 +50,7 @@ RSpec.describe UserMailer, type: :mailer do
   end
 
   it 'should contain the correct link' do
-    link = ActionController::Base.helpers.link_to("Bernie BNB - Profile", edit_hosting_url(@hosting))
+    link = ActionController::Base.helpers.link_to("Bernie BNB - Host", edit_hosting_url(@hosting))
     expect(@email).to have_body_text(/#{link}/)
   end
-
-
-
 end
