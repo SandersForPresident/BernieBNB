@@ -23,4 +23,4 @@ en:
   hello: "Hello world"
   errors:
     messages:
-      invalid_zipcode: Your zipcode is invalid.
+      invalid_zipcode: need to be 5 digits.

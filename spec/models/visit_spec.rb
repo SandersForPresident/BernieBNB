@@ -15,7 +15,7 @@ RSpec.describe Visit, type: :model do
 
   end
 
-  it "has a valid factory" do
+  it "has a valid factory - valid zipcode - 5 digits" do
     expect(FactoryGirl.create(:visit, zipcode: "11211")).to be_valid
   end
 
@@ -24,7 +24,7 @@ RSpec.describe Visit, type: :model do
       .to raise_error ActiveRecord::RecordInvalid
   end
 
-  it "is invalid with bad zipcode" do
+  it "is invalid with bad zipcode - 4 digits" do
     expect { FactoryGirl.create(:visit, zipcode: "9131") }
       .to raise_error ActiveRecord::RecordInvalid
   end
