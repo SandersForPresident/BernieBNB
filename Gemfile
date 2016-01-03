@@ -1,34 +1,34 @@
 source 'https://rubygems.org'
 
-ruby "2.3.0"
+ruby '2.3.0'
 
 gem 'rails', '4.2.5'
 
-gem 'pg', '~> 0.15'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'pg'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 gem 'sdoc', group: :doc
 
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem "omniauth-google-oauth2"
+gem 'omniauth-google-oauth2'
 
 gem 'geocoder'
 gem 'validates_zipcode'
 gem 'figaro'
-gem 'validates_timeliness', '~> 3.0'
+gem 'validates_timeliness'
 gem 'rails_12factor'
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 gem 'draper'
 gem 'jquery-ui-rails'
 gem 'haml'
 
 group :development do
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
