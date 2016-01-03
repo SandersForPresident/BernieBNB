@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     @user = current_user
 
     if @user.update(user_params)
-
       if @user.email_confirmed
         redirect_to user_url(@user),
           notice: "Account updated"
