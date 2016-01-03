@@ -26,7 +26,7 @@ class Hosting < ActiveRecord::Base
       .where("start_date >= ?", Date.today)
 
     if Rails.env.production?
-      nearby_visits = nearby_visits.where("host_id != (?)", current_user.id)
+      nearby_visits = nearby_visits.where("user_id != (?)", self.host_id)
     end
 
     nearby_visits.each do |visit|
