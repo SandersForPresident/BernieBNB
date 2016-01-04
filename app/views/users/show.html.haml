@@ -17,16 +17,18 @@
             = link_to visit.short_details, edit_visit_url(visit), class: 'btn btn-default btn-block btn-lg'
 
   %section.user-hostings
-    %header>
+    %header
       = link_to 'I Can Host', new_user_hosting_url(user), class: 'btn btn-danger btn-block btn-lg'
-      %span>Have room to share?
+      %span Have room to share?
     - unless user.hostings.empty?
       %ul
         - user.hostings.each do |hosting|
           %li
             = link_to hosting.short_details, edit_hosting_url(hosting), class: 'btn btn-default btn-block btn-lg'
-  %footer
-    = link_to "Submit Feedback",
-      "http://goo.gl/forms/T219vo5Wt4",
-      class: 'btn btn-default btn-lg center-block',
-      target: '_blank'
+  %footer.feedback
+    %p.text-center
+      = link_to "Submit Feedback",
+        "http://goo.gl/forms/T219vo5Wt4",
+        class: 'btn btn-info btn-md',
+        target: '_blank'
+    
