@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: "berniebnb@berniebnb.com"
+  default from: "berniebnbinfo@gmail.com"
 
   def registration_confirmation(user)
     @user = user.decorate
