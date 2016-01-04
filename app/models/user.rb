@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
 
-  validates :phone, length: { is: 12, allow_nil: true }
+  validates :phone, length: { minimum: 10, maximum: 16, allow_nil: true }
   validates :first_name, presence: true, allow_nil: true
   validates :email, presence: true, allow_nil: true, uniqueness: true
   validates :uid, :session_token, presence: true, uniqueness: true
@@ -43,7 +43,18 @@ class User < ActiveRecord::Base
 
   def phone=(number)
     number = number[1..-1] if number[0] == "1" # Alway remove leading "1".
-    super(number_to_phone(number.gsub(/\D/, ''), raise:true))
+
+    pnumber = number_to_phone(number.gsub(/\D/, ''))
+
+    if (pnumber.size > 12)
+      self.errors.add(:phone, :too_long)
+      raise ActiveRecord::RecordInvalid.new(self)
+    elsif (pnumber.size < 12)
+      self.errors.add(:phone, :too_short)
+      raise ActiveRecord::RecordInvalid.new(self)
+    else
+      super(pnumber)
+    end
   end
 
   def reset_session_token!
