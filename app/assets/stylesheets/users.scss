@@ -4,10 +4,11 @@ div.user-home {
     margin-bottom: 50px;
   }
 
-  section.user-hostings {
+  section.user-hostings,
+  footer {
     margin-top: 40px;
     padding-top: 40px;
-    border-top: 1px solid gray;
+    border-top: 1px solid #ccc;
   }
 
   .btn {
