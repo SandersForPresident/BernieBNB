@@ -8,7 +8,7 @@ class HostingsController < ApplicationController
     @hosting.host_id = current_user.id
 
     if @hosting.save
-      redirect_to user_url(current_user)
+      redirect_to user_url(current_user), notice: "Hosting created!"
     else
       flash.now[:errors] = @hosting.errors.full_messages
       render :new, status: :unprocessable_entity
@@ -19,7 +19,7 @@ class HostingsController < ApplicationController
     @hosting = Hosting.find(params[:id])
 
     if @hosting.host_id == current_user.id && @hosting.update(hosting_params)
-      redirect_to user_url(current_user)
+      redirect_to user_url(current_user), notice: "Hosting updated"
     else
       flash.now[:errors] = @hosting.errors.full_messages
       render :new, status: :unprocessable_entity
@@ -34,7 +34,7 @@ class HostingsController < ApplicationController
     @hosting = Hosting.find(params[:id])
 
     if @hosting.host_id == current_user.id && @hosting.destroy
-      redirect_to user_url(current_user)
+      redirect_to user_url(current_user), notice: "Hosting canceled"
     else
       flash.now[:errors] = @hosting.errors.full_messages
       render :edit, status: :unprocessable_entity
