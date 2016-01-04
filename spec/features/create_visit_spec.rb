@@ -33,7 +33,7 @@ RSpec.describe "User Creates Visit", type: :feature do
   end
 
   scenario "creating a new visit with available hosts" do
-    FactoryGirl.create(:user)
+    FactoryGirl.create(:user, phone: '2345678901')
     FactoryGirl.create(:hosting, zipcode: '11211', max_guests: 2, host_id: User.last.id)
     create_visit(Date.current, Date.current + 1.days)
 
