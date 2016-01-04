@@ -30,7 +30,7 @@ notifications:
     on_success: change
     on_failure: always
 
-sudo: false
+sudo: true
 
 after_success:
   - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
