@@ -13,7 +13,7 @@ class Visit < ActiveRecord::Base
       .near(self.zipcode, 25, order: "distance")
       .where("max_guests >= ?", num_travelers)
 
-    if Rails.env.production?
+    if Rails.env.production? or Rails.env.staging?
       return available_hostings.where("host_id != (?)", self.user_id)
     else
       return available_hostings
