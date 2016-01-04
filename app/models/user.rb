@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
 
-  validates :phone, length: { minimum: 10, maximum: 16, allow_nil: true }
+  validate :phone_number_length
   validates :first_name, presence: true, allow_nil: true
   validates :email, presence: true, allow_nil: true, uniqueness: true
   validates :uid, :session_token, presence: true, uniqueness: true
@@ -46,14 +46,15 @@ class User < ActiveRecord::Base
 
     pnumber = number_to_phone(number.gsub(/\D/, ''))
 
-    if (pnumber.size > 12)
-      self.errors.add(:phone, :too_long)
-      raise ActiveRecord::RecordInvalid.new(self)
-    elsif (pnumber.size < 12)
-      self.errors.add(:phone, :too_short)
-      raise ActiveRecord::RecordInvalid.new(self)
-    else
-      super(pnumber)
+    super(pnumber)
+  end
+
+  def phone_number_length
+    return if phone.nil?
+    if phone.size > 12
+      self.errors.add(:phone, "number is too long")
+    elsif phone.size < 12
+      self.errors.add(:phone, "number is too short")
     end
   end
 
