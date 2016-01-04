@@ -1,10 +1,13 @@
 class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
 
-  validates :phone, length: { is: 12, allow_nil: true }
+  validates :phone, length: { minimum: 10, maximum: 16, allow_nil: true }
   validates :first_name, presence: true, allow_nil: true
-  validates :uid, :email, :session_token, presence: true, uniqueness: true
-  validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+  validates :email, presence: true, allow_nil: true, uniqueness: true
+  validates :uid, :session_token, presence: true, uniqueness: true
+  validates_format_of :email,
+    :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/,
+    allow_nil: true
 
   before_create :create_confirmation_token
 
@@ -24,16 +27,34 @@ class User < ActiveRecord::Base
   end
 
   def self.create_with_omniauth(auth)
-    create! do |user|
-      user.provider = auth["provider"]
-      user.uid = auth["uid"]
-      user.email = auth["info"]["email"]
+    if auth["info"]["email"]
+      create! do |user|
+        user.provider = auth["provider"]
+        user.uid = auth["uid"]
+        user.email = auth["info"]["email"]
+      end
+    else
+      create! do |user|
+        user.provider = auth["provider"]
+        user.uid = auth["uid"]
+      end
     end
   end
 
   def phone=(number)
     number = number[1..-1] if number[0] == "1" # Alway remove leading "1".
-    super(number_to_phone(number.gsub(/\D/, ''), raise:true))
+
+    pnumber = number_to_phone(number.gsub(/\D/, ''))
+
+    if (pnumber.size > 12)
+      self.errors.add(:phone, :too_long)
+      raise ActiveRecord::RecordInvalid.new(self)
+    elsif (pnumber.size < 12)
+      self.errors.add(:phone, :too_short)
+      raise ActiveRecord::RecordInvalid.new(self)
+    else
+      super(pnumber)
+    end
   end
 
   def reset_session_token!

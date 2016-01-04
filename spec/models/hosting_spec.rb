@@ -14,9 +14,13 @@ RSpec.describe Hosting, type: :model do
     Geocoder::Lookup::Test.add_stub(
       "9131", [{'latitude' => 0, 'longitude' => 0}]
     )
+
+    Geocoder::Lookup::Test.add_stub(
+      "913123", [{'latitude' => 1, 'longitude' => 1}]
+    )
   end
 
-  it "has a valid factory" do
+  it "has a valid factory - valid zip code - 5 digits" do
     expect(FactoryGirl.create(:hosting, zipcode: "11211")).to be_valid
   end
 
@@ -25,8 +29,13 @@ RSpec.describe Hosting, type: :model do
       .to raise_error ActiveRecord::RecordInvalid
   end
 
-  it "is invalid with bad zipcode" do
+  it "is invalid with bad zipcode - 4 digits" do
     expect { FactoryGirl.create(:hosting, zipcode: "9131") }
+      .to raise_error ActiveRecord::RecordInvalid
+  end
+
+  it "is invalid with bad zipcode - 6 digits" do
+    expect { FactoryGirl.create(:hosting, zipcode: "913123") }
       .to raise_error ActiveRecord::RecordInvalid
   end
 end

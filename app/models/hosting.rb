@@ -4,7 +4,7 @@ class Hosting < ActiveRecord::Base
 
   geocoded_by :zipcode
   after_validation :geocode
-  after_save :notify_nearby_visitors
+  after_create :notify_nearby_visitors
 
   belongs_to :host, class_name: "User", foreign_key: :host_id
   has_many :contacts
@@ -24,6 +24,10 @@ class Hosting < ActiveRecord::Base
       .near(self.zipcode, 25, order: "distance")
       .where("num_travelers <= ?", max_guests)
       .where("start_date >= ?", Date.today)
+
+    if Rails.env.production?
+      nearby_visits = nearby_visits.where("user_id != (?)", self.host_id)
+    end
 
     nearby_visits.each do |visit|
       UserMailer.new_host_email(visit, self).deliver_now

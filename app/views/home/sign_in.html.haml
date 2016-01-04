@@ -1,5 +1,6 @@
 .sign-in
-  %p.lead.text-center.bump Bernie BNB
+  %p.lead.text-center.bump
+    %img{src: image_url('bernie-bnb-logo.png')}
 
   %section.instructions
     %p.lead.text-center How Home Sharing Works
@@ -17,9 +18,9 @@
         %td
           %span.big-number 3
         %td Confirm with text messages / phone calls.
-        
+
   %hr.bump
-     
+
   %section.sign-up.bump
     %p.lead.text-center Sign In Using...
     = link_to "Facebook", "/auth/facebook", {class: 'bump btn btn-success btn-block btn-lg'}
