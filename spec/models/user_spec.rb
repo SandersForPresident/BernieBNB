@@ -96,8 +96,8 @@ RSpec.describe User, type: :model do
   end
 
   it "bad phone number -- 17 digits (too long) - 17 chars" do
-#    expect { FactoryGirl.create(:user, phone: "23456789012345678") }
-#      .to raise_error ActiveRecord::RecordInvalid
+    expect { FactoryGirl.create(:user, phone: "23456789012345678") }
+      .to raise_error ActiveRecord::RecordInvalid
     expect { FactoryGirl.create(:user, phone: "23456789012345678") }
       .to raise_error(/is too long/)
   end
