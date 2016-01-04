@@ -8,7 +8,7 @@ class VisitsController < ApplicationController
     @visit.user_id = current_user.id
 
     if @visit.save
-      redirect_to visit_url(@visit)
+      redirect_to visit_url(@visit), notice: "Visit created!"
     else
       flash.now[:errors] = @visit.errors.full_messages
       render :new, status: :unprocessable_entity
@@ -27,7 +27,7 @@ class VisitsController < ApplicationController
     @visit = Visit.find(params[:id])
 
     if @visit.user_id == current_user.id && @visit.update(visit_params)
-      redirect_to visit_url(@visit)
+      redirect_to visit_url(@visit), notice: "Visit updated"
     else
       flash.now[:errors] = @visit.errors.full_messages
       render :edit, status: :unprocessable_entity
@@ -38,7 +38,7 @@ class VisitsController < ApplicationController
     @visit = Visit.find(params[:id])
 
     if @visit.user_id == current_user.id && @visit.destroy
-      redirect_to user_url(current_user)
+      redirect_to user_url(current_user), notice: "Visit canceled"
     else
       flash.now[:errors] = @visit.errors.full_messages
       render :edit, status: :unprocessable_entity

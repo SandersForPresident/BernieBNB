@@ -6,12 +6,12 @@ class FeedbacksController < ApplicationController
 
   def create
     @feedback = Feedback.new(feedback_params)
-    
+
     if @feedback.valid?
       FeedbackMailer.new_feedback(@feedback).deliver_now
       redirect_to contact_path, notice: "Your feedback has been sent."
     else
-      flash[:alert] = "An error occurred while delivering this feedback."
+      flash[:error] = "An error occurred while delivering this feedback."
       render :new
     end
   end
