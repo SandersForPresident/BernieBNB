@@ -1116,6 +1116,12 @@ figure {
 img {
   vertical-align: middle;
 }
+.img-logo {
+  display: block;
+  width: 150px;
+  height: auto;
+  margin: 0 auto;
+}
 .img-responsive,
 .thumbnail > img,
 .thumbnail a > img,
@@ -1124,7 +1130,6 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
-  margin: 0 auto;
 }
 .img-rounded {
   border-radius: 5px;
