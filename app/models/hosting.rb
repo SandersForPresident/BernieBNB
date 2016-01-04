@@ -25,7 +25,7 @@ class Hosting < ActiveRecord::Base
       .where("num_travelers <= ?", max_guests)
       .where("start_date >= ?", Date.today)
 
-    if Rails.env.production?
+    if Rails.env.production? or  Rails.env.staging?
       nearby_visits = nearby_visits.where("user_id != (?)", self.host_id)
     end
 
