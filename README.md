@@ -1,6 +1,5 @@
 
-Bernie BNB
-==========
+![Bernie BNB](app/assets/images/bernie-bnb-logo.png)
 
 ## Goal
 We want to build an app to allow supporters to share their homes with others from out
