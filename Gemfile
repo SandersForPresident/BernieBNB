@@ -55,11 +55,7 @@ group :test do
   gem 'simplecov'
 end
 
-group :staging do
-  gem 'rails_12factor'
-end
-
-group :production do
+group :production, :staging do
   gem 'rails_12factor'
 end
 
