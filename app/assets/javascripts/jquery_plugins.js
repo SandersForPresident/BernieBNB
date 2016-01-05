@@ -22,10 +22,7 @@ $(document).ready(function () {
   $(".contact-button").on('click', function (e) {
     if ($(this).text() == "✔ Contacted") {
       e.preventDefault();
-    }
-    var text = $(this).text() == "Contact" ? "Cancel" : "Contact";
-    if ($(this).text() != "✔ Contacted") {
-      $(this).text(text);
+      $(this).blur();
     }
   });
 });
