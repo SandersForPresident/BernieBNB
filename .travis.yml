@@ -1,33 +1,32 @@
 language: ruby
-
 rvm:
 - 2.3.0
-
 env:
-  - DB=postgresql
-
+- DB=postgresql
 addons:
-  postgresql: "9.3"
-
+  postgresql: '9.3'
 before_install: gem update bundler
-
-before_script: 
-  - rake db:setup
-
+before_script:
+- rake db:setup
 script:
-  - RAILS_ENV=test COVERAGE=true bundle exec rake --trace db:migrate spec
-
+- RAILS_ENV=test COVERAGE=true bundle exec rake --trace db:migrate spec
 cache: bundler
-
 notifications:
   webhooks:
     urls:
-      - https://webhooks.gitter.im/e/04f07b2eeecfad3cf278
+    - https://webhooks.gitter.im/e/04f07b2eeecfad3cf278
     on_success: change
   email:
     recipients:
     - jasnow@hotmail.com
     on_success: change
     on_failure: always
-
 sudo: false
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: k91MeBo+6+0+mqf/k2OSMKP9KccSiGm3dR/CZf9yjJZeNtfPj9VFGWmVx6oXYIwzZ0pxM1sRZwwKTsUyOrXlFaH+D2gkqs+S+EWIKR7DagjiRYwAyq1880wXvIvt7pzzyqiv5S4XR8xiofT9lw4U/be8suWoSOyohkexLwfdDXvsCBGhAvsfZxQcdfLAy5//1+IaxePU6ZKzBwR/cVOViql77azSCl7BpKVWxvIiiNYW4/c9JhlrAgPxI9NebIHlkVIhqfLnyNhsO7e+W0VFUmj5WaTzFqRUfuaSn26Xuk9txylFoOwOjRZKV5tB1w9gaAYBcmqJnLcFRuV2Y3t7ymWwff+FCVgQq0VJK0Wfr+F7kSOqCZVaPze9mdvJDCU3mQGmk8tjyELUQ+0LdObfwHJFoIRpRC0VGftBfeQWFV+UGgkgEBJMUCdSgge6UyperzMJt+gsURKCjt4Qpj69Ux3qY3ufnSUIeWVrlIalFYhYllqi9ChBORE/VlBTY/6GOMUellk7satjfFwMmwFOnzQjthWuLQ+ncqScEkJFVc637lUEcCn4zL2GsBItIpH/lAZq6SOzT3nVRHpssijgv4kpK7WJIwcXJv9tF387JLOSUoPekxrbeWZQkQe4b8rK3YE48S56g7kayXqpwKDV8PhVSvrQdBZL5s/e3KHrZdM=
+  app: bbnb-staging
+  on:
+    repo: jasnow/BernieBNB
