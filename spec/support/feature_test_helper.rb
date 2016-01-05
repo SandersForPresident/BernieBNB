@@ -8,7 +8,7 @@ module FeatureTestHelper
     fill_in "What's your first name?", with: 'Jane'
     fill_in "What's your phone number?", with: '5555555555'
 
-    click_button "Send Email Confirmation"
+    click_button "Confirm Email"
   end
 
   def register_new_user

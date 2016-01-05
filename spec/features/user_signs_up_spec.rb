@@ -23,7 +23,7 @@ RSpec.describe "User Signs Up", type: :feature do
   scenario 'fill out registration information incorrectly' do
     authenticate_with_facebook
     fill_in "What's your phone number?", with: '5555555556'
-    click_button 'Send Email Confirmation'
+    click_button 'Confirm Email'
 
     expect(page).to have_content("First name can't be blank")
   end
