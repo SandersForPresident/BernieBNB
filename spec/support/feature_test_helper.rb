@@ -17,7 +17,7 @@ module FeatureTestHelper
     visit confirm_email_user_url(User.last.confirm_token)
   end
 
-  def create_visit(start_date, end_date, zipcode='11211', num_travelers=2)
+  def create_visit(start_date, end_date, zipcode='11211', num_travelers=10)
     click_link "Find A Host"
     fill_in "Where are you going?", with: zipcode
     fill_in "Arriving when?", with: start_date
@@ -26,7 +26,7 @@ module FeatureTestHelper
     click_button "Contact Hosts"
   end
 
-  def create_host(zipcode='11211', max_guests=2)
+  def create_host(zipcode='11211', max_guests=10)
     click_link "I Can Host"
     fill_in "Where are you located?", with: zipcode
     find('#hosting_max_guests').select(max_guests)
@@ -34,7 +34,7 @@ module FeatureTestHelper
   end
 
   def delete_host
-    click_link "11211 (2 guests)"
+    click_link "11211 (10 guests)"
     click_link "Delete"
   end
 end

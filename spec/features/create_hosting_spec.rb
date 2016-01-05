@@ -30,7 +30,7 @@ RSpec.describe "User creates Host", type: :feature do
 
   scenario "creating a new hosting" do
     create_host
-    expect(page).to have_content("11211 (2 guests)")
+    expect(page).to have_content("11211 (10 guests)")
   end
 
   scenario "creating a new hosting with blank fields" do
@@ -49,28 +49,28 @@ RSpec.describe "User creates Host", type: :feature do
 
   scenario "deleting a hosting" do
     create_host
-    expect(page).to have_content("11211 (2 guests)")
+    expect(page).to have_content("11211 (10 guests)")
     delete_host
-    expect(page).not_to have_content("11211 (2 guests)")
+    expect(page).not_to have_content("11211 (10 guests)")
   end
 
   scenario "updating a hosting guest number" do
     create_host
-    expect(page).to have_content("11211 (2 guests)")
+    expect(page).to have_content("11211 (10 guests)")
     click_link '11211'
-    find("#hosting_max_guests").select(3)
+    find("#hosting_max_guests").select(9)
     click_button "Save"
-    expect(page).to have_content("11211 (3 guests)")
+    expect(page).to have_content("11211 (9 guests)")
   end
 
   scenario "updating a hosting zip code" do
     create_host
-    expect(page).to have_content("11211 (2 guests)")
+    expect(page).to have_content("11211 (10 guests)")
     click_link '11211'
     fill_in "Where are you located?", with: '63130'
-    find("#hosting_max_guests").select(2)
+    find("#hosting_max_guests").select(10)
     click_button "Save"
-    expect(page).to have_content("63130 (2 guests)")
+    expect(page).to have_content("63130 (10 guests)")
   end
 
 

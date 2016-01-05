@@ -34,14 +34,14 @@ RSpec.describe "User Creates Visit", type: :feature do
 
   scenario "creating a new visit with available hosts" do
     FactoryGirl.create(:user, phone: '2345678901')
-    FactoryGirl.create(:hosting, zipcode: '11211', max_guests: 2, host_id: User.last.id)
+    FactoryGirl.create(:hosting, zipcode: '11211', max_guests: 10, host_id: User.last.id)
     create_visit(Date.current, Date.current + 1.days)
 
     expect(page).to have_content('Hosts near 11211')
   end
 
   scenario "editing an existing visit" do
-    FactoryGirl.create(:hosting, zipcode: '11221', max_guests: 2, host_id: User.last.id)
+    FactoryGirl.create(:hosting, zipcode: '11221', max_guests: 10, host_id: User.last.id)
     create_visit(Date.current, Date.current + 1.days)
     visit user_url(User.last)
     click_link '11211'
@@ -68,7 +68,7 @@ RSpec.describe "User Creates Visit", type: :feature do
 
   scenario "new host becomes available for visit" do
     create_visit(Date.current, Date.current + 1.days)
-    FactoryGirl.create(:hosting, zipcode: '11221', max_guests: 2, host_id: User.last.id)
+    FactoryGirl.create(:hosting, zipcode: '11221', max_guests: 10, host_id: User.last.id)
 
     expect(open_last_email).to have_body_text("#{User.last.first_name} just signed up")
   end
