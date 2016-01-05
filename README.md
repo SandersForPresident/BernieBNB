@@ -11,10 +11,11 @@ of town and to help supporters on the road find lodging.
 * Devise/ Omniauth for authentication with Facebook and google
 * Geocoder gem to search by zipcode, using Bing geocoding API.
 
-
 ## Contributing
 We have a channel on slack. Please e-mail buddhistsforbernie@gmail.com for an invite.
 We would love your help.
+
+[![](http://img.shields.io/gittip/berniebnbinfo.svg)](https://www.gittip.com/berniebnbinfo/)
 
 ### Steps
   1. Set up Facebook Developer account at https://developers.facebook.com then get your FACEBOOK_KEY and FACEBOOK_SECRET.
