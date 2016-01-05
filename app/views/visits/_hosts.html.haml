@@ -1,0 +1,49 @@
+- visit.available_hostings(current_user).each_with_index do |hosting, index|
+- host_name = hosting.first_name
+- heading_id = "heading#{ index }"
+- tab_id = "collapse#{ index }"
+  - if hosting.was_contacted_by?(current_user)
+    - button_text = "✔ Contacted"
+    - button_class = "btn-success"
+    - button_collapsable = ""
+  - else
+    - button_text = "Contact"
+    - button_class = "btn-info"
+    - button_collapsable = "collapse"
+
+  %div.panel
+
+    %div.panel-heading.group{ role: 'tab', id: "#{ heading_id }" }
+      %h4.panel-title.left
+        %ul
+          %li
+            %h2 #{ host_name }
+          %li
+            %span #{ hosting.zipcode } - #{ hosting.distance.round(1) } miles
+          %li
+            %small Space for #{ hosting.max_guests }
+      %a{ href: "##{ tab_id }",
+          "role" => "button",
+          class: "btn btn-md #{ button_class } contact-button right",
+          "data-toggle" => "#{ button_collapsable }",
+          "data-parent" => "#accordion",
+          "aria-expanded" => "false" ,
+          "aria-controls" => "#{ tab_id }" } #{ button_text }
+
+    %div.panel-collapse.collapse{"role" => "tabpanel",
+                                 id: "#{tab_id}",
+                                 "aria-labelledby" => "#{heading_id}",
+                                 "aria-expanded" => "false" }
+      %div.panel-body
+        - unless hosting.was_contacted_by?(current_user)
+          = render 'contact_host_instructions',
+            host_name: host_name,
+            hosting: hosting,
+            visit: @visit
+          %a{ href: "##{ tab_id }",
+              "role" => "button",
+              class: "btn btn-info btn-block btn-lg half-bump",
+              "data-toggle" => "#{ button_collapsable }",
+              "data-parent" => "#accordion",
+              "aria-expanded" => "false" ,
+              "aria-controls" => "#{ tab_id }" } Cancel

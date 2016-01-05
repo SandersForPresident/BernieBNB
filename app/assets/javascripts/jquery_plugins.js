@@ -18,4 +18,11 @@ $(document).ready(function () {
   $('#visit_end_date').datepicker({
     dateFormat: "dd-M-yy"
   });
+
+  $(".contact-button").on('click', function (e) {
+    if ($(this).text() == "✔ Contacted") {
+      e.preventDefault();
+      $(this).blur();
+    }
+  });
 });
