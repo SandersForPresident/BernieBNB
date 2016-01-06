@@ -305,7 +305,7 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    validates_timeliness (4.0.1)
+    validates_timeliness (4.0.2)
       timeliness (~> 0.3.7)
     validates_zipcode (0.0.8)
       activemodel (>= 3.2.0)
