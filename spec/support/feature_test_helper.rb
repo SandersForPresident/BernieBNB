@@ -4,6 +4,11 @@ module FeatureTestHelper
     click_link 'Facebook'
   end
 
+  def authenticate_with_google
+    visit root_path
+    click_link 'Google'
+  end
+
   def fill_in_user_details
     fill_in "What's your first name?", with: 'Jane'
     fill_in "What's your phone number?", with: '5555555555'
@@ -13,6 +18,12 @@ module FeatureTestHelper
 
   def register_new_user
     authenticate_with_facebook
+    fill_in_user_details
+    visit confirm_email_user_url(User.last.confirm_token)
+  end
+
+  def register_new_google_user
+    authenticate_with_google
     fill_in_user_details
     visit confirm_email_user_url(User.last.confirm_token)
   end
