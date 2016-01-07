@@ -40,6 +40,14 @@ RSpec.describe "User Creates Visit", type: :feature do
     expect(page).to have_content('Hosts near 11211')
   end
 
+  scenario "creating a new international visit with available hosts" do
+    FactoryGirl.create(:user, phone: '+46 234-567-8901')
+    FactoryGirl.create(:hosting, zipcode: '11211', max_guests: 10, host_id: User.last.id)
+    create_visit(Date.current, Date.current + 1.days)
+
+    expect(page).to have_content('Hosts near 11211')
+  end
+
   scenario "editing an existing visit" do
     FactoryGirl.create(:hosting, zipcode: '11221', max_guests: 10, host_id: User.last.id)
     create_visit(Date.current, Date.current + 1.days)
