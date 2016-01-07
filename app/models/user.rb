@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
 
+  MAX_DOMESTIC_PHONE_NUMBER = 12 
+  MAX_INTERNATIONAL_PHONE_NUMBER = 14
+
   validate :phone_number_length
   validates :first_name, presence: true, allow_nil: true
   validates :email, presence: true, allow_nil: true, uniqueness: true
@@ -55,17 +58,17 @@ class User < ActiveRecord::Base
 
   def phone_number_length
     return if phone.nil?
-    if phone.size > 12
+    if phone.size > MAX_DOMESTIC_PHONE_NUMBER
       if phone[0] == '+' # international +DD XXX XXXXXX (2,3,6 chars)
-        if phone.size > 14
+        if phone.size > MAX_INTERNATIONAL_PHONE_NUMBER
           self.errors.add(:phone, "number is too long")
-        elsif phone.size < 14
+        elsif phone.size < MAX_INTERNATIONAL_PHONE_NUMBER
           self.errors.add(:phone, "number is too short")
         end
       else # not international
         self.errors.add(:phone, "number is too long")
       end   
-    elsif phone.size < 12
+    elsif phone.size < MAX_DOMESTIC_PHONE_NUMBER
       self.errors.add(:phone, "number is too short")
     end
   end
