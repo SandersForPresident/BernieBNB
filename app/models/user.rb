@@ -44,15 +44,27 @@ class User < ActiveRecord::Base
   def phone=(number)
     number = number[1..-1] if number[0] == "1" # Alway remove leading "1".
 
-    pnumber = number_to_phone(number.gsub(/\D/, ''))
-
-    super(pnumber)
+    if number[0] == "+" # international
+      pnumber = number_to_phone(number.gsub(/\D+/, ''))
+      super("+" + pnumber)
+    else # not international
+      pnumber = number_to_phone(number.gsub(/\D+/, ''))
+      super(pnumber)
+    end    
   end
 
   def phone_number_length
     return if phone.nil?
     if phone.size > 12
-      self.errors.add(:phone, "number is too long")
+      if phone[0] == '+' # international
+        if phone.size > 15
+          self.errors.add(:phone, "number is too long")
+        elsif phone.size < 15
+          self.errors.add(:phone, "number is too short")
+        end
+      else # not international
+        self.errors.add(:phone, "number is too long")
+      end   
     elsif phone.size < 12
       self.errors.add(:phone, "number is too short")
     end
