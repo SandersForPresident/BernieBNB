@@ -14,7 +14,9 @@ class Visit < ActiveRecord::Base
       .where("max_guests >= ?", num_travelers)
 
     if Rails.env.production? or Rails.env.staging?
+      # :nocov:
       return available_hostings.where("host_id != (?)", self.user_id)
+      # :nocov:
     else
       return available_hostings
     end

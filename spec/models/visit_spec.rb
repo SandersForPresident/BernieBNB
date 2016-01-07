@@ -13,19 +13,37 @@ RSpec.describe Visit, type: :model do
       "9131", [{'latitude' => 0, 'longitude' => 0}]
     )
 
+    Geocoder::Lookup::Test.add_stub(
+      "654321", [{'latitude' => 0, 'longitude' => 0}]
+    )
+
+    Geocoder::Lookup::Test.add_stub(
+      "ABC", [{'latitude' => 0, 'longitude' => 0}]
+    )
+
   end
 
   it "has a valid factory - valid zipcode - 5 digits" do
     expect(FactoryGirl.create(:visit, zipcode: "11211")).to be_valid
   end
 
-  it "is invalid without a zipcode" do
+  it "is invalid without a zipcode - 0 digits" do
     expect { FactoryGirl.create(:visit, zipcode: nil) }
       .to raise_error ActiveRecord::RecordInvalid
   end
 
-  it "is invalid with bad zipcode - 4 digits" do
+  it "is invalid with bad zipcode - < 5 digits" do
     expect { FactoryGirl.create(:visit, zipcode: "9131") }
+      .to raise_error ActiveRecord::RecordInvalid
+  end
+
+  it "is invalid with bad zipcode - > 5 digits" do
+    expect { FactoryGirl.create(:visit, zipcode: "654321") }
+      .to raise_error ActiveRecord::RecordInvalid
+  end
+
+  it "is invalid with bad zipcode - non-digits" do
+    expect { FactoryGirl.create(:visit, zipcode: "ABC") }
       .to raise_error ActiveRecord::RecordInvalid
   end
 

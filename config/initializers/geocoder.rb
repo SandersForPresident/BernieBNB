@@ -1,6 +1,7 @@
-  if  Rails.env.production? || Rails.env.staging?
+if  Rails.env.production? || Rails.env.staging?
+  # :nocov:
   Geocoder.configure(
-    # Geocoding options
+  # Geocoding options
     # timeout: 3,                 # geocoding service timeout (secs)
     lookup: :bing,            # name of geocoding service (symbol)
     # language: :en,              # ISO-639 language code
