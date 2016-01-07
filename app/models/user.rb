@@ -56,10 +56,10 @@ class User < ActiveRecord::Base
   def phone_number_length
     return if phone.nil?
     if phone.size > 12
-      if phone[0] == '+' # international
-        if phone.size > 15
+      if phone[0] == '+' # international +DD XXX XXXXXX (2,3,6 chars)
+        if phone.size > 14
           self.errors.add(:phone, "number is too long")
-        elsif phone.size < 15
+        elsif phone.size < 14
           self.errors.add(:phone, "number is too short")
         end
       else # not international

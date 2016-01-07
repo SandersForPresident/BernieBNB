@@ -87,24 +87,24 @@ RSpec.describe User, type: :model do
     expect(FactoryGirl.create(:user, phone: "1.404.555-1212")).to be_valid
   end
 
+  it "has a valid factory - international - leading '+' char - 14 chars" do
+    expect(FactoryGirl.create(:user, phone: "+45 404 555121")).to be_valid
+  end
+
   it "has a valid factory - with periods and leadning '1' - 15 chars" do
     expect(FactoryGirl.create(:user, phone: "1-(404)555.1212")).to be_valid
   end
 
   it "has a valid factory - international - leading '+' char - 15 chars" do
-    expect(FactoryGirl.create(:user, phone: "+45 404 5551212")).to be_valid
+    expect(FactoryGirl.create(:user, phone: "+45.404-555121")).to be_valid
   end
 
   it "has a valid factory - with periods and leadning '1' - 16 chars" do
     expect(FactoryGirl.create(:user, phone: "1-(404)-555.1212")).to be_valid
   end
 
-  it "has a valid factory - international - leading '+' char - 16 chars" do
-    expect(FactoryGirl.create(:user, phone: "+45.404-555-1212")).to be_valid
-  end
-
-  it "has a valid factory - international - leading '+' char - 18 chars" do
-    expect(FactoryGirl.create(:user, phone: "+45.(404)-555-1212")).to be_valid
+  it "has a valid factory - international - leading '+' char - 17 chars" do
+    expect(FactoryGirl.create(:user, phone: "+45.(404)-555121")).to be_valid
   end
 
   it "bad phone number -- 17 digits (too long) - 17 chars" do
