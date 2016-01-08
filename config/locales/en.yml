@@ -21,6 +21,15 @@
 
 en:
   hello: "Hello world"
+  information:
+    moredetails: Please fill out a few more details.
+    emailconfirmsent: Email confirmation sent
+    findahost: Find A Host
+    signin: Sign In
+  questions:
+    phonenumber: What's your phone number?
   errors:
     messages:
-      invalid_zipcode: need to be 5 digits.
+      invalid_zipcode: Zipcode need to be 5 digits.
+      blank_zipcode: Zipcode can't be blank
+      blankfirstname: First name can't be blank

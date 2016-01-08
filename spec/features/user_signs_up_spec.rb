@@ -10,22 +10,22 @@ RSpec.describe "User Signs Up", type: :feature do
   scenario 'starts session' do
     authenticate_with_facebook
 
-    expect(page).to have_content('Please fill out a few more details.')
+    expect(page).to have_content( t('information.moredetails') )
   end
 
   scenario 'completing registration information' do
     authenticate_with_facebook
     fill_in_user_details
 
-    expect(page).to have_content('Email confirmation sent')
+    expect(page).to have_content( t('information.emailconfirmsent') )
   end
 
   scenario 'fill out registration information incorrectly' do
     authenticate_with_facebook
-    fill_in "What's your phone number?", with: '5555555556'
+    fill_in t('questions.phonenumber'), with: '5555555556'
     click_button 'Confirm Email'
 
-    expect(page).to have_content("First name can't be blank")
+    expect(page).to have_content( t('errors.messages.blankfirstname') )
   end
 
   scenario 'confirming registration with email' do
@@ -38,7 +38,7 @@ RSpec.describe "User Signs Up", type: :feature do
     expect(open_last_email).to have_body_text(confirm_url)
 
     visit confirm_url
-    expect(page).to have_content('Find A Host')
+    expect(page).to have_content( t('information.findahost') )
   end
 
   scenario 'register, sign out, sign back in' do
@@ -46,7 +46,7 @@ RSpec.describe "User Signs Up", type: :feature do
     click_link 'Sign Out'
     click_link 'Facebook'
 
-    expect(page).to have_content('Find A Host')
+    expect(page).to have_content( t('information.findahost') )
   end
 
   scenario 'facebook fails' do
@@ -54,6 +54,6 @@ RSpec.describe "User Signs Up", type: :feature do
 
     authenticate_with_facebook
 
-    expect(page).to have_content('Sign In')
+    expect(page).to have_content( t('information.signin') )
   end
 end

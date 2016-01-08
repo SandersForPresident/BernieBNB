@@ -52,6 +52,9 @@ RSpec.configure do |config|
     mocks.verify_doubled_constant_names = true
   end
 
+  # For i18n
+  config.include AbstractController::Translation
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
