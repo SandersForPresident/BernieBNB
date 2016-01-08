@@ -5,7 +5,7 @@ require_relative '../support/feature_test_helper'
 RSpec.describe "User creates Host", type: :feature do
   before do
     Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
-    register_new_user
+    register_new_facebook_user
 
     Geocoder.configure(:lookup => :test)
 
@@ -72,6 +72,5 @@ RSpec.describe "User creates Host", type: :feature do
     click_button "Save"
     expect(page).to have_content("63130 (10 guests)")
   end
-
 
 end
