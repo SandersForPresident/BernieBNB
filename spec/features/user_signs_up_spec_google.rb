@@ -42,7 +42,7 @@ RSpec.describe "User Signs Up", type: :feature do
   end
 
   scenario 'register, sign out, sign back in' do
-    register_new_user
+    register_new_facebook_user
     click_link 'Sign Out'
     click_link 'Google'
 
