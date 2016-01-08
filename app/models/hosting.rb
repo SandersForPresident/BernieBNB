@@ -21,7 +21,7 @@ class Hosting < ActiveRecord::Base
 
   def notify_nearby_visitors
     nearby_visits = Visit
-      .near(self.zipcode, 25, order: "distance")
+      .near(self, 25, order: "distance")
       .where("num_travelers <= ?", max_guests)
       .where("start_date >= ?", Date.today)
 

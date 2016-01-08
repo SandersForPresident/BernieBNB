@@ -16,7 +16,7 @@ module FeatureTestHelper
     click_button "Confirm Email"
   end
 
-  def register_new_user
+  def register_new_facebook_user
     authenticate_with_facebook
     fill_in_user_details
     visit confirm_email_user_url(User.last.confirm_token)
@@ -28,7 +28,13 @@ module FeatureTestHelper
     visit confirm_email_user_url(User.last.confirm_token)
   end
 
-  def create_visit(start_date, end_date, zipcode='11211', num_travelers=10)
+  def create_visit(
+      start_date=Date.current,
+      end_date=Date.current + 1.days,
+      zipcode='11211',
+      num_travelers=10
+    )
+
     click_link "Find A Host"
     fill_in "Where are you going?", with: zipcode
     fill_in "Arriving when?", with: start_date

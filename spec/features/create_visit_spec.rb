@@ -5,7 +5,7 @@ require_relative '../support/feature_test_helper'
 RSpec.describe "User Creates Visit", type: :feature do
   before do
     Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
-    register_new_user
+    register_new_facebook_user
 
     Geocoder.configure(:lookup => :test)
 
@@ -21,7 +21,7 @@ RSpec.describe "User Creates Visit", type: :feature do
   end
 
   scenario "creating a new visit with no available hosts" do
-    create_visit(Date.current, Date.current + 1.days)
+    create_visit
     expect(page).to have_content('Nobody here, yet.')
   end
 

@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rails_helper'
 require_relative '../support/feature_test_helper'
 
-RSpec.describe "User Signs Up", type: :feature do
+RSpec.describe "User Signs Up With Facebook", type: :feature do
   before do
     Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
   end
@@ -42,7 +42,7 @@ RSpec.describe "User Signs Up", type: :feature do
   end
 
   scenario 'register, sign out, sign back in' do
-    register_new_user
+    register_new_facebook_user
     click_link 'Sign Out'
     click_link 'Facebook'
 
