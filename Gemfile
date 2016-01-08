@@ -13,6 +13,9 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'sdoc', group: :doc
 
+gem 'i18n-tasks'
+gem 'parser', '2.3.0.pre.6' # WORK-AROUND for Ruby 2.2.4
+
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
