@@ -61,15 +61,15 @@ class User < ActiveRecord::Base
     if phone.size > MAX_DOMESTIC_PHONE_NUMBER
       if phone[0] == '+' # international +DD XXX XXXXXX (2,3,6 chars)
         if phone.size > MAX_INTERNATIONAL_PHONE_NUMBER
-          self.errors.add(:phone, "number is too long")
+          self.errors.add(:phone, "number is too long: #{phone}")
         elsif phone.size < MAX_INTERNATIONAL_PHONE_NUMBER
-          self.errors.add(:phone, "number is too short")
+          self.errors.add(:phone, "number is too short: #{phone}")
         end
       else # not international
-        self.errors.add(:phone, "number is too long")
+        self.errors.add(:phone, "number is too long: #{phone}")
       end   
     elsif phone.size < MAX_DOMESTIC_PHONE_NUMBER
-      self.errors.add(:phone, "number is too short")
+      self.errors.add(:phone, "number is too short: #{phone}")
     end
   end
 
