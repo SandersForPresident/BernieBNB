@@ -18,7 +18,6 @@ notifications:
     on_success: change
   email:
     recipients:
-    - berniebnbinfo@gmail.com
     - justin.schulz@gmail.com
     - jasnow@hotmail.com
     on_success: change
