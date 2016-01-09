@@ -22,16 +22,16 @@
         %span We'll send this when you contact someone.
 
       .form-group
-        - if @user.email_confirmed
-          = link_to "Cancel", user_url(current_user), class: 'btn btn-default btn-lg btn-block'
-        - else
-          = link_to "Cancel", root_url, class: 'btn btn-default btn-lg btn-block'
         = f.submit button_text, class: 'btn btn-success btn-block btn-lg'
+        - if @user.email_confirmed
+          = link_to "Cancel", user_url(current_user), class: 'btn btn-danger btn-lg btn-block'
+        - else
+          = link_to "Cancel", root_url, class: 'btn btn-danger btn-lg btn-block'
 
   - if @user.email_confirmed
 
     = button_to 'Delete Account',
       { action: 'destroy', id: @user.id },
-        class: 'btn btn-danger btn-block btn-lg',
+        class: 'btn btn-default btn-block btn-lg',
         method: 'delete',
         data: { confirm: "Are you sure? This will permanently delete your account." }
