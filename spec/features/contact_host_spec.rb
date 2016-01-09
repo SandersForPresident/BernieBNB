@@ -22,7 +22,7 @@ RSpec.describe "Visitor contacts host", type: :feature do
 
     expect(page).to have_content('Nobody here, yet.')
 
-    FactoryGirl.create(:user, first_name: 'Jane', phone: '2345678901')
+    FactoryGirl.create(:user, first_name: 'Jane')
     FactoryGirl.create(:hosting,
       host_id: User.last.id, zipcode: '11221', max_guests: 10)
 
@@ -32,7 +32,7 @@ RSpec.describe "Visitor contacts host", type: :feature do
   end
 
   scenario 'Visitor finds and contacts a host' do
-    FactoryGirl.create(:user, first_name: 'Jane', phone: '2345678901')
+    FactoryGirl.create(:user, first_name: 'Jane')
     FactoryGirl.create(:hosting,
       host_id: User.last.id, zipcode: '11221', max_guests: 10)
     register_new_facebook_user
