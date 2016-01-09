@@ -9,15 +9,18 @@ RSpec.describe "User Creates Visit", type: :feature do
 
     Geocoder.configure(:lookup => :test)
 
-    Geocoder::Lookup::Test.add_stub(
-      "11211", [{'latitude' => 40.7093358, 'longitude' => -73.9565551}]
-    )
-    Geocoder::Lookup::Test.add_stub(
-      "11221", [{'latitude' => 40.6903213, 'longitude' => -73.9271644}]
-    )
-    Geocoder::Lookup::Test.add_stub(
-      "63130", [{'latitude' => 38.6682669, 'longitude' => -90.3230806}]
-    )
+    geocoder_stubs = [
+      ['11211', 40.7093358, -73.9565551],
+      ['11221', 40.6903213, -73.9271644],
+      ['10012', 40.7250632, -73.9976946],
+      ['07097', 40.7548065, -74.0681987],
+      ['63130', 38.6682669, -90.3230806]
+    ]
+    geocoder_stubs.each do |stub|
+      Geocoder::Lookup::Test.add_stub(
+        stub[0], [{'latitude' => stub[1], 'longitude' => stub[2]}]
+      )
+    end
   end
 
   scenario "creating a new visit with no available hosts" do
@@ -34,10 +37,27 @@ RSpec.describe "User Creates Visit", type: :feature do
 
   scenario "creating a new visit with available hosts" do
     FactoryGirl.create(:user, phone: '2345678901')
-    FactoryGirl.create(:hosting, zipcode: '11211', max_guests: 10, host_id: User.last.id)
+    FactoryGirl.create :hosting,
+      zipcode: '11211', max_guests: 10, host_id: User.last.id
     create_visit(Date.current, Date.current + 1.days)
 
     expect(page).to have_content('Hosts near 11211')
+  end
+
+  scenario "available hosts are sorted by number of contacts, then distance" do
+    FactoryGirl.create(:user, phone: '2345678901')
+    FactoryGirl.create :hosting,
+      zipcode: '11211', max_guests: 10, host_id: User.last.id
+    FactoryGirl.create(:user, phone: '3456789012')
+    FactoryGirl.create :hosting,
+      zipcode: '11221', max_guests: 10, host_id: User.last.id
+    FactoryGirl.create(:user, phone: '4567890123')
+    FactoryGirl.create :hosting,
+      zipcode: '10012', max_guests: 10, host_id: User.last.id
+
+    create_visit(Date.current, Date.current + 1.days, "07097")
+    
+
   end
 
   scenario "creating a new international visit with available hosts" do
