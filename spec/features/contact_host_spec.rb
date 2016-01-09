@@ -15,13 +15,14 @@ RSpec.describe "Visitor contacts host", type: :feature do
       '11221', [{'latitude' => 40.6903213, 'longitude' => -73.9271644}]
     )
   end
+
   scenario 'Visitor is notified when new host is available' do
     register_new_facebook_user
     create_visit
 
     expect(page).to have_content('Nobody here, yet.')
 
-    FactoryGirl.create(:user, first_name: 'Jane')
+    FactoryGirl.create(:user, first_name: 'Jane', phone: '2345678901')
     FactoryGirl.create(:hosting,
       host_id: User.last.id, zipcode: '11221', max_guests: 10)
 
@@ -31,7 +32,7 @@ RSpec.describe "Visitor contacts host", type: :feature do
   end
 
   scenario 'Visitor finds and contacts a host' do
-    FactoryGirl.create(:user, first_name: 'Jane')
+    FactoryGirl.create(:user, first_name: 'Jane', phone: '2345678901')
     FactoryGirl.create(:hosting,
       host_id: User.last.id, zipcode: '11221', max_guests: 10)
     register_new_facebook_user
