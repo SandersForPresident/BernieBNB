@@ -40,21 +40,21 @@ RSpec.describe User, type: :model do
     expect { FactoryGirl.create(:user, phone: "") }
       .to raise_error ActiveRecord::RecordInvalid
     expect { FactoryGirl.create(:user, phone: "") }
-      .to raise_error(/is too short/)
+      .to raise_error(/is too short: /)
   end
 
   it "bad phone number -- 1 in front - 10 chars" do
     expect { FactoryGirl.create(:user, phone: "1234567890") }
       .to raise_error ActiveRecord::RecordInvalid
     expect { FactoryGirl.create(:user, phone: "1234567890") }
-      .to raise_error(/is too short/)
+      .to raise_error(/is too short: 23-456-7890/)
   end
 
   it "bad phone number -- 11 digits (too long) - 11 chars" do
     expect { FactoryGirl.create(:user, phone: "23456789012") }
       .to raise_error ActiveRecord::RecordInvalid
     expect { FactoryGirl.create(:user, phone: "23456789012") }
-      .to raise_error(/is too long/)
+      .to raise_error(/is too long: 2345-678-9012/)
   end
 
   it "has a valid factory - 11 chars" do
@@ -111,6 +111,6 @@ RSpec.describe User, type: :model do
     expect { FactoryGirl.create(:user, phone: "23456789012345678") }
       .to raise_error ActiveRecord::RecordInvalid
     expect { FactoryGirl.create(:user, phone: "23456789012345678") }
-      .to raise_error(/is too long/)
+      .to raise_error(/is too long: 2345678901-234-5678/)
   end
 end
