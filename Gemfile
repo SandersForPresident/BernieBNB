@@ -29,6 +29,7 @@ gem 'draper'
 gem 'jquery-ui-rails'
 gem 'haml'
 gem 'travis'
+gem 'bugsnag'
 
 gem 'puma-rails'
 
