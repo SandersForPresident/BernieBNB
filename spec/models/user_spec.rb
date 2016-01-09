@@ -83,15 +83,20 @@ RSpec.describe User, type: :model do
     expect(FactoryGirl.create(:user, phone: "(404) 555-1212")).to be_valid
   end
 
-  it "has a valid factory - with periods and leadning '1' - 14 chars" do
+  it "has a valid factory - with periods and leading '1' - 14 chars" do
     expect(FactoryGirl.create(:user, phone: "1.404.555-1212")).to be_valid
+  end
+
+  it "bad phone number - with periods and leading '1' - too short - 14 chars" do
+    expect { FactoryGirl.create(:user, phone: "104-555-1212") }
+      .to raise_error(/is too short: 04-555-1212/)
   end
 
   it "has a valid factory - international - leading '+' char - 14 chars" do
     expect(FactoryGirl.create(:user, phone: "+45 404 555121")).to be_valid
   end
 
-  it "has a valid factory - with periods and leadning '1' - 15 chars" do
+  it "has a valid factory - with periods and leading '1' - 15 chars" do
     expect(FactoryGirl.create(:user, phone: "1-(404)555.1212")).to be_valid
   end
 
@@ -99,7 +104,7 @@ RSpec.describe User, type: :model do
     expect(FactoryGirl.create(:user, phone: "+45.404-555121")).to be_valid
   end
 
-  it "has a valid factory - with periods and leadning '1' - 16 chars" do
+  it "has a valid factory - with periods and leading '1' - 16 chars" do
     expect(FactoryGirl.create(:user, phone: "1-(404)-555.1212")).to be_valid
   end
 
