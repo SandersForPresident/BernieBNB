@@ -48,10 +48,10 @@ RSpec.describe "User Creates Visit", type: :feature do
     before(:each) do
       FactoryGirl.create(:user, phone: '2345678901')
       FactoryGirl.create :hosting,
-        zipcode: '11211', max_guests: 10, host_id: User.last.id
+        zipcode: '11221', max_guests: 10, host_id: User.last.id
       FactoryGirl.create(:user, phone: '3456789012')
       FactoryGirl.create :hosting,
-        zipcode: '11221', max_guests: 10, host_id: User.last.id
+        zipcode: '11211', max_guests: 10, host_id: User.last.id
       FactoryGirl.create(:user, phone: '4567890123')
       FactoryGirl.create :hosting,
         zipcode: '10012', max_guests: 10, host_id: User.last.id
@@ -62,6 +62,40 @@ RSpec.describe "User Creates Visit", type: :feature do
     scenario "when no hosts have been contacted" do
       expect('10012').to appear_before('11211')
       expect('11211').to appear_before('11221')
+    end
+
+    scenario "when the furthest host has been contacted" do
+      FactoryGirl.create(:contact, hosting_id: Hosting.first.id)
+
+      expect('10012').to appear_before('11211')
+      expect('11211').to appear_before('11221')
+    end
+
+    scenario "when the nearest host has been contacted" do
+      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visitor_id: 7)
+      visit visit_url(Visit.last)
+
+      expect('11211').to appear_before('11221')
+      expect('11221').to appear_before('10012')
+    end
+
+    scenario "when two hosts have been contacted, once each" do
+      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visitor_id: 7)
+      FactoryGirl.create(:contact, hosting_id: Hosting.last.id - 1, visitor_id: 7)
+      visit visit_url(Visit.last)
+
+      expect('11221').to appear_before('10012')
+      expect('10012').to appear_before('11211')
+    end
+
+    scenario "when two hosts have been contacted a different amount of times" do
+      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visitor_id: 7)
+      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visitor_id: 8)
+      FactoryGirl.create(:contact, hosting_id: Hosting.last.id - 1, visitor_id: 7)
+      visit visit_url(Visit.last)
+
+      expect('11221').to appear_before('11211')
+      expect('11211').to appear_before('10012')
     end
   end
 

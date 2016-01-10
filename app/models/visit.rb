@@ -10,9 +10,9 @@ class Visit < ActiveRecord::Base
 
   def available_hostings(current_user)
     available_hostings = Hosting
-      .near(self.zipcode, 25, order: "distance")
+      .near(self, 25, order: 'contact_count, distance')
       .where("max_guests >= ?", num_travelers)
-
+    
     if Rails.env.production? or Rails.env.staging?
       # :nocov:
       return available_hostings.where("host_id != (?)", self.user_id)
