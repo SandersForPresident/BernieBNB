@@ -65,4 +65,12 @@ RSpec.describe Visit, type: :model do
                          end_date: Date.today)
     end.to raise_error ActiveRecord::RecordInvalid
   end
+
+  it "valid if end date equals start date" do
+    expect(FactoryGirl.create(:visit,
+                              zipcode: "11211",
+                              start_date: Date.today,
+                              end_date: Date.today)
+    ).to be_valid
+  end
 end
