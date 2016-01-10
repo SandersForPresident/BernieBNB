@@ -30,6 +30,7 @@ gem 'jquery-ui-rails'
 gem 'haml'
 gem 'travis'
 gem 'bugsnag'
+gem 'orderly'
 
 gem 'puma-rails'
 

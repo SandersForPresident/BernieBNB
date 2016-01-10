@@ -44,20 +44,25 @@ RSpec.describe "User Creates Visit", type: :feature do
     expect(page).to have_content('Hosts near 11211')
   end
 
-  scenario "available hosts are sorted by number of contacts, then distance" do
-    FactoryGirl.create(:user, phone: '2345678901')
-    FactoryGirl.create :hosting,
-      zipcode: '11211', max_guests: 10, host_id: User.last.id
-    FactoryGirl.create(:user, phone: '3456789012')
-    FactoryGirl.create :hosting,
-      zipcode: '11221', max_guests: 10, host_id: User.last.id
-    FactoryGirl.create(:user, phone: '4567890123')
-    FactoryGirl.create :hosting,
-      zipcode: '10012', max_guests: 10, host_id: User.last.id
+  describe "sorting available hosts on visit results" do
+    before(:each) do
+      FactoryGirl.create(:user, phone: '2345678901')
+      FactoryGirl.create :hosting,
+        zipcode: '11211', max_guests: 10, host_id: User.last.id
+      FactoryGirl.create(:user, phone: '3456789012')
+      FactoryGirl.create :hosting,
+        zipcode: '11221', max_guests: 10, host_id: User.last.id
+      FactoryGirl.create(:user, phone: '4567890123')
+      FactoryGirl.create :hosting,
+        zipcode: '10012', max_guests: 10, host_id: User.last.id
 
-    create_visit(Date.current, Date.current + 1.days, "07097")
-    
+      create_visit(Date.current, Date.current + 1.days, "07097")
+    end
 
+    scenario "when no hosts have been contacted" do
+      expect('10012').to appear_before('11211')
+      expect('11211').to appear_before('11221')
+    end
   end
 
   scenario "creating a new international visit with available hosts" do
