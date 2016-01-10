@@ -92,6 +92,11 @@ RSpec.describe User, type: :model do
       .to raise_error(/is too short: 04-555-1212/)
   end
 
+  it "has a valid factory - international - leading '+' char - 13 chars" do
+    expect { FactoryGirl.create(:user, phone: "+45 404 55512") }
+      .to raise_error(/is too short: \+454-045-5512/)
+  end
+
   it "has a valid factory - international - leading '+' char - 14 chars" do
     expect(FactoryGirl.create(:user, phone: "+45 404 555121")).to be_valid
   end
@@ -118,4 +123,12 @@ RSpec.describe User, type: :model do
     expect { FactoryGirl.create(:user, phone: "23456789012345678") }
       .to raise_error(/is too long: 2345678901-234-5678/)
   end
+
+  it "bad phone number - international - leading '+' char - 18 chars" do
+    expect { FactoryGirl.create(:user, phone: "+454.(404)-555121") }
+      .to raise_error ActiveRecord::RecordInvalid
+    expect { FactoryGirl.create(:user, phone: "+454.(404)-555121") }
+      .to raise_error(/is too long: \+45440-455-5121/)
+  end
+
 end
