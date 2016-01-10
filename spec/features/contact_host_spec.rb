@@ -43,5 +43,6 @@ RSpec.describe "Visitor contacts host", type: :feature do
     expect(page).to have_content("Successfully contacted Jane")
     expect(last_email_sent).to deliver_to(User.first.email)
     expect(open_last_email).to have_subject("Bernie BNB - You've been contacted!")
+    expect(Hosting.last.contact_count).to eq(1)
   end
 end

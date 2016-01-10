@@ -198,6 +198,7 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    orderly (0.0.2)
     parser (2.3.0.pre.6)
       ast (~> 2.2)
     pg (0.18.4)
@@ -368,6 +369,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
+  orderly
   parser (= 2.3.0.pre.6)
   pg
   pry-rails
