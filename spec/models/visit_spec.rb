@@ -67,10 +67,24 @@ RSpec.describe Visit, type: :model do
   end
 
   it "valid if end date equals start date" do
+    skip
     expect(FactoryGirl.create(:visit,
                               zipcode: "11211",
                               start_date: Date.today,
                               end_date: Date.today)
     ).to be_valid
   end
+
+  it "should be valid if visit's start_date > app date" do
+    skip
+    new_time = Time.now + 12.hours
+    Timecop.travel(new_time)
+    expect(FactoryGirl.create(:visit,
+                              zipcode: "11211",
+                              start_date: Date.today,
+                              end_date: Date.today)
+    ).to be_valid
+    Timecop.return
+  end
+
 end

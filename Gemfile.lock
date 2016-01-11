@@ -308,6 +308,7 @@ GEM
     thread (0.2.2)
     thread_safe (0.3.5)
     tilt (2.0.2)
+    timecop (0.8.0)
     timeliness (0.3.8)
     tins (1.8.1)
     travis (1.8.1)
@@ -383,6 +384,7 @@ DEPENDENCIES
   simplecov
   spring
   spring-commands-rspec
+  timecop
   travis
   turbolinks
   uglifier

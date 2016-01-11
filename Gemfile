@@ -54,6 +54,7 @@ group :development, :test do
   gem 'launchy'
   gem 'email_spec'
   gem 'zonebie'
+  gem 'timecop'
   gem 'database_cleaner'
 end
 
