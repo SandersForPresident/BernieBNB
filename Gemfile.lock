@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/jmondo/orderly.git
+  revision: 4e5c1613d6a38462837eb6aedd475bca5a12abdf
+  specs:
+    orderly (0.0.2)
+      capybara (>= 1.1)
+      rspec (>= 2.14)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -198,7 +206,6 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
-    orderly (0.0.2)
     parser (2.3.0.pre.6)
       ast (~> 2.2)
     pg (0.18.4)
@@ -371,7 +378,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
-  orderly
+  orderly!
   parser (= 2.3.0.pre.6)
   pg
   pry-rails
