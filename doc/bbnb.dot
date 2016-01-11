@@ -1,0 +1,75 @@
+# 1. Can not have "-" so I removed it below.
+# 2. FYI: UsersPage url is /users/<digit>
+
+######################################################################
+grep -v "^#" << EOF | dot -Tps > o_bbnb.ps #| lpr
+digraph gitflow {
+#  rotate=90;
+  size="10,7.5";
+
+  StartNode -> LogInPage;
+
+  LogInPage -> UserPage [label="FacebookButton"];
+  LogInPage -> UserPage [label="GoogleButton"];
+  LogInPage -> EditPage [label="FacebookButton"];
+  LogInPage -> EditPage [label="GoogleButton"];
+
+  UserPage -> EditPage [label="HomeButton"];
+  UserPage -> StartNode [label="SignOutButton"];
+  UserPage -> StartNode [label="CancelButton"];
+  UserPage -> ConfirmYourEmail [label="ConfirmEmailButton"];
+  UserPage -> UsersPage [label="ConfirmEmailButton"];
+
+  ConfirmYourEmail -> ThanksForSigningUpEmail [label="Bernie BNB - Confirm Your Email"];
+  ThanksForSigningUpEmail -> UsersPage [label="Bernie BNB Profile"];
+
+  UsersPage -> EditPage [label="ProfileButton"];
+
+  EditPage -> EditPage [label="HomeButton"];
+  EditPage -> StartNode [label="SignOutButton"];
+  EditPage -> UsersPage [label="CancelButton"];
+  EditPage -> UsersPage [label="SaveButton"];
+  EditPage -> AreYouSureDialog [label="DeleteAccountButton"];
+
+  AreYouSureDialog -> StartNode [label="Yes"];
+  AreYouSureDialog -> EditPage [label="No"];
+
+  UsersPage -> StartNode [label="SignOutButton"];
+  UsersPage -> HostingsPage [label="ICanHostButton"];
+  UsersPage -> EditPage [label="HostingButton"];
+  UsersPage -> VisitsPage [label="FindAHostButton"];
+  UsersPage -> BernieBNBFeedbackForm [label="SubmitFeedbackButton"];
+  UsersPage -> EditPage [label="HostwithZipAndDateButton"];
+
+  HostingsPage -> StartNode [label="SignOutButton"];
+  HostingsPage -> UsersPage [label="BackButton"];
+  HostingsPage -> UsersPage [label="CancelButton"];
+  HostingsPage -> UsersPage [label="SaveButton"];
+
+  VisitsPage -> StartNode [label="SignOutButton"];
+  VisitsPage -> UsersPage [label="BackButton"];
+  VisitsPage -> UsersPage [label="CancelButton"];
+  VisitsPage -> HostsNearPage [label="ContactHostsButton"];
+  VisitsPage -> UsersPage [label="DeleteButton"];
+
+  HostsNearPage -> StartNode [label="SignOutButton"];
+  HostsNearPage -> UsersPage [label="HomeButton"];
+  HostsNearPage -> NOTHING [label="ContactedButton"];
+  HostsNearPage -> ExpandedHostsNearPage [label="ContactButton"];
+  HostsNearPage -> BernieBNBFeedbackForm [label="SubmitFeedbackButton"];
+
+  ExpandedHostsNearPage -> HostsNearPage [label="ContactButton"];
+  ExpandedHostsNearPage -> HostsNearPage [label="CancelButton"];
+  ExpandedHostsNearPage -> BeenContactedEmail [label="SentMyContactInfoButton"];
+  ExpandedHostsNearPage -> BernieBNBFeedbackForm [label="SubmitFeedbackButton"];
+
+  BeenContactedEmail -> EditPage [label="BernieBNB - Host"];
+  BeenContactedEmail -> HostsNearPage [label="BernieBNB - Host"];
+
+
+  BernieBNBFeedbackForm -> formResponsePage [label="SubmitButton"];
+
+  formResponsePage -> LogInPage [label="httpswwwberniebnbcomLink"];
+}
+EOF
+#EOF ; cat << EOF > /dev/null
