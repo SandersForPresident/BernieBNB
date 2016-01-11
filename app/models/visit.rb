@@ -1,5 +1,7 @@
 class Visit < ActiveRecord::Base
-  validates_date :start_date, on: :create, on_or_after: :today
+  validates_date :start_date, on: :create, presence: true
+  validate :validate_start_date_is_not_in_the_past, if: :start_date
+
   validates_date :end_date, on: :create, on_or_after: :start_date
   validates :zipcode, zipcode: { country_code: :es }
 
@@ -7,6 +9,10 @@ class Visit < ActiveRecord::Base
 
   geocoded_by :zipcode
   after_validation :geocode
+
+  def validate_start_date_is_not_in_the_past
+    errors.add(:start_date, :in_past) unless start_date >= Time.zone.now.beginning_of_day
+  end
 
   def available_hostings(current_user)
     available_hostings = Hosting

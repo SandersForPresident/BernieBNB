@@ -33,3 +33,10 @@ en:
       invalid_zipcode: Zipcode need to be 5 digits.
       blank_zipcode: Zipcode can't be blank
       blankfirstname: First name can't be blank
+  activerecord:
+    errors:
+      models:
+        visit:
+          attributes:
+            start_date:
+              in_past: of visits cannot be created in the past
