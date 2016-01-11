@@ -53,6 +53,7 @@ group :development, :test do
   gem 'letter_opener'
   gem 'launchy'
   gem 'email_spec'
+  gem 'zonebie'
   gem 'database_cleaner'
 end
 
