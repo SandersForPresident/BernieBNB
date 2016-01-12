@@ -222,6 +222,8 @@ GEM
     pusher-client (0.6.2)
       json
       websocket (~> 1.0)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -281,7 +283,7 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    sass (3.4.20)
+    sass (3.4.21)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -318,7 +320,7 @@ GEM
     timecop (0.8.0)
     timeliness (0.3.8)
     tins (1.8.1)
-    travis (1.8.1)
+    travis (1.8.2)
       backports
       faraday (~> 0.9)
       faraday_middleware (~> 0.9, >= 0.9.1)
@@ -383,6 +385,7 @@ DEPENDENCIES
   pg
   pry-rails
   puma-rails
+  quiet_assets
   rails (= 4.2.5)
   rails_12factor
   rspec-rails
