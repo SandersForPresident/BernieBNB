@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/jmondo/orderly.git
-  revision: 4e5c1613d6a38462837eb6aedd475bca5a12abdf
+  revision: 570289148bd3c8c95057c04873408ef686791f4f
   specs:
     orderly (0.0.2)
       capybara (>= 1.1)
@@ -151,7 +151,7 @@ GEM
     jbuilder (2.4.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
-    jquery-rails (4.0.5)
+    jquery-rails (4.1.0)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
@@ -222,6 +222,8 @@ GEM
     pusher-client (0.6.2)
       json
       websocket (~> 1.0)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -254,7 +256,7 @@ GEM
       activesupport (= 4.2.5)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.4.2)
+    rake (10.5.0)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -281,7 +283,7 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    sass (3.4.20)
+    sass (3.4.21)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -318,7 +320,7 @@ GEM
     timecop (0.8.0)
     timeliness (0.3.8)
     tins (1.8.1)
-    travis (1.8.1)
+    travis (1.8.2)
       backports
       faraday (~> 0.9)
       faraday_middleware (~> 0.9, >= 0.9.1)
@@ -383,6 +385,7 @@ DEPENDENCIES
   pg
   pry-rails
   puma-rails
+  quiet_assets
   rails (= 4.2.5)
   rails_12factor
   rspec-rails
