@@ -47,4 +47,12 @@ RSpec.describe Hosting, type: :model do
     expect { FactoryGirl.create(:hosting, zipcode: "ABC") }
       .to raise_error ActiveRecord::RecordInvalid
   end
+
+  it "is valid with a comment" do
+    expect(FactoryGirl.create(:hosting, comment: "3 bedrooms and 2 bathrooms")).to be_valid
+  end
+
+  it "is valid without a comment" do
+    expect(FactoryGirl.create(:hosting, comment: nil))
+  end
 end
