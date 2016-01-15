@@ -48,6 +48,6 @@ class HostingsController < ApplicationController
   def hosting_params
     params
       .require(:hosting)
-      .permit(:zipcode, :max_guests)
+      .permit(:zipcode, :max_guests, :comment)
   end
 end

@@ -22,6 +22,11 @@
             %span #{ hosting.zipcode } - #{ hosting.distance.round(1) } miles
           %li
             %small Space for #{ hosting.max_guests }
+          - if hosting.comment?
+            %li
+              %span Comments from host:
+              %p
+                %small #{ hosting.comment }
       %a{ href: "##{ tab_id }",
           "role" => "button",
           class: "btn btn-md #{ button_class } contact-button right",

@@ -1,7 +1,7 @@
 class Hosting < ActiveRecord::Base
   validates :zipcode, :max_guests, presence: true
   validates :zipcode, zipcode: { country_code: :es }
-
+  validates :comment, length: { maximum: 140 }
   geocoded_by :zipcode
   after_validation :geocode
   after_create :notify_nearby_visitors
