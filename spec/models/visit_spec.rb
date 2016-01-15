@@ -74,7 +74,7 @@ RSpec.describe Visit, type: :model do
     ).to be_valid
   end
 
-  it "should be valid if visit's start_date > app date" do
+  it "should be valid if visit's start_date > app start_date" do
     skip
     new_time = Time.now + 12.hours
     Timecop.travel(new_time)
