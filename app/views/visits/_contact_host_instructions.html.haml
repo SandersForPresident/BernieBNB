@@ -9,6 +9,10 @@
     %li - Your email address
     %li - Your phone number
   %p Then, #{ host_name } should contact you to work out the details.
+
+  - if hosting.comment?
+    %h3 Special Instructions from #{ host_name }:
+    %p #{ hosting.comment }
   = link_to "Send my contact info",
             "/contacts/#{ @visit.id }/#{ hosting.id }",
             method: "POST",
