@@ -4,7 +4,7 @@
   .form-fields
     .form-group
       = f.label :zipcode, "Where are you located?"
-      = f.text_field :zipcode, class: 'form-control'
+      = f.text_field :zipcode, class: 'form-control', placeholder: "5-digit zipcode"
       %span.hosting Your zip code.
 
     .form-group
@@ -14,5 +14,10 @@
         {},
         {class: 'form-control'}
       %span.hosting Preferred maximum number of guests.
+
+    .form-group
+      = f.label :comment, "Do you have a message for your visitors?"
+      = f.text_field :comment, class: 'form-control', placeholder: "Maximum 140 characters"
+      %span.hosting e.g. number of available beds or accessible hours.
 
   = f.submit "Save", class: 'btn btn-success btn-block btn-lg'
