@@ -72,7 +72,7 @@ RSpec.describe "User Creates Visit", type: :feature do
     end
 
     scenario "when the nearest host has been contacted" do
-      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visitor_id: 7)
+      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visit_id: 7)
       visit visit_url(Visit.last)
 
       expect('11211').to appear_before('11221')
@@ -80,8 +80,8 @@ RSpec.describe "User Creates Visit", type: :feature do
     end
 
     scenario "when two hosts have been contacted, once each" do
-      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visitor_id: 7)
-      FactoryGirl.create(:contact, hosting_id: Hosting.last.id - 1, visitor_id: 7)
+      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visit_id: 7)
+      FactoryGirl.create(:contact, hosting_id: Hosting.last.id - 1, visit_id: 7)
       visit visit_url(Visit.last)
 
       expect('11221').to appear_before('10012')
@@ -89,9 +89,9 @@ RSpec.describe "User Creates Visit", type: :feature do
     end
 
     scenario "when two hosts have been contacted a different amount of times" do
-      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visitor_id: 7)
-      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visitor_id: 8)
-      FactoryGirl.create(:contact, hosting_id: Hosting.last.id - 1, visitor_id: 7)
+      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visit_id: 7)
+      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visit_id: 8)
+      FactoryGirl.create(:contact, hosting_id: Hosting.last.id - 1, visit_id: 7)
       visit visit_url(Visit.last)
 
       expect('11221').to appear_before('11211')
