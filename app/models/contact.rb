@@ -1,8 +1,11 @@
 class Contact < ActiveRecord::Base
-  validates :visitor_id, :hosting_id, presence: true
-  validates :visitor_id, uniqueness: { scope: :hosting_id }
+  validates :visit_id, :hosting_id, presence: true
+  validates :visit_id, uniqueness: {
+    scope: :hosting_id,
+    message: "Host has already been contacted for this visit."
+  }
 
-  belongs_to :visitor, class_name: "User", foreign_key: :visitor_id
+  belongs_to :visit
   belongs_to :hosting
 
   after_create :increment_hosting_contact_counter

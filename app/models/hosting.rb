@@ -17,8 +17,8 @@ class Hosting < ActiveRecord::Base
     host.first_name
   end
 
-  def was_contacted_by?(visitor)
-    Contact.exists?(visitor_id: visitor.id, hosting_id: self.id)
+  def was_contacted_for?(visit)
+    Contact.exists?(visit_id: visit.id, hosting_id: self.id)
   end
 
   private

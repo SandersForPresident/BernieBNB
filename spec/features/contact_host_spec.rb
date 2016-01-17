@@ -45,4 +45,32 @@ RSpec.describe "Visitor contacts host", type: :feature do
     expect(open_last_email).to have_subject("Bernie BNB - You've been contacted!")
     expect(Hosting.last.contact_count).to eq(1)
   end
+
+  scenario 'Visitor tries to contact host twice for same visit' do
+    FactoryGirl.create(:user, first_name: 'Jane')
+    FactoryGirl.create(:hosting,
+      host_id: User.last.id, zipcode: '11221', max_guests: 10)
+    register_new_facebook_user
+    create_visit
+    click_link("Contact")
+    click_link("Send my contact info")
+
+    expect(page).to have_content("Contacted")
+  end
+
+  scenario 'Visitor contacts a host again for a second visit' do
+    FactoryGirl.create(:user, first_name: 'Jane')
+    FactoryGirl.create(:hosting,
+      host_id: User.last.id, zipcode: '11221', max_guests: 10)
+    register_new_facebook_user
+    create_visit
+    click_link("Contact")
+    click_link("Send my contact info")
+
+    visit user_url(User.last)
+    create_visit
+    click_link("Contact")
+    click_link("Send my contact info")
+    expect(page).to have_content("Successfully contacted Jane")
+  end
 end

@@ -10,6 +10,8 @@ class Visit < ActiveRecord::Base
   geocoded_by :zipcode
   after_validation :geocode
 
+  has_many :contacts
+
   acts_as_paranoid
 
   def validate_start_date_is_not_in_the_past
