@@ -69,8 +69,8 @@ RSpec.describe Visit, type: :model do
   it "valid if end date equals start date" do
     expect(FactoryGirl.create(:visit,
                               zipcode: "11211",
-                              start_date: Date.today,
-                              end_date: Date.today)
+                              start_date: Time.zone.now.to_date,
+                              end_date: Time.zone.now.to_date)
     ).to be_valid
   end
 
