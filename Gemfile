@@ -30,7 +30,7 @@ gem 'jquery-ui-rails'
 gem 'haml'
 gem 'travis'
 gem 'bugsnag'
-gem 'orderly', github: 'jmondo/orderly'
+gem 'orderly'
 
 gem 'puma-rails'
 

@@ -40,7 +40,7 @@ RSpec.describe "User creates Host", type: :feature do
     expect(page).to have_content t('errors.messages.invalid_zipcode')
   end
 
-  scenario 'creating a new hosting with the wrong zipcode' do
+  scenario 'creating a new hosting with the wrong zip code' do
     click_link "I Can Host"
     fill_in "Where are you located?", with: '1121'
     click_button("Save")

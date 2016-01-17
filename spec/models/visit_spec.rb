@@ -23,26 +23,26 @@ RSpec.describe Visit, type: :model do
 
   end
 
-  it "has a valid factory - valid zipcode - 5 digits" do
+  it "has a valid factory - valid zip code - 5 digits" do
     expect(FactoryGirl.create(:visit, zipcode: "11211")).to be_valid
   end
 
-  it "is invalid without a zipcode - 0 digits" do
+  it "is invalid without a zip code - 0 digits" do
     expect { FactoryGirl.create(:visit, zipcode: nil) }
       .to raise_error ActiveRecord::RecordInvalid
   end
 
-  it "is invalid with bad zipcode - < 5 digits" do
+  it "is invalid with bad zip code - < 5 digits" do
     expect { FactoryGirl.create(:visit, zipcode: "9131") }
       .to raise_error ActiveRecord::RecordInvalid
   end
 
-  it "is invalid with bad zipcode - > 5 digits" do
+  it "is invalid with bad zip code - > 5 digits" do
     expect { FactoryGirl.create(:visit, zipcode: "654321") }
       .to raise_error ActiveRecord::RecordInvalid
   end
 
-  it "is invalid with bad zipcode - non-digits" do
+  it "is invalid with bad zip code - non-digits" do
     expect { FactoryGirl.create(:visit, zipcode: "ABC") }
       .to raise_error ActiveRecord::RecordInvalid
   end
@@ -67,6 +67,7 @@ RSpec.describe Visit, type: :model do
   end
 
   it "valid if end date equals start date" do
+    skip "#195"
     expect(FactoryGirl.create(:visit,
                               zipcode: "11211",
                               start_date: Date.today,
@@ -75,7 +76,7 @@ RSpec.describe Visit, type: :model do
   end
 
   it "should be valid if visit's start_date > app start_date" do
-    skip
+    skip "#195"
     new_time = Time.now + 12.hours
     Timecop.travel(new_time)
     expect(FactoryGirl.create(:visit,
