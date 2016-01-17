@@ -86,4 +86,10 @@ RSpec.describe Visit, type: :model do
     Timecop.return
   end
 
+  it "is softly deleted" do
+    visit = FactoryGirl.create(:visit)
+    visit.destroy
+    expect(Visit.first).to be_nil
+    expect(Visit.with_deleted.first).to eq(visit)
+  end
 end

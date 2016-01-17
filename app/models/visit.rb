@@ -10,6 +10,8 @@ class Visit < ActiveRecord::Base
   geocoded_by :zipcode
   after_validation :geocode
 
+  acts_as_paranoid
+
   def validate_start_date_is_not_in_the_past
     errors.add(:start_date, :in_past) unless start_date >= Time.zone.now.beginning_of_day
   end
@@ -18,7 +20,7 @@ class Visit < ActiveRecord::Base
     available_hostings = Hosting
       .near(self, 25, order: 'contact_count, distance')
       .where("max_guests >= ?", num_travelers)
-    
+
     if Rails.env.production? or Rails.env.staging?
       # :nocov:
       return available_hostings.where("host_id != (?)", self.user_id)
