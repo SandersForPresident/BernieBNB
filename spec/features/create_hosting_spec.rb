@@ -52,6 +52,7 @@ RSpec.describe "User creates Host", type: :feature do
     expect(page).to have_content("11211 (10 guests)")
     delete_host
     expect(page).not_to have_content("11211 (10 guests)")
+    expect(Hosting.with_deleted.last).to_not be_nil
   end
 
   scenario "updating a hosting guest number" do
