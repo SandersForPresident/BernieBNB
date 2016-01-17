@@ -67,7 +67,6 @@ RSpec.describe Visit, type: :model do
   end
 
   it "valid if end date equals start date" do
-    skip "#195"
     expect(FactoryGirl.create(:visit,
                               zipcode: "11211",
                               start_date: Time.zone.now.to_date,
