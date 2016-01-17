@@ -55,4 +55,11 @@ RSpec.describe Hosting, type: :model do
   it "is valid without a comment" do
     expect(FactoryGirl.create(:hosting, comment: nil))
   end
+
+  it "is softly deleted" do
+    hosting = FactoryGirl.create(:hosting)
+    hosting.destroy
+    expect(Hosting.first).to be_nil
+    expect(Hosting.with_deleted.first).to eq(hosting)
+  end
 end

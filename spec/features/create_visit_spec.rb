@@ -131,6 +131,7 @@ RSpec.describe "User Creates Visit", type: :feature do
     click_link 'Delete'
 
     expect(page).to_not have_content('11211')
+    expect(Visit.with_deleted.last).to_not be_nil
   end
 
   scenario "new host becomes available for visit" do

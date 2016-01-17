@@ -2,8 +2,12 @@ class Hosting < ActiveRecord::Base
   validates :zipcode, :max_guests, presence: true
   validates :zipcode, zipcode: { country_code: :es }
   validates :comment, length: { maximum: 140 }
+
   geocoded_by :zipcode
   after_validation :geocode
+
+  acts_as_paranoid
+
   after_create :notify_nearby_visitors
 
   belongs_to :host, class_name: "User", foreign_key: :host_id
