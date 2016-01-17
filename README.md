@@ -17,26 +17,34 @@ We would love your help.
 [![](http://img.shields.io/gittip/berniebnbinfo.svg)](https://www.gittip.com/berniebnbinfo/)
 
 ### Steps
-  1. Set up Facebook Developer account at https://developers.facebook.com then get your FACEBOOK_KEY and FACEBOOK_SECRET.
-  2. Set up Google Developer account at https://developers.google.com/ and get your GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET.
-  3. Create Bing Maps key (BING_GEOCODE_ID) at https://msdn.microsoft.com/en-us/library/ff428642.aspx
+  1. Set up Facebook Developer account at https://developers.facebook.com
+     then get your FACEBOOK_KEY and FACEBOOK_SECRET.
+    * Here is a good How-To article:
+      * https://goldplugins.com/documentation/wp-social-pro-documentation/how-to-get-an-app-id-and-secret-key-from-facebook/
+  2. Set up Google Developer account at https://developers.google.com/
+     and get your GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET.
+    * Here are two good How-To articles:
+      * https://richonrails.com/articles/google-authentication-in-ruby-on-rails/
+      * http://wlowry88.github.io/blog/2014/08/02/google-contacts-api-with-oauth-in-rails/
+  3. Create Bing Maps key (BING_GEOCODE_ID) at
+     https://msdn.microsoft.com/en-us/library/ff428642.aspx
   4. Based on figaro gem, create a config/application.yml file and set values.
 
-> USERNAME: TBD - Used in config/database.yml file.
+> USERNAME: TBD # Used in config/database.yml file.
 
-> PASSWORD: TBD - Used in config/database.yml file.
+> PASSWORD: TBD # Used in config/database.yml file.
 
 > IP: http://localhost:3000/
 
-> FACEBOOK_KEY: "TBD" - Used in config/initializers/omniauth.rb file.
+> FACEBOOK_KEY: TBD # Used in config/initializers/omniauth.rb file.
 
-> FACEBOOK_SECRET: TBD - Used in config/initializers/omniauth.rb file.
+> FACEBOOK_SECRET: TBD # Used in config/initializers/omniauth.rb file.
 
-> GOOGLE_CLIENT_ID: "TBD" - Used in config/initializers/omniauth.rb file.
+> GOOGLE_CLIENT_ID: TBD # Used in config/initializers/omniauth.rb file.
 
-> GOOGLE_CLIENT_SECRET: TBD - Used in config/initializers/omniauth.rb file.
+> GOOGLE_CLIENT_SECRET: TBD # Used in config/initializers/omniauth.rb file.
 
-> BING_GEOCODE_ID: TBD - Used in config/initializers/geocoder.rb file.
+> BING_GEOCODE_ID: TBD # Used in config/initializers/geocoder.rb file.
 
   4. To set up development environment, do the following:
     * Fork the repo at https://github.com/SandersForPresident/BernieBNB
