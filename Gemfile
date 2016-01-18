@@ -32,7 +32,7 @@ gem 'high_voltage'
 gem 'travis'
 gem 'bugsnag'
 gem 'orderly'
-gem 'acts_as_paranoid', git: 'https://github.com/ActsAsParanoid/acts_as_paranoid.git'
+gem 'acts_as_paranoid', '0.5.0.beta2' # TO GET LATEST RELEASED.
 
 gem 'puma-rails'
 
