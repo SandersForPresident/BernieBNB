@@ -27,7 +27,7 @@ class Hosting < ActiveRecord::Base
     nearby_visits = Visit
       .near(self, 25, order: "distance")
       .where("num_travelers <= ?", max_guests)
-      .where("start_date >= ?", Date.today)
+      .where("start_date >= ?", Time.zone.today)
 
     # :nocov:
     if Rails.env.production? or  Rails.env.staging?

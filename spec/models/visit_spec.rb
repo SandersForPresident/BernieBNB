@@ -61,8 +61,8 @@ RSpec.describe Visit, type: :model do
     expect do
       FactoryGirl.create(:visit,
                          zipcode: "11211",
-                         start_date: Date.today + 5.days,
-                         end_date: Date.today)
+                         start_date: Time.zone.today + 5.days,
+                         end_date: Time.zone.today)
     end.to raise_error ActiveRecord::RecordInvalid
   end
 
@@ -75,13 +75,12 @@ RSpec.describe Visit, type: :model do
   end
 
   it "should be valid if visit's start_date > app start_date" do
-    skip "#195"
-    new_time = Time.now + 12.hours
+    new_time = Time.zone.now + 12.hours
     Timecop.travel(new_time)
     expect(FactoryGirl.create(:visit,
                               zipcode: "11211",
-                              start_date: Date.today,
-                              end_date: Date.today)
+                              start_date: Time.zone.today,
+                              end_date: Time.zone.today)
     ).to be_valid
     Timecop.return
   end
