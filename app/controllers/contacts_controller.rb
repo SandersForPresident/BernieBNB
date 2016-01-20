@@ -6,6 +6,7 @@ class ContactsController < ApplicationController
 
     if @contact.save
       UserMailer.contact_host_email(visit, hosting).deliver_now
+      hosting.increment(:contact_count).save
       redirect_to visit_url(visit),
         notice: "Successfully contacted #{hosting.first_name}!"
     else
