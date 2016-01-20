@@ -7,14 +7,4 @@ class Contact < ActiveRecord::Base
 
   belongs_to :visit
   belongs_to :hosting
-
-  after_create :increment_hosting_contact_counter
-
-  private
-
-  def increment_hosting_contact_counter
-    if Hosting.exists?(id: hosting_id)
-      Hosting.find(hosting_id).increment(:contact_count).save
-    end
-  end
 end
