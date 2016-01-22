@@ -3,15 +3,25 @@ class Hosting < ActiveRecord::Base
   validates :zipcode, zipcode: { country_code: :es }
   validates :comment, length: { maximum: 140 }
 
-  geocoded_by :zipcode
-  after_validation :geocode
-
   acts_as_paranoid
-
-  after_create :notify_nearby_visitors
 
   belongs_to :host, class_name: "User", foreign_key: :host_id
   has_many :contacts
+
+  after_create :notify_nearby_visitors
+
+  after_validation :geocode
+
+  geocoded_by :zipcode do |visit, results|
+    if geo = results.first
+      visit.city = geo.city
+      visit.state = geo.state
+      visit.latitude = geo.latitude
+      visit.longitude = geo.longitude
+    else
+      visit.errors.add(:base, "Something went wrong when geocoding. Try again.")
+    end
+  end
 
   def first_name
     host.first_name

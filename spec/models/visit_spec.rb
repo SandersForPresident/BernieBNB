@@ -6,7 +6,7 @@ RSpec.describe Visit, type: :model do
     Geocoder.configure(:lookup => :test)
 
     Geocoder::Lookup::Test.add_stub(
-      "11211", [{'latitude' => 40.7093358, 'longitude' => -73.9565551}]
+      "11211", [{'latitude' => 40.7093358, 'longitude' => -73.9565551, 'city' => 'Brooklyn', 'state' => 'New York'}]
     )
 
     Geocoder::Lookup::Test.add_stub(
@@ -21,6 +21,12 @@ RSpec.describe Visit, type: :model do
       "ABC", [{'latitude' => 0, 'longitude' => 0}]
     )
 
+  end
+
+
+  it "adds city, state, latitude and longitude after validation" do
+    expect(FactoryGirl.create(:visit).city).to eq('Brooklyn')
+    expect(FactoryGirl.create(:visit).state).to eq('New York')
   end
 
   it "has a valid factory - valid zip code - 5 digits" do
