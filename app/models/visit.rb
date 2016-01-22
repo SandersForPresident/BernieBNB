@@ -6,11 +6,21 @@ class Visit < ActiveRecord::Base
   validates :zipcode, zipcode: { country_code: :es }
 
   belongs_to :user
+  has_many :contacts
 
-  geocoded_by :zipcode
   after_validation :geocode
 
-  has_many :contacts
+  geocoded_by :zipcode do |visit, results|
+    if geo = results.first
+      visit.city = geo.city
+      visit.state = geo.state
+      visit.latitude = geo.latitude
+      visit.longitude = geo.longitude
+    else
+      visit.errors.add(:base, "Something went wrong when geocoding. Try again.")
+    end
+  end
+
 
   acts_as_paranoid
 
