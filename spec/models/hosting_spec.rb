@@ -8,7 +8,7 @@ RSpec.describe Hosting, type: :model do
     Geocoder.configure(:lookup => :test)
 
     Geocoder::Lookup::Test.add_stub(
-      "11211", [{'latitude' => 40.7093358, 'longitude' => -73.9565551}]
+      "11211", [{'latitude' => 40.7093358, 'longitude' => -73.9565551, 'city' => 'Brooklyn', 'state' => 'New York'}]
     )
 
     Geocoder::Lookup::Test.add_stub(
@@ -26,6 +26,11 @@ RSpec.describe Hosting, type: :model do
 
   it "has a valid factory - valid zip code - 5 digits" do
     expect(FactoryGirl.create(:hosting, zipcode: "11211")).to be_valid
+  end
+
+  it "adds city, state, latitude and longitude after validation" do
+    expect(FactoryGirl.create(:hosting).city).to eq('Brooklyn')
+    expect(FactoryGirl.create(:hosting).state).to eq('New York')
   end
 
   it "is invalid without a zip code - 0 digits" do
