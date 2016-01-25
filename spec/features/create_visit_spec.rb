@@ -67,15 +67,14 @@ RSpec.describe "User Creates Visit", type: :feature do
     end
 
     scenario "when the furthest host has been contacted" do
-      FactoryGirl.create(:contact, hosting_id: Hosting.first.id)
+      Hosting.first.increment(:contact_count).save
 
       expect('10012').to appear_before('11211')
       expect('11211').to appear_before('11221')
     end
 
     scenario "when the nearest host has been contacted" do
-      skip "Remove below hard-code visit_id"
-      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visit_id: 7)
+      Hosting.last.increment(:contact_count).save
       visit visit_url(Visit.last)
 
       expect('11211').to appear_before('11221')
@@ -83,9 +82,8 @@ RSpec.describe "User Creates Visit", type: :feature do
     end
 
     scenario "when two hosts have been contacted, once each" do
-      skip "Remove below hard-code visit_id"
-      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visit_id: 7)
-      FactoryGirl.create(:contact, hosting_id: Hosting.last.id - 1, visit_id: 7)
+      Hosting.last.increment(:contact_count).save
+      Hosting.find_by(zipcode: '11211').increment(:contact_count).save
       visit visit_url(Visit.last)
 
       expect('11221').to appear_before('10012')
@@ -93,10 +91,8 @@ RSpec.describe "User Creates Visit", type: :feature do
     end
 
     scenario "when two hosts have been contacted a different amount of times" do
-      skip "Remove below hard-code visit_id"
-      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visit_id: 7)
-      FactoryGirl.create(:contact, hosting_id: Hosting.last.id, visit_id: 8)
-      FactoryGirl.create(:contact, hosting_id: Hosting.last.id - 1, visit_id: 7)
+      Hosting.last.increment(:contact_count, 2).save
+      Hosting.find_by(zipcode: '11211').increment(:contact_count).save
       visit visit_url(Visit.last)
 
       expect('11221').to appear_before('11211')
