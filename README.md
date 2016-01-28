@@ -36,7 +36,7 @@ We would love your help.
 
 > IP: http://localhost:3000/
 
-> MAILER_URL: http://localhost:3000/
+> MAILER_URL: localhost:3000/
 
 > FACEBOOK_KEY: TBD # Used in config/initializers/omniauth.rb file.
 
