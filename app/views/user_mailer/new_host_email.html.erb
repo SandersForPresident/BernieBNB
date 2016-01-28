@@ -2,4 +2,6 @@ Hi <%= @visitor.first_name %>,
 <br><br>
 <%= @host.first_name %> just signed up with BernieBNB as a host <%= @hosting.distance_from(@visit).round(1) %> mi. from <%= @visit.zipcode %>.
 <br><br>
-Contact <%= @host.first_name %> by clicking this link: <%= link_to "Contact #{@host.first_name}", "#{ENV['MAILER_URL']}/contacts/email/#{ @visit.id }/#{ @hosting.id }" %>
+Do NOT reply to this email! Contact <%= @host.first_name %> by clicking this link: <%= link_to "Contact #{@host.first_name}", "#{ENV['MAILER_URL']}/contacts/email/#{ @visit.id }/#{ @hosting.id }" %>
+<br><br>
+If you have already found a host or want to stop receiving emails, update your search at: <%= link_to "Your Visit Page", edit_visit_url(@visit) %>
