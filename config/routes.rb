@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   match "/signout" => "sessions#destroy", :as => :signout, via: [:delete]
   match "/auth/failure" => "home#sign_in", via: [:get, :post]
   match "/contacts/:visit_id/:hosting_id" => "contacts#create", via: [:post]
+  match "/contacts/email/:visit_id/:hosting_id" => "contacts#create_by_email", via: [:get]
 
   get 'privacy_policy', to: 'policies#facebook'
 

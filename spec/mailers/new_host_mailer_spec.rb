@@ -53,7 +53,7 @@ RSpec.describe UserMailer, type: :mailer do
   end
 
   it 'should contain a results link' do
-    expect(@email).to have_body_text(/Bernie BNB - Results for #{@visit.zipcode}/)
+    expect(@email).to have_body_text(/Contact #{@host.first_name}/)
   end
 
 
