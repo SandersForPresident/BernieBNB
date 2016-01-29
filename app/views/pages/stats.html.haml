@@ -1,33 +1,14 @@
-%h1 BBNB Stats
+%h1 Bernie BNB Stats
 
-%h2 Users: ####
-#alist
-  %ol{:type => "circle"}
-    - (1..3).each do |n|
-      %li="#### City+State - Zip Code"+n.to_s 
+#ul
+  %li
+    %p Users: #{User.count}
 
-%h2 Hosts: ####
-#alist
-  %ol{:type => "circle"}
-    - (1..3).each do |n|
-      %li="#### City+State - Zip Code"+n.to_s 
+  %li
+    %p Hostings: #{Hosting.count}
 
-%h2 Contacts: ####
-#alist
-  %ol{:type => "circle"}
-    - (1..3).each do |n|
-      %li="#### City+State - Zip Code"+n.to_s 
+  %li
+    %p Contacts: #{Contact.count}
 
-%h2 Visits: ####
-#alist
-  %ol{:type => "circle"}
-    - (1..3).each do |n|
-      %li="#### City+State - Zip Code"+n.to_s 
- 
-%h2 LEGEND:
-#alist
-  %ol{:type => "circle"}
-    %li
-      The url will be http://www.berniebnb.com/stats and you must log in and set up profile before you use this page.
-    %li
-      The "####" above will turn into frequencies for the "City+State - Zip Code" combinations.
+  %li
+    %p Visits: #{Visit.count}
