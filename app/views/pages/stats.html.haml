@@ -6,9 +6,11 @@
 
   %li
     %p Hostings: #{Hosting.count}
+    %p Combos: #{Hosting.group(:state, :city, :zipcode).count}
 
   %li
     %p Contacts: #{Contact.count}
 
   %li
     %p Visits: #{Visit.count}
+    %p Combos: #{Visit.group(:state, :city, :zipcode).count}
