@@ -1,4 +1,6 @@
 class HostingsController < ApplicationController
+  before_action :ensure_current_user_is_host, only: [:edit, :update, :destroy]
+
   def new
     @hosting ||= Hosting.new(host_id: params[:user_id])
   end
@@ -17,9 +19,7 @@ class HostingsController < ApplicationController
   end
 
   def update
-    @hosting = Hosting.find(params[:id])
-
-    if @hosting.host_id == current_user.id && @hosting.update(hosting_params)
+    if @hosting.update(hosting_params)
       redirect_to user_url(current_user),
         notice: "Hosting updated! We will email you when a nearby traveler would like to stay with you."
     else
@@ -29,13 +29,10 @@ class HostingsController < ApplicationController
   end
 
   def edit
-    @hosting = Hosting.find(params[:id])
   end
 
   def destroy
-    @hosting = Hosting.find(params[:id])
-
-    if @hosting.host_id == current_user.id && @hosting.destroy
+    if @hosting.destroy
       redirect_to user_url(current_user), notice: "Hosting canceled"
     else
       flash.now[:errors] = @hosting.errors.full_messages
@@ -49,5 +46,10 @@ class HostingsController < ApplicationController
     params
       .require(:hosting)
       .permit(:zipcode, :max_guests, :comment)
+  end
+
+  def ensure_current_user_is_host
+    @hosting = Hosting.find(params[:id])
+    redirect_to user_url(current_user) unless @hosting.host_id == current_user.id
   end
 end
