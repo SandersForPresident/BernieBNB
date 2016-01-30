@@ -1,4 +1,6 @@
 class VisitsController < ApplicationController
+  before_action :ensure_current_user_is_visitor, only: [:show, :edit, :update, :destroy]
+
   def new
     @visit ||= Visit.new(user_id: params[:user_id])
   end
@@ -16,17 +18,13 @@ class VisitsController < ApplicationController
   end
 
   def show
-    @visit = Visit.find(params[:id])
   end
 
   def edit
-    @visit ||= Visit.find(params[:id])
   end
 
   def update
-    @visit = Visit.find(params[:id])
-
-    if @visit.user_id == current_user.id && @visit.update(visit_params)
+    if @visit.update(visit_params)
       redirect_to visit_url(@visit), notice: "Visit updated"
     else
       flash.now[:errors] = @visit.errors.full_messages
@@ -35,9 +33,7 @@ class VisitsController < ApplicationController
   end
 
   def destroy
-    @visit = Visit.find(params[:id])
-
-    if @visit.user_id == current_user.id && @visit.destroy
+    if @visit.destroy
       redirect_to user_url(current_user), notice: "Visit canceled"
     else
       flash.now[:errors] = @visit.errors.full_messages
@@ -51,5 +47,10 @@ class VisitsController < ApplicationController
     params
       .require(:visit)
       .permit(:zipcode, :num_travelers, :start_date, :end_date)
+  end
+
+  def ensure_current_user_is_visitor
+    @visit = Visit.find(params[:id])
+    redirect_to user_url(current_user) unless @visit.user_id == current_user.id
   end
 end
