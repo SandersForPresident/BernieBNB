@@ -1,5 +1,5 @@
 class Hosting < ActiveRecord::Base
-  validates :zipcode, :max_guests, presence: true
+  validates :max_guests, presence: true
   validates :zipcode, zipcode: { country_code: :es }
   validates :comment, length: { maximum: 140 }
 
@@ -19,7 +19,7 @@ class Hosting < ActiveRecord::Base
       hosting.latitude = geo.latitude
       hosting.longitude = geo.longitude
     else
-      hosting.errors.add(:base, "Unknown Zip Code")
+      hosting.errors.add(:base, "Unknown Zip Code") unless hosting.zipcode.nil?
     end
   end
 
