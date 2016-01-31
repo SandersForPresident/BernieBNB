@@ -17,7 +17,7 @@ class Visit < ActiveRecord::Base
       visit.latitude = geo.latitude
       visit.longitude = geo.longitude
     else
-      visit.errors.add(:base, "Something went wrong when geocoding. Try again.")
+      visit.errors.add(:base, "Unknown Zip Code")
     end
   end
 

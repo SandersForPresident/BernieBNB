@@ -30,8 +30,8 @@ en:
     phonenumber: What's your phone number?
   errors:
     messages:
-      invalid_zipcode: Zipcode need to be 5 digits.
-      blank_zipcode: Zipcode can't be blank
+      invalid_zipcode: needs to be 5 digits.
+      blank_zipcode: can't be blank
       blankfirstname: First name can't be blank
   activerecord:
     errors:
