@@ -36,7 +36,6 @@ RSpec.describe "User creates Host", type: :feature do
   scenario "creating a new hosting with blank fields" do
     click_link "I Can Host"
     click_button("Save")
-    expect(page).to have_content t('errors.messages.blank_zipcode')
     expect(page).to have_content t('errors.messages.invalid_zipcode')
   end
 
