@@ -10,7 +10,7 @@ class Hosting < ActiveRecord::Base
 
   after_create :notify_nearby_visitors
 
-  after_validation :geocode
+  before_save :geocode
 
   geocoded_by :zipcode do |visit, results|
     if geo = results.first
