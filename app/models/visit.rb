@@ -8,7 +8,7 @@ class Visit < ActiveRecord::Base
   belongs_to :user
   has_many :contacts
 
-  after_validation :geocode
+  before_save :geocode
 
   geocoded_by :zipcode do |visit, results|
     if geo = results.first
