@@ -17,7 +17,7 @@ class Visit < ActiveRecord::Base
       visit.latitude = geo.latitude
       visit.longitude = geo.longitude
     else
-      visit.errors.add(:base, "Unknown Zip Code")
+      visit.errors.add(:base, "Unknown Zip Code") unless visit.zipcode.nil?
     end
   end
 

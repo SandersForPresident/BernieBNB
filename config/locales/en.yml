@@ -31,7 +31,6 @@ en:
   errors:
     messages:
       invalid_zipcode: needs to be 5 digits.
-      blank_zipcode: can't be blank
       blankfirstname: First name can't be blank
   activerecord:
     errors:
