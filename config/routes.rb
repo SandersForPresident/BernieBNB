@@ -19,8 +19,8 @@ Rails.application.routes.draw do
       get :confirm_email
     end
 
-    resources :visits, only: [:new, :index]
-    resources :hostings, only: [:new, :index]
+    resources :visits, only: [:new]
+    resources :hostings, only: [:new]
   end
 
   # FEEDBACK
