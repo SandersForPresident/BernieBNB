@@ -19,7 +19,7 @@ class Hosting < ActiveRecord::Base
       hosting.latitude = geo.latitude
       hosting.longitude = geo.longitude
     else
-      hosting.errors.add(:base, "Something went wrong when geocoding. Try again.")
+      hosting.errors.add(:base, "Unknown Zip Code")
     end
   end
 
