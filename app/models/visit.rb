@@ -8,7 +8,7 @@ class Visit < ActiveRecord::Base
   belongs_to :user
   has_many :contacts
 
-  before_save :geocode
+  after_validation :geocode
 
   geocoded_by :zipcode do |visit, results|
     if geo = results.first
@@ -20,7 +20,6 @@ class Visit < ActiveRecord::Base
       visit.errors.add(:base, "Something went wrong when geocoding. Try again.")
     end
   end
-
 
   acts_as_paranoid
 

@@ -10,16 +10,16 @@ class Hosting < ActiveRecord::Base
 
   after_create :notify_nearby_visitors
 
-  before_save :geocode
+  after_validation :geocode
 
-  geocoded_by :zipcode do |visit, results|
+  geocoded_by :zipcode do |hosting, results|
     if geo = results.first
-      visit.city = geo.city
-      visit.state = geo.state
-      visit.latitude = geo.latitude
-      visit.longitude = geo.longitude
+      hosting.city = geo.city
+      hosting.state = geo.state
+      hosting.latitude = geo.latitude
+      hosting.longitude = geo.longitude
     else
-      visit.errors.add(:base, "Something went wrong when geocoding. Try again.")
+      hosting.errors.add(:base, "Something went wrong when geocoding. Try again.")
     end
   end
 
