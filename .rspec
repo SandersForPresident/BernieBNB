@@ -1,4 +1,4 @@
 --color
 --require spec_helper
 --format documentation
-# DO NOT USE:--order rand
+#FIXME: --order rand
