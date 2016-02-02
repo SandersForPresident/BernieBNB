@@ -18,30 +18,31 @@ RSpec.describe "Visitor contacts host", type: :feature do
 
   scenario 'Visitor is notified when new host is available' do
     register_new_facebook_user
+    user = User.last 
     create_visit
 
     expect(page).to have_content('Nobody here, yet.')
 
-    FactoryGirl.create(:user, first_name: 'Jane')
+    host_user = FactoryGirl.create(:user, first_name: 'Jane')
     FactoryGirl.create(:hosting,
-      host_id: User.last.id, zipcode: '11221', max_guests: 10)
+      host_id: host_user.id, zipcode: '11221', max_guests: 10)
 
-    expect(last_email_sent).to deliver_to(User.first.email)
+    expect(last_email_sent).to deliver_to(user.email)
     expect(open_last_email).to have_subject('Bernie BNB - New host near 11211!')
     expect(open_last_email).to have_content('Jane just signed up')
   end
 
   scenario 'Visitor finds and contacts a host' do
-    FactoryGirl.create(:user, first_name: 'Jane')
+    user = FactoryGirl.create(:user, first_name: 'Jane')
     FactoryGirl.create(:hosting,
-      host_id: User.last.id, zipcode: '11221', max_guests: 10)
+      host_id: user.id, zipcode: '11221', max_guests: 10)
     register_new_facebook_user
     create_visit
     click_link("Contact")
     click_link("Send my contact info")
 
     expect(page).to have_content("Successfully contacted Jane")
-    expect(last_email_sent).to deliver_to(User.first.email)
+    expect(last_email_sent).to deliver_to(user.email)
     expect(open_last_email).to have_subject("Bernie BNB - You've been contacted!")
     expect(Hosting.last.contact_count).to eq(1)
   end
