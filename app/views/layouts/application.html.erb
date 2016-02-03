@@ -4,16 +4,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>BernieBNB</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-  <%= favicon_link_tag '/favicon.ico' %>
+
   <meta property="og:title" content="BernieBNB.com" />
   <meta property="og:description" content="Home sharing for Bernie volunteers! Sign up as a host or traveler." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="http://www.berniebnb.com" />
   <meta property="og:image" content="<%= image_url 'bernie-bnb-logo.png' %>" />
+
+  <title>BernieBNB</title>
+  <%= favicon_link_tag '/favicon.ico' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
 </head>
 
 <body id="<%= params[:controller] %>" class="<%= params[:action] %>">
