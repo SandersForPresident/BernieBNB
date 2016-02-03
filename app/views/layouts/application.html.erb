@@ -6,11 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <%= csrf_meta_tags %>
 
+  <% description = "Home sharing for Bernie Sanders supporters. Helping connect volunteers out on the campaign trail with a place to stay. Sign up today as either host or traveler!" %>
+
   <meta property="og:title" content="BernieBNB.com" />
-  <meta property="og:description" content="Home sharing for Bernie Sanders supporters. Helping connect volunteers out on the campaign trail with a place to stay. Sign up today as either host or traveler!" />
+  <meta property="og:description" content="<%= description %>" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="http://www.berniebnb.com" />
   <meta property="og:image" content="<%= image_url 'bernie-bnb-logo.png' %>" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:description" content="<%= description %>" />
 
   <title>BernieBNB</title>
   <%= favicon_link_tag '/favicon.ico' %>
