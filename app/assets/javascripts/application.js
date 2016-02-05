@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require jquery-ui/accordion
+
+//= require facebook
+
 //= require_self
 //= require_tree .
 
