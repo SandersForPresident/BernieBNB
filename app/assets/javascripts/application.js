@@ -16,6 +16,7 @@
 //= require jquery-ui/accordion
 
 //= require facebook
+//= require twitter
 
 //= require_self
 //= require_tree .
