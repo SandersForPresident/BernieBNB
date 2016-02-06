@@ -51,7 +51,7 @@ module FeatureTestHelper
   end
 
   def delete_host
-    click_link "11211 (10 guests)"
+    click_link "Brooklyn, NY (10 guests)"
     click_link "Delete"
   end
 end
