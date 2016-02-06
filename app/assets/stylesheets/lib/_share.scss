@@ -1,0 +1,26 @@
+.share {
+
+  .btn-share {
+    border: none;
+    color: white;
+    display: inline-block;
+    font-size: .8em;
+    line-height: 2em;
+    padding: .2em .7em .3em;
+    margin: .5em .2em;
+    text-decoration: none;
+    text-transform: uppercase;
+    .fa {
+      margin-right: .3em;
+      width: 1em;
+    }
+  }
+
+  @mixin social-button($color) {
+    background: $color;
+    &:hover { background: darken($color, 5%); }
+  }
+
+  .facebook-share { @include social-button(#3a5795); }
+  .twitter-share { @include social-button(#55acee); }
+}
