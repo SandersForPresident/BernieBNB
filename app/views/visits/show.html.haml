@@ -4,7 +4,7 @@
     = render 'empty_visits'
   - else
     %header
-      %h1.hosts-heading Hosts near #{ @visit.zipcode }
+      %h1.hosts-heading Hosts near #{ @visit.city || @visit.zipcode }
       %span Contact any good matches below
     %div.panel-group#accordion{ "role" => 'tablist', "aria-multiselectable" => 'true' }
       = render "hosts", visit: @visit

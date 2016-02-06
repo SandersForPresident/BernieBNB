@@ -19,7 +19,7 @@
           %li
             %h2 #{ host_name }
           %li
-            %span #{ hosting.zipcode } - #{ hosting.distance.round(1) } miles
+            %span #{ hosting.city || hosting.zipcode } - #{ hosting.distance.round(1) } miles
           %li
             %small Space for #{ hosting.max_guests }
       %a{ href: "##{ tab_id }",

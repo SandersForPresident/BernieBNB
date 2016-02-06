@@ -1,6 +1,11 @@
 Hi <%= @visitor.first_name %>,
 
-<%= @host.first_name %> just signed up with BernieBNB as a host <%= @hosting.distance_from(@visit).round(1) %> mi. from <%= @visit.zipcode %>.
+<%= @host.first_name %> just signed up with BernieBNB as a host <%= @hosting.distance_from(@visit).round(1) %> mi. from <%= "#{@visit.city}, #{@visit.state}" || @visit.zipcode %>.
+
+<% if @hosting.comment %>
+  Message from <%= @host.first_name %>:
+  <%= @hosting.comment %>
+<% end %>
 
 Do NOT reply to this email! Send your contact info here: <%= visit_url(@visit) %>
 

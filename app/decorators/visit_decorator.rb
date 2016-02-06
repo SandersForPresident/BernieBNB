@@ -3,10 +3,8 @@ class VisitDecorator < Draper::Decorator
   delegate_all
 
   def short_details
-    starting = start_date.strftime("%m/%d")
-    ending = end_date.strftime("%m/%d")
-
-    "#{formatted_zip} (#{start_and_end_dates})"
+    details = city? && state? ? "#{city}, #{state.to_s}" : zipcode
+    details << " (#{start_and_end_dates})"
   end
 
   def formatted_zip

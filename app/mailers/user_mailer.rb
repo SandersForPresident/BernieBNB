@@ -19,7 +19,7 @@ class UserMailer < ApplicationMailer
     @results_url = visit_url(@visit)
     mail(to: @visitor.email,
          from: "DO-NOT-REPLY@berniebnb.com",
-         subject: "Bernie BNB - New host near #{@visit.zipcode}!",
+         subject: "Bernie BNB - New host near #{@visit.city || @visit.zipcode}!",
          template_path: 'user_mailer', template_name: 'new_host_email')
   end
 
