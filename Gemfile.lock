@@ -179,7 +179,7 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    nenv (0.2.0)
+    nenv (0.3.0)
     net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
     nokogiri (1.6.7.2)
