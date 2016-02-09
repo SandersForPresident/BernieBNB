@@ -118,6 +118,11 @@ GEM
       net-http-pipeline
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gon (6.0.1)
+      actionpack (>= 3.0)
+      json
+      multi_json
+      request_store (>= 1.0)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -375,6 +380,7 @@ DEPENDENCIES
   figaro
   font-awesome-sass
   geocoder
+  gon
   guard-rspec
   haml
   high_voltage

@@ -20,6 +20,7 @@
   <meta name="twitter:description" content="<%= description %>" />
 
   <title>BernieBNB</title>
+  <%= include_gon %>
   <%= favicon_link_tag '/favicon.ico' %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
@@ -49,9 +50,5 @@
 
   <div id="fb-root"></div>
   <div id="twitter-wjs"></div>
-
-  <script type='text/javascript'>
-    window.fbId = '<%= ENV['FACEBOOK_KEY'] %>';
-  </script>
 </body>
 </html>
