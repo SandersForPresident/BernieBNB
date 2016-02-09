@@ -14,13 +14,10 @@
   <meta property="og:url" content="http://www.berniebnb.com" />
   <meta property="og:image" content="<%= image_url 'bernie-bnb-logo.png' %>" />
 
-  <meta property="fb:app_id" content="<%= ENV['FACEBOOK_KEY'] %>"/>
-
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:description" content="<%= description %>" />
 
   <title>BernieBNB</title>
-  <%= include_gon %>
   <%= favicon_link_tag '/favicon.ico' %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
@@ -50,5 +47,6 @@
 
   <div id="fb-root"></div>
   <div id="twitter-wjs"></div>
+
 </body>
 </html>
