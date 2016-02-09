@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    gon.fbId = ENV['FACEBOOK_KEY']
   end
 
   def update

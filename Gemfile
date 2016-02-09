@@ -34,7 +34,6 @@ gem 'travis'
 gem 'bugsnag'
 gem 'orderly'
 gem 'acts_as_paranoid', '0.5.0.beta2' # TO GET LATEST RELEASED.
-gem 'gon'
 
 gem 'puma-rails'
 
