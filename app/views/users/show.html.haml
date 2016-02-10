@@ -16,7 +16,9 @@
         - user.visits.each do |visit|
           %li
             = link_to edit_visit_url(visit), class: ['btn btn-default btn-block btn-lg'], role: 'button' do
-              = visit.short_details
+              = visit.location
+              .date
+                = visit.date
 
   %section.user-hostings
     %header
