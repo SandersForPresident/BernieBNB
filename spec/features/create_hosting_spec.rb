@@ -63,6 +63,14 @@ RSpec.describe "User creates Host", type: :feature do
     expect(page).to have_content("Brooklyn, NY (9 guests)")
   end
 
+  scenario "updating a hosting with invalid fields" do
+    create_host
+    click_link 'Brooklyn, NY'
+    fill_in "Where are you located?", with: ""
+    click_button "Save"
+    expect(page).to have_content t('errors.messages.invalid_zipcode')
+  end
+
   scenario "updating a hosting zip code" do
     create_host
     expect(page).to have_content("Brooklyn, NY (10 guests)")
