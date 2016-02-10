@@ -3,7 +3,7 @@ class VisitDecorator < Draper::Decorator
   delegate_all
 
   def date
-    date = "(#{start_and_end_dates})"
+    date = "#{start_and_end_dates}"
   end
 
   def location
