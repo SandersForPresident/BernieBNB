@@ -1,0 +1,16 @@
+{
+  "name": "BernieBNB",
+  "homepage": "http://berniebnb.com",
+  "version": "0.0.0",
+  "license": "MIT",
+  "authors": [
+    "Tess Baklor <cockroachbill@gmail.com>"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
