@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   match "/contacts/:visit_id/:hosting_id" => "contacts#create", via: [:post]
 
-  match "/contacts/email/:visit_id/:hosting_id" => "contacts#create_by_email", via: [:get]
+  match "/contacts/email/:visit_id/:hosting_id" => "contacts#create_by_email", as: 'contact_by_email', via: [:get]
 
   get 'privacy_policy', to: 'policies#facebook'
 
