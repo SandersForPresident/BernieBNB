@@ -18,7 +18,7 @@ RSpec.describe "Visitor contacts host", type: :feature do
 
   scenario 'Visitor is notified when new host is available' do
     register_new_facebook_user
-    user = User.last 
+    user = User.last
     create_visit
 
     expect(page).to have_content('Nobody here, yet.')
@@ -30,6 +30,21 @@ RSpec.describe "Visitor contacts host", type: :feature do
     expect(last_email_sent).to deliver_to(user.email)
     expect(open_last_email).to have_subject('Bernie BNB - New host near 11211!')
     expect(open_last_email).to have_content('Jane just signed up')
+  end
+
+  scenario 'Visitor contacts host through new host email' do
+    skip # fickleness with `open_last_email` sometimes is reading the email where a user has been contacted... ?
+    visitor = FactoryGirl.create(:user)
+    visit = FactoryGirl.create(:visit, user_id: visitor.id, zipcode: '11211')
+    host = FactoryGirl.create(:user)
+    hosting = FactoryGirl.create(:hosting, host_id: host.id, zipcode: '11221')
+
+    expect(open_last_email).to have_content("Contact #{host.first_name}")
+
+    visit(contact_by_email_url(visit, hosting))
+
+    expect(page).to have_content("Successfully contacted #{host.first_name}")
+    expect(Contact.count).to be(1)
   end
 
   scenario 'Visitor finds and contacts a host' do

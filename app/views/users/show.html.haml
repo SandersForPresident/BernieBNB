@@ -15,7 +15,10 @@
       %ul
         - user.visits.each do |visit|
           %li
-            = link_to visit.short_details, edit_visit_url(visit), class: 'btn btn-default btn-block btn-lg'
+            = link_to edit_visit_url(visit), class: ['btn btn-default btn-block btn-lg'], role: 'button' do
+              = visit.location
+              .small-details
+                = visit.date
 
   %section.user-hostings
     %header
@@ -26,7 +29,9 @@
         - user.hostings.each do |hosting|
           %li
             = link_to edit_hosting_url(hosting), class: ['btn btn-default btn-block btn-lg'], role: 'button' do
-              = hosting.short_details
+              = hosting.location
+              .small-details
+                = hosting.guest_details
 
       .text-center.share
         = link_to '#', class: 'btn-share facebook-share' do

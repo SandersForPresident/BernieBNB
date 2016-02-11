@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rails_helper'
 require_relative '../support/feature_test_helper'
 
-RSpec.describe "User Signs Up With Facebook", type: :feature do
+RSpec.describe "User Signs Up With Facebook", type: :feature, js: true do
   before do
     Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
   end
@@ -47,6 +47,16 @@ RSpec.describe "User Signs Up With Facebook", type: :feature do
     click_link 'Facebook'
 
     expect(page).to have_content( t('information.findahost') )
+  end
+
+  scenario 'delete account' do
+    register_new_facebook_user
+    click_link '« Profile'
+    page.accept_alert 'Are you sure? This will permanently delete your account.' do
+      click_button 'Delete Account'
+    end
+    expect(User.count).to be(0)
+    expect(page).to have_content('Successfully deleted account')
   end
 
   scenario 'facebook fails' do
