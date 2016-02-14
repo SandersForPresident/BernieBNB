@@ -2,9 +2,9 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production or staging
-if Rails.env.production? or Rails.env.staging?
+if Rails.env.production? || Rails.env.staging?
   # :nocov:
-  abort("The Rails environment is running in production or staging mode!") 
+  abort('The Rails environment is running in production or staging mode!')
   # :nocov:
 end
 require 'spec_helper'
@@ -39,7 +39,7 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
-#REMOVED:  Zonebie.set_random_timezone
+  # REMOVED:  Zonebie.set_random_timezone
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -82,5 +82,4 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
 end
