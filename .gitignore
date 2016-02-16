@@ -15,6 +15,7 @@
 
 node_modules
 npm-debug.log
+lib/assets/bower_components
 
 # Ignore application configuration
 /config/application.yml
