@@ -10,7 +10,7 @@ Personal Information You Provide to Us:
 We may receive and store any information you submit to the Application (or otherwise authorize us to obtain – such as, from (for example) your Facebook account). The types of personal information collected may include your email address, IP address, browser information, username, and any other information necessary for us to provide the Application services.
 
 Personal Information Collected Automatically:
-We receive and store certain types of usage related information whenever you interact with Application. For example, Bernie BNB may automatically receive and record information regarding your computer’s IP address, browser information, and Facebook user ID. Such information may be shared in aggregate (non-personally identifiable) form with our partners. 
+We receive and store certain types of usage related information whenever you interact with Application. For example, Bernie BNB may automatically receive and record information regarding your computer’s IP address, browser information, and Facebook user ID. Such information may be shared in aggregate (non-personally identifiable) form with our partners.
 
 HOW DOES Bernie BNB USE THE INFORMATION IT COLLECTS?
 
