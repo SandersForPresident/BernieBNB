@@ -23,36 +23,33 @@ App.Visits.initDatepicker = function() {
     minDate: 0,
     // showWeek: true,
     weekHeader: '',
-    beforeShowDay: function(date) {
-      var elem = $(this).data('datepicker').settings;
-      var sDate = elem.parseDate(start.val());
-      var eDate = elem.parseDate(end.val());
-      var highlight = sDate && ((date.getTime() == sDate.getTime()) || (eDate && date >= sDate && date <= eDate));
+    beforeShowDay: function(dateText) {
+      var arrive = moment(start.val());
+      var date = moment(dateText);
+
+      var highlight = date.isSame(arrive) || (date.isBetween(arrive, moment(end.val()).add(1, 'd')));
       return [true, highlight ? 'highlight' : ''];
     },
-    parseDate: function(value) {
-      var format = this.dateFormat || $.datepicker._defaults.dateFormat;
-      return $.datepicker.parseDate(format, value, this);
-    },
-    onSelect: function(dateText, elem) {
-      var startDate = elem.settings.parseDate(start.val());
-      var endDate = elem.settings.parseDate(end.val());
-      var date = elem.settings.parseDate(dateText);
+    onSelect: function(dateText) {
+      var startDate = moment(start.val());
+      var endDate = moment(end.val());
+      var date = moment(dateText);
+      var dateFormat = 'YYYY-MM-DD';
 
-      if(!startDate || endDate) {
-        start.val(dateText);
+      if(!startDate.isValid() || endDate.isValid()) {
+        start.val(date.format(dateFormat));
         end.val('');
       }
-      else if(date < startDate) {
-        end.val(start.val());
-        start.val(dateText);
-      }
-      else if(date.getTime() == startDate.getTime()) {
+      else if(date.isSame(startDate)) {
         start.val('');
         end.val('');
       }
+      else if(date.isBefore(startDate)) {
+        end.val(startDate.format(dateFormat));
+        start.val(date.format(dateFormat));
+      }
       else {
-        end.val(dateText);
+        end.val(date.format(dateFormat));
       }
     }
   });
