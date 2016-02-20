@@ -21,7 +21,6 @@ App.Visits.initDatepicker = function() {
     dateFormat: 'yy-mm-dd',
     dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     minDate: 0,
-    setDate: '02/20/16',
     // showWeek: true,
     weekHeader: '',
     beforeShowDay: function(date) {
