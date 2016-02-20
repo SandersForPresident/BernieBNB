@@ -15,6 +15,8 @@
 //= require jquery-ui/datepicker
 //= require jquery-ui/accordion
 
+//= require moment
+
 //= require_self
 //= require_tree .
 
