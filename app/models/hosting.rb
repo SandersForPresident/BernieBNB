@@ -10,7 +10,7 @@ class Hosting < ActiveRecord::Base
 
   after_create :notify_nearby_visitors
 
-  after_validation :geocode
+  after_validation :geocode, :if => lambda{ |obj| obj.zipcode_changed? }
 
   geocoded_by :zipcode do |hosting, results|
     if geo = results.first
