@@ -5,6 +5,7 @@ App.Visits.init = function() {
   this.eDate = $('#visit_end_date');
 
   this.initDatepicker();
+  this.updateText();
 
   $('.new_visit, .edit_visit').submit(function(event) {
     if(App.Visits.sDate.val() && App.Visits.eDate.val() === '') {
@@ -51,10 +52,25 @@ App.Visits.initDatepicker = function() {
       else {
         end.val(date.format(dateFormat));
       }
+
+      App.Visits.updateText();
     }
   });
 
   if(start) {
     dp.datepicker('setDate', start.val());
   }
+};
+
+App.Visits.updateText = function() {
+  var arrive = moment(this.sDate.val());
+  var depart = moment(this.eDate.val());
+  var newText = 'Arrival and departure dates';
+
+  if(arrive.isValid()) {
+    newText = 'Arriving ' + arrive.format('MMM Do') + ' and leaving ';
+    newText += depart.isValid() ? depart.format('MMM Do') : arrive.add(1, 'd').format('MMM Do');
+  }
+
+  $('.dateText').html(newText + '.');
 };
