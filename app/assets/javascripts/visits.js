@@ -56,10 +56,6 @@ App.Visits.initDatepicker = function() {
       App.Visits.updateText();
     }
   });
-
-  if(start) {
-    dp.datepicker('setDate', start.val());
-  }
 };
 
 App.Visits.updateText = function() {
