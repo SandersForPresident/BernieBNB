@@ -17,7 +17,7 @@
  *= require jquery-ui/accordion
  */
 
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic);
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
@@ -122,8 +122,6 @@ hr {
   border: 0;
   border-bottom: 1px solid #ccc;
 }
-
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic);
 
 .right {
   float: right;
