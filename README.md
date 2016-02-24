@@ -9,6 +9,7 @@ of town and to help supporters on the road find lodging.
 * Rails 4.2.5
 * Devise/ Omniauth for authentication with Facebook and google
 * Geocoder gem to search by zipcode, using Bing geocoding API.
+* Bower for front end asset management
 
 ## Contributing
 We have a channel on slack. Please e-mail buddhistsforbernie@gmail.com for an invite.
