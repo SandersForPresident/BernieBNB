@@ -1,0 +1,7 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "underscore": "latest",
+    "moment": "latest"
+  }
+}
