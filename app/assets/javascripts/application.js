@@ -16,6 +16,7 @@
 //= require jquery-ui/accordion
 
 //= require underscore
+//= require moment
 
 //= require_self
 //= require_tree .
