@@ -34,10 +34,7 @@ class Hosting < ActiveRecord::Base
   private
 
   def notify_nearby_visitors
-    nearby_visits = Visit
-      .near(self, 75, order: "distance")
-      .where("num_travelers <= ?", max_guests)
-      .where("start_date >= ?", Time.zone.today)
+    nearby_visits = get_nerby_visits
 
     # :nocov:
     if Rails.env.production? or  Rails.env.staging?
@@ -48,5 +45,11 @@ class Hosting < ActiveRecord::Base
     nearby_visits.each do |visit|
       UserMailer.new_host_email(visit, self).deliver_now
     end
+  end
+
+  def get_nerby_visits
+    Visit.near(self, 75, order: "distance")
+      .where("num_travelers <= ?", max_guests)
+      .where("start_date >= ?", Time.zone.today)
   end
 end
