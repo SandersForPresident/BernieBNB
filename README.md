@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/SandersForPresident/BernieBNB.png?label=ready&title=Ready)](https://waffle.io/SandersForPresident/BernieBNB)
 
 ![Bernie BNB](app/assets/images/bernie-bnb-logo.png)
 
