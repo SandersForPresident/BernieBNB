@@ -44,7 +44,7 @@ RSpec.describe "User Creates Visit", type: :feature do
     expect(page).to have_content('Hosts near 11211')
   end
 
-  describe "sorting available hosts on visit results" do
+  describe 'displaying available hosts on visit results' do
     before(:each) do
       FactoryGirl.create(:user, phone: '2345678901')
       FactoryGirl.create :hosting,
@@ -61,42 +61,9 @@ RSpec.describe "User Creates Visit", type: :feature do
       create_visit(Date.current, Date.current + 1.days, "07097")
     end
 
-    scenario "when no hosts have been contacted" do
+    it 'orders by distance, ascending' do
       expect('10012').to appear_before('11211')
       expect('11211').to appear_before('11221')
-    end
-
-    scenario "when the furthest host has been contacted" do
-      Hosting.first.increment(:contact_count).save
-
-      expect('10012').to appear_before('11211')
-      expect('11211').to appear_before('11221')
-    end
-
-    scenario "when the nearest host has been contacted" do
-      Hosting.last.increment(:contact_count).save
-      visit visit_url(Visit.last)
-
-      expect('11211').to appear_before('11221')
-      #FIXME: #272: expect('11221').to appear_before('10012')
-    end
-
-    scenario "when two hosts have been contacted, once each" do
-      Hosting.last.increment(:contact_count).save
-      Hosting.find_by(zipcode: '11211').increment(:contact_count).save
-      visit visit_url(Visit.last)
-
-      #FIXME: #272: expect('11221').to appear_before('10012')
-      expect('10012').to appear_before('11211')
-    end
-
-    scenario "when two hosts have been contacted a different amount of times" do
-      Hosting.last.increment(:contact_count, 2).save
-      Hosting.find_by(zipcode: '11211').increment(:contact_count).save
-      visit visit_url(Visit.last)
-
-      #FIXME: #272: expect('11221').to appear_before('11211')
-      #FIXME: #272: expect('11211').to appear_before('10012')
     end
   end
 
