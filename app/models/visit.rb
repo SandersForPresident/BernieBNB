@@ -29,7 +29,7 @@ class Visit < ActiveRecord::Base
 
   def available_hostings(current_user)
     available_hostings = Hosting
-      .near(self, 75, order: 'contact_count, distance')
+      .near(self, 75, order: 'distance')
       .where("max_guests >= ?", num_travelers)
 
     if Rails.env.production? or Rails.env.staging?
