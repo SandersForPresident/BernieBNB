@@ -220,7 +220,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    puma (3.1.0)
+    puma (3.2.0)
     puma-rails (0.0.2)
       puma
       rack
@@ -300,9 +300,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    selenium-webdriver (2.52.0)
+    selenium-webdriver (2.53.0)
       childprocess (~> 0.5)
-      multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
     shellany (0.0.1)
