@@ -14,11 +14,8 @@ RSpec.describe "User Signs Up", type: :feature do
   end
 
   scenario 'completing registration information' do
-    skip "17"
     authenticate_with_google
     fill_in_user_details
-
-    #save_and_open_page  # Email can't be blank" and "Email is invalid"
     expect(page).to have_content( t('information.emailconfirmsent') )
   end
 
@@ -31,7 +28,6 @@ RSpec.describe "User Signs Up", type: :feature do
   end
 
   scenario 'confirming registration with email' do
-    skip "32"
     authenticate_with_google
     fill_in_user_details
 
@@ -45,7 +41,6 @@ RSpec.describe "User Signs Up", type: :feature do
   end
 
   scenario 'register, sign out, sign back in' do
-    skip "45"
     register_new_google_user
     click_link 'Sign Out'
     click_link 'Google'
@@ -54,14 +49,13 @@ RSpec.describe "User Signs Up", type: :feature do
   end
 
   scenario 'google fails' do
-    skip "53"
     OmniAuth.config.mock_auth[:google] = :invalid_credentials
 
     authenticate_with_google
 
     # To reset to previous value.
     OmniAuth.config.mock_auth[:google] = Rails.application.env_config["omniauth.auth"]
-
+    fill_in_user_details
     expect(page).to have_content( t('information.signin') )
   end
 end

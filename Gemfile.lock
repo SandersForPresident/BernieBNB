@@ -213,7 +213,7 @@ GEM
     orderly (0.0.3)
       capybara (>= 1.1)
       rspec (>= 2.14)
-    parser (2.3.0.pre.6)
+    parser (2.3.0.7)
       ast (~> 2.2)
     pg (0.18.4)
     pry (0.10.3)
@@ -397,7 +397,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2
   orderly
-  parser (= 2.3.0.pre.6)
+  parser
   pg
   pry-rails
   puma-rails
