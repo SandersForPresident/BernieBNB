@@ -51,13 +51,11 @@ RSpec.describe "User Signs Up With Facebook", type: :feature do
   end
 
   scenario 'delete account' do
-    skip "54: Broken"
     register_new_facebook_user
     click_link '« Profile'
-    page.accept_alert 'Are you sure? This will permanently delete your account.' do
-      click_button 'Delete Account'
-    end
-    expect(User.count).to be(0)
+    wascount = User.count
+    click_button 'Delete Account'
+    expect(User.count).to eq(wascount - 1)
     expect(page).to have_content('Successfully deleted account')
   end
 

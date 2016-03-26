@@ -12,6 +12,7 @@ module FeatureTestHelper
   def fill_in_user_details
     fill_in "What's your first name?", with: 'Jane'
     fill_in "What's your phone number?", with: '5555555555'
+    fill_in "Your email address:", with: 'example@example.com'
 
     click_button "Confirm Email"
   end
