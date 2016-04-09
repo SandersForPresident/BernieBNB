@@ -38,8 +38,8 @@ module FeatureTestHelper
 
     click_link "Find A Host"
     fill_in "Where are you going?", with: zipcode
-    find('#visit_start_date').set(start_date)
-    find('#visit_end_date').set(end_date)
+    find('#visit_start_date', :visible => false).set(start_date)
+    find('#visit_end_date',   :visible => false).set(end_date)
     find('#visit_num_travelers').select(num_travelers)
     click_button "Contact Hosts"
   end
