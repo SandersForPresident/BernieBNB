@@ -33,13 +33,12 @@ RSpec.describe "Visitor contacts host", type: :feature do
   end
 
   scenario 'Visitor contacts host through new host email' do
-    skip # fickleness with `open_last_email` sometimes is reading the email where a user has been contacted... ?
     visitor = FactoryGirl.create(:user)
     visit = FactoryGirl.create(:visit, user_id: visitor.id, zipcode: '11211')
-    host = FactoryGirl.create(:user)
+    host = FactoryGirl.create(:user, first_name: 'Jane')
     hosting = FactoryGirl.create(:hosting, host_id: host.id, zipcode: '11221')
 
-    expect(open_last_email).to have_content("Contact #{host.first_name}")
+    expect(open_last_email).to have_content(/[Cc]ontact #{host.first_name}/)
 
     visit(contact_by_email_url(visit, hosting))
 
