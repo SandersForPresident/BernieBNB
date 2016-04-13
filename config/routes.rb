@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     resources :hostings, only: [:new]
   end
 
+  Rails.application.routes.draw do
+    get "/pages/:page" => "pages#show"
+  end
+
   # FEEDBACK
   get  'feedback', to: 'feedbacks#new', as: 'contact'
   post 'feedback', to: 'feedbacks#create'
