@@ -33,7 +33,7 @@ RSpec.describe UserMailer, type: :mailer do
   end
 
   it "should have the correct subject" do
-    expect(@email).to have_subject(/Bernie BNB - New host near #{@hosting.zipcode}/)
+    expect(@email).to have_subject(/#{t('general.bernie').capitalize} BNB - New host near #{@hosting.zipcode}/)
   end
 
   it 'should mention the correct visitor name' do

@@ -28,7 +28,7 @@ RSpec.describe "Visitor contacts host", type: :feature do
       host_id: host_user.id, zipcode: '11221', max_guests: 10)
 
     expect(last_email_sent).to deliver_to(user.email)
-    expect(open_last_email).to have_subject('Bernie BNB - New host near 11211!')
+    expect(open_last_email).to have_subject(t('general.bernie').capitalize + ' BNB - New host near 11211!')
     expect(open_last_email).to have_content('Jane just signed up')
   end
 
@@ -57,7 +57,7 @@ RSpec.describe "Visitor contacts host", type: :feature do
 
     expect(page).to have_content("Successfully contacted Jane")
     expect(last_email_sent).to deliver_to(user.email)
-    expect(open_last_email).to have_subject("Bernie BNB - You've been contacted!")
+    expect(open_last_email).to have_subject(t('general.bernie').capitalize + " BNB - You've been contacted!")
     expect(Hosting.last.contact_count).to eq(1)
   end
 
