@@ -39,3 +39,7 @@ en:
           attributes:
             start_date:
               in_past: of visits cannot be created in the past
+  general:
+    bernie:     bernie
+    berniecaps: BERNIE
+    sanders:    Sanders

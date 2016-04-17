@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'rails_helper'
 
 RSpec.describe UserMailer, type: :mailer do
@@ -33,7 +34,7 @@ RSpec.describe UserMailer, type: :mailer do
   end
 
   it 'should have the correct subject' do
-    expect(@email).to have_subject(/Bernie BNB - You've been contacted!/)
+    expect(@email).to have_subject(/#{t('general.bernie').capitalize} BNB - You've been contacted!/)
   end
 
   it 'should mention the correct host' do
@@ -50,7 +51,7 @@ RSpec.describe UserMailer, type: :mailer do
   end
 
   it 'should contain the correct link' do
-    link = ActionController::Base.helpers.link_to("Bernie BNB - Host", edit_hosting_url(@hosting))
+    link = ActionController::Base.helpers.link_to(t('general.bernie').capitalize + " BNB - Host", edit_hosting_url(@hosting))
     expect(@email).to have_body_text(/#{link}/)
   end
 end

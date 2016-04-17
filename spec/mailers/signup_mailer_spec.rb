@@ -19,12 +19,12 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it "expect to have the correct subject" do
-      expect(@email).to have_subject(/Bernie BNB - Thanks for signing up!/)
+      expect(@email).to have_subject(/#{t('general.bernie').capitalize} BNB - Thanks for signing up!/)
     end
 
     it "expect to contain the user's message in the mail body" do
       expect(@email).to have_body_text(@user.first_name)
-      expect(@email).to have_body_text(/Thanks for signing up with BernieBNB!/)
+      expect(@email).to have_body_text(/Thanks for signing up with #{t('general.bernie').capitalize}BNB!/)
       expect(@email).to have_body_text(/You can add, edit or delete your travel/)
       expect(@email).to have_body_text(/host requests anytime here:/)
       expect(@email).to have_body_text(/Legal Disclaimer: By agreeing to use this service/)

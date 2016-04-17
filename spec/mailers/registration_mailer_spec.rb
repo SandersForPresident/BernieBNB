@@ -17,7 +17,7 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it "should have the correct subject" do
-      expect(@email).to have_subject(/Bernie BNB - Registration Confirmation/)
+      expect(@email).to have_subject(/#{t('general.bernie').capitalize} BNB - Registration Confirmation/)
     end
 
     it "should mention the user" do
@@ -25,7 +25,7 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it "should contain the correct body text" do
-      expect(@email).to have_body_text(/Thanks for registering with Bernie BNB!/)
+      expect(@email).to have_body_text(/Thanks for registering with #{t('general.bernie').capitalize} BNB!/)
       expect(@email).to have_body_text(/Click the URL below to confirm your registration:/)
     end
 
