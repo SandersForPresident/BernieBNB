@@ -142,7 +142,17 @@ hr {
 }
 
 
+footer {
+  background-image: linear-gradient(0deg, #C7C7C7, #B5B5B5);
+  padding: 25px 0;
+  text-align: center;
+  border-top: 3px solid darkgray;
+  margin-top: 50px;
 
+  .container{
+    width: 75%;
+  }
+}
 
 
 
