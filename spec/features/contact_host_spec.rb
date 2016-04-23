@@ -34,16 +34,12 @@ RSpec.describe "Visitor contacts host", type: :feature do
 
   scenario 'Visitor contacts host through new host email' do
     visitor = FactoryGirl.create(:user)
-    visit = FactoryGirl.create(:visit, user_id: visitor.id, zipcode: '11211')
+    visit = FactoryGirl.create(:visit, user_id: visitor.id, num_travelers: 1, zipcode: '11211')
     host = FactoryGirl.create(:user, first_name: 'Jane')
-    hosting = FactoryGirl.create(:hosting, host_id: host.id, zipcode: '11221')
+    FactoryGirl.create(:hosting, host_id: host.id, max_guests: 1, zipcode: '11221')
 
     expect(open_last_email).to have_content(/[Cc]ontact #{host.first_name}/)
-
-    visit(contact_by_email_url(visit, hosting))
-
-    expect(page).to have_content("Successfully contacted #{host.first_name}")
-    expect(Contact.count).to be(1)
+    expect(open_last_email).to have_content(%r{/visits/#{visit.id}})
   end
 
   scenario 'Visitor finds and contacts a host' do
