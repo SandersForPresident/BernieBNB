@@ -53,7 +53,7 @@ GEM
     bower-rails (0.10.0)
     bugsnag (4.0.2)
     builder (3.2.2)
-    byebug (8.2.4)
+    byebug (8.2.5)
     capybara (2.7.0)
       addressable
       mime-types (>= 1.16)
