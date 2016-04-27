@@ -53,7 +53,7 @@ We would love your help.
   4. To set up development environment, do the following:
     * Fork the repo at https://github.com/SandersForPresident/BernieBNB
     * Cloned it locally.
-    * Setup environment to use ruby 2.3.0
+    * Setup environment to use ruby 2.3.1
     * Do above steps 1-3.
     * Run "bundle"
     * Run "rake db:create".
