@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :require_current_user
-  before_action :require_complete_profile
-  before_action :set_locale
+  before_action :require_current_user, :unless => :is_static_page?
+  before_action :require_complete_profile, :unless => :is_static_page?
+  before_action :set_locale, :unless => :is_static_page?
 
   helper_method :current_user
 
@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  # Need to check if this is a static page in order to go around the auth checks
+  def is_static_page?
+    self.class.to_s == "HighVoltage::PagesController"
+  end
 
   def sign_in!(user)
     @current_user = user
