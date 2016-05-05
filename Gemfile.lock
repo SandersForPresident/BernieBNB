@@ -85,7 +85,7 @@ GEM
       json
       thread
       thread_safe
-    email_spec (2.0.0)
+    email_spec (2.1.0)
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
       mail (~> 2.6.3)
