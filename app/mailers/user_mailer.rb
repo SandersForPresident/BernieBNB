@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: #{t('general.bernie') bnbinfo@gmail.com"}
+  default from: 'notifications@berniebnb.com'
 
   def registration_confirmation(user)
     @user = user.decorate
@@ -13,22 +13,25 @@ class UserMailer < ApplicationMailer
       template_path: 'user_mailer', template_name: 'welcome_email')
   end
 
-  def new_host_email(visit, hosting)
-    @visit, @hosting, @visitor, @host =
-      visit.decorate, hosting.decorate, visit.user.decorate, hosting.host.decorate
-    @results_url = visit_url(@visit)
-    mail(to: @visitor.email,
-         from: "DO-NOT-REPLY@" + t('general.bernie') + "bnb.com",
-         subject: t('general.bernie').capitalize + " BNB - New host near #{@visit.city || @visit.zipcode}!",
-         template_path: 'user_mailer', template_name: 'new_host_email')
+  def new_hosts_digest(visit, visitor, host_data)
+    @visit, @visitor, @host_data = visit, visitor, host_data
+    return unless @visitor && @host_data.host
+
+    mail(
+      to: @visitor.email,
+      reply_to: 'DO_NOT_REPLY@berniebnb.com',
+      subject: 'BernieBNB - New hosts for your visit!'
+    )
   end
 
-  def contact_host_email(visit, hosting)
-    @visit, @hosting, @visitor, @host =
-      visit.decorate, hosting.decorate, visit.user.decorate, hosting.host.decorate
-    @hosting_url = hosting_url(@hosting)
-    mail(to: @host.email, reply_to: @visitor.email,
-      subject: t('general.bernie').capitalize + " BNB - You've been contacted!",
-      template_path: 'user_mailer', template_name: 'contact_host_email')
+  def new_contacts_digest(hosting, host, contact_data)
+    @hosting, @host, @contact_data = @hosting, @host, @contact_data
+    return unless @host && @contact_data.visitor
+
+    mail(
+      to: @host.email,
+      reply_to: 'DO_NOT_REPLY@berinebnb.com',
+      subject: "BernieBNB - You've been contacted!"
+    )
   end
 end

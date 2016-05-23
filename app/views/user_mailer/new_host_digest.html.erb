@@ -1,0 +1,19 @@
+Hi <%= @user.first_name %>,
+<br><br>
+Here's a list of all the new hosts available for your visit to <%= @visit.city %>:
+
+<% @host_data.each do |listing| %>
+  <%= listing.host.first_name %> signed up as a host <%= @hosting.distance_from(@visit).round(1) %> mi. from <%= @visit.city || @visit.zipcode %>.
+  <br><br>
+
+  <% if listing.hosting.comment %>
+    Message from <%= listing.host.first_name %>:<br>
+    <%= listing.hosting.comment %>
+  <% end %>
+
+Do NOT reply to this email! In order to contact these hosts, <%= link_to "follow this link", visit_url(@visit) %><br><br>
+
+We strongly recommend that potential hosts and visitors connect over social media before making any housing plans.<br><br>
+
+If you have already found a host or want to stop receiving emails, update your search at: <%= link_to "Your Visit Page", edit_visit_url(@visit) %>
+<% end %>

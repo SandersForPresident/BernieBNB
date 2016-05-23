@@ -13,17 +13,6 @@ class ContactsController < ApplicationController
     end
   end
 
-  def create_by_email
-    set_ivars
-
-    if @contact.save
-      execute_contact_callbacks
-    else
-      flash.now[:errors] = @contact.errors.full_messages
-      redirect_to visit_url(@visit), status: :unprocessable_entity
-    end
-  end
-
   private
 
   def contact_params
@@ -31,10 +20,9 @@ class ContactsController < ApplicationController
   end
 
   def execute_contact_callbacks
-    UserMailer.contact_host_email(@visit, @hosting).deliver_now
     @hosting.increment(:contact_count).save
     redirect_to visit_url(@visit),
-      notice: "Successfully contacted #{@hosting.first_name}!"
+      notice: "We will send #{@hosting.first_name} your contact info!"
   end
 
   def set_ivars
