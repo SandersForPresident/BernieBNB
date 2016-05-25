@@ -338,7 +338,7 @@ GEM
     tilt (2.0.4)
     timecop (0.8.1)
     timeliness (0.3.8)
-    tins (1.10.1)
+    tins (1.10.2)
     travis (1.8.2)
       backports
       faraday (~> 0.9)
