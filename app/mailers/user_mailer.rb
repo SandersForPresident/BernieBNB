@@ -14,8 +14,10 @@ class UserMailer < ApplicationMailer
   end
 
   def new_hosts_digest(visit, visitor, host_data)
-    @visit, @visitor, @host_data = visit, visitor, host_data
-    return unless @visitor && @host_data.host
+    @visit, @visitor = visit, visitor
+    @host_data = host_data.reject { |hd| hd[:host].nil? }
+
+    return unless @visitor
 
     mail(
       to: @visitor.email,
@@ -25,8 +27,10 @@ class UserMailer < ApplicationMailer
   end
 
   def new_contacts_digest(hosting, host, contact_data)
-    @hosting, @host, @contact_data = @hosting, @host, @contact_data
-    return unless @host && @contact_data.visitor
+    @hosting, @host = hosting, host
+    @contact_data = contact_data.reject { |cd| cd[:visitor].nil? }
+
+    return if !@host || @contact_data.empty?
 
     mail(
       to: @host.email,

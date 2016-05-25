@@ -14,6 +14,7 @@ describe 'send_new_contacts_digest' do
   let(:new_contacts) { [contact] }
   let(:visitor) { double(:visitor) }
   let(:visit) { double(:visit, user: visitor) }
+  let(:mailer) { double(:mailer) }
   let(:expected_contact_data) do
     [
       {
@@ -39,20 +40,21 @@ describe 'send_new_contacts_digest' do
     allow(empty_contact_relation)
       .to receive(:where)
       .and_return([])
+
+    allow(mailer)
+      .to receive(:deliver_now)
+      .and_return(true)
   end
 
-  it 'should send the new contacts digest to hosts that have been contacted'do
+  it 'should send the new contacts digest only to hosts that have been contacted'do
     expect(UserMailer)
       .to receive(:new_contacts_digest)
       .with(contacted_hosting, contacted_host, expected_contact_data)
       .and_return(mailer)
 
-    # expect(UserMailer)
-    #   .not_to receive(:new_contacts_digest)
-    #   .with(uncontacted_hosting, anything)
-
-    # expect(mailer)
-    #  .to receive(:deliver_now)
+    expect(UserMailer)
+      .not_to receive(:new_contacts_digest)
+      .with(uncontacted_hosting, anything)
 
     Rake::Task['send_new_contacts_digest'].invoke
   end
