@@ -8,8 +8,6 @@ class Hosting < ActiveRecord::Base
   belongs_to :host, class_name: "User", foreign_key: :host_id
   has_many :contacts
 
-  after_create :notify_nearby_visitors
-
   after_validation :geocode, :if => lambda{ |obj| obj.zipcode_changed? }
 
   geocoded_by :zipcode do |hosting, results|
@@ -29,27 +27,5 @@ class Hosting < ActiveRecord::Base
 
   def was_contacted_for?(visit)
     Contact.exists?(visit_id: visit.id, hosting_id: self.id)
-  end
-
-  private
-
-  def notify_nearby_visitors
-    nearby_visits = get_nerby_visits
-
-    # :nocov:
-    if Rails.env.production? or  Rails.env.staging?
-      nearby_visits = nearby_visits.where("user_id != (?)", self.host_id)
-    end
-    # :nocov:
-
-    nearby_visits.each do |visit|
-      UserMailer.new_host_email(visit, self).deliver_now
-    end
-  end
-
-  def get_nerby_visits
-    Visit.near(self, 75, order: "distance")
-      .where("num_travelers <= ?", max_guests)
-      .where("start_date >= ?", Time.zone.today)
   end
 end
