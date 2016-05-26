@@ -101,11 +101,4 @@ RSpec.describe "User Creates Visit", type: :feature do
     expect(page).to_not have_content('11211')
     expect(Visit.with_deleted.last).to_not be_nil
   end
-
-  scenario "new host becomes available for visit" do
-    create_visit(Date.current, Date.current + 1.days)
-    FactoryGirl.create(:hosting, zipcode: '11221', max_guests: 10, host_id: User.last.id)
-
-    expect(open_last_email).to have_body_text("#{User.last.first_name} just signed up")
-  end
 end

@@ -8,8 +8,6 @@
 SAMPLE_RATE = 0.3
 zips = CSV.read(Rails.root.join('db', 'csv', 'us_postal_codes.csv')).drop(1)
 
-Hosting.skip_callback(:create, :after, :notify_nearby_visitors)
-
 500.times do
   FactoryGirl.create(:user, phone: "555-555-5555")
 end
@@ -43,5 +41,3 @@ end
     end
   end
 end
-
-Hosting.set_callback(:create, :after, :notify_nearby_visitors)
