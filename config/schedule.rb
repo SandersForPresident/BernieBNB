@@ -4,3 +4,4 @@ end
 
 every 1.day, at: '6pm' do
   rake 'send_new_hosts_digest'
+end
