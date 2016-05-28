@@ -14,7 +14,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'sdoc', group: :doc
-gem 'mailgun_rails'
+gem 'mailgun-ruby', require: 'mailgun'
 
 gem 'i18n-tasks'
 gem 'parser'
