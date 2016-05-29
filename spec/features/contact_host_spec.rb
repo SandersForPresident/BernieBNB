@@ -14,6 +14,9 @@ RSpec.describe "Visitor contacts host", type: :feature do
     Geocoder::Lookup::Test.add_stub(
       '11221', [{'latitude' => 40.6903213, 'longitude' => -73.9271644}]
     )
+
+    stub_request(:post, %r{api.mailgun.net/v3/messages})
+      .to_return(status: 200)
   end
 
   scenario 'Visitor finds and contacts a host' do

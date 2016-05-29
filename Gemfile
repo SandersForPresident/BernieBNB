@@ -32,8 +32,6 @@ gem 'draper'
 gem 'jquery-ui-rails'
 gem 'haml'
 gem 'high_voltage'
-gem 'travis'
-gem 'bugsnag'
 gem 'orderly'
 gem 'acts_as_paranoid', '0.5.0.beta2' # TO GET LATEST RELEASED.
 gem 'i18n-spec'
@@ -69,9 +67,11 @@ group :test do
   gem 'selenium-webdriver'
   gem 'capybara'
   gem 'simplecov'
+  gem 'webmock'
 end
 
 group :production, :staging do
+  gem 'bugsnag'
   gem 'rails_12factor'
 end
 
