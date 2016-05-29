@@ -5,6 +5,9 @@ require_relative '../support/feature_test_helper'
 RSpec.describe "User Signs Up", type: :feature do
   before do
     Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google]
+
+    stub_request(:post, %r{api.mailgun.net/v3/messages})
+      .to_return(status: 200)
   end
 
   scenario 'starts session' do
@@ -34,7 +37,13 @@ RSpec.describe "User Signs Up", type: :feature do
     confirmation_token = User.last.confirm_token
     confirm_url =
       "http://localhost:3000/users/#{confirmation_token}/confirm_email"
-    expect(open_last_email).to have_body_text(confirm_url)
+
+    email_request = a_request(:post, %r{mailgun.net/v3/messages}).with do |req|
+      body = URI::decode_www_form(req.body).to_h
+      body['html'].match(confirm_url)
+    end
+
+    expect(email_request).to have_been_made
 
     visit confirm_url
     expect(page).to have_content( t('information.findahost') )

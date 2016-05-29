@@ -15,11 +15,11 @@ RSpec.describe UserMailer, type: :mailer do
       expected_request = a_request(:post, %r{api.mailgun.net/v3/messages}).with do |req|
         body = URI::decode_www_form(req.body).to_h
 
-        body['from'] == "notifications@#{ENV['MAILGUN_DOMAIN']}"
-        body['to'] == @user.email
-        body['subject'] == "Bernie BNB - Confirm Your Email"
-        body['html'].match(/Hi #{@user.first_name},/)
-        body['html'].match(/#{@user.confirm_token}/)
+        body['from'] == "notifications@#{ENV['MAILGUN_DOMAIN']}" &&
+          body['to'] == @user.email &&
+          body['subject'] == "Bernie BNB - Confirm Your Email" &&
+          body['html'].match(/Hi #{@user.first_name},/) &&
+          body['html'].match(/#{@user.confirm_token}/)
       end
 
       UserMailer.registration_confirmation(@user).deliver_now
