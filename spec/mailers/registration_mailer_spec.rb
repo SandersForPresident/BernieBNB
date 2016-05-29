@@ -1,36 +1,30 @@
 require "rails_helper"
 
 RSpec.describe UserMailer, type: :mailer do
-
   describe "Registration Email" do
-    include EmailSpec::Helpers
-    include EmailSpec::Matchers
     include Rails.application.routes.url_helpers
 
-    before(:each) do
+    before do
       @user = FactoryGirl.create(:user, email: 'auser@gmail.com', first_name: "Joe", phone: "6541537596")
-      @email = UserMailer.registration_confirmation(@user).deliver_now
+
+      stub_request(:post, %r{api.mailgun.net/v3/messages})
+        .to_return(status: 200)
     end
 
-    it "should deliver to correct email" do
-      expect(@email).to deliver_to('auser@gmail.com')
-    end
+    it "should send an email with the correct user information" do
+      expected_request = a_request(:post, %r{api.mailgun.net/v3/messages}).with do |req|
+        body = URI::decode_www_form(req.body).to_h
 
-    it "should have the correct subject" do
-      expect(@email).to have_subject(/#{t('general.bernie').capitalize} BNB - Registration Confirmation/)
-    end
+        body['from'] == "notifications@#{ENV['MAILGUN_DOMAIN']}"
+        body['to'] == @user.email
+        body['subject'] == "Bernie BNB - Confirm Your Email"
+        body['html'].match(/Hi #{@user.first_name},/)
+        body['html'].match(/#{@user.confirm_token}/)
+      end
 
-    it "should mention the user" do
-      expect(@email).to have_body_text(@user.first_name)
-    end
+      UserMailer.registration_confirmation(@user).deliver_now
 
-    it "should contain the correct body text" do
-      expect(@email).to have_body_text(/Thanks for registering with #{t('general.bernie').capitalize} BNB!/)
-      expect(@email).to have_body_text(/Click the URL below to confirm your registration:/)
-    end
-
-    it "should contain a confirmation link" do
-      expect(@email).to have_body_text(/#{@user.confirm_token}/)
+      expect(expected_request).to have_been_made
     end
   end
 end
