@@ -1,6 +1,6 @@
 Hi <%= @visitor.first_name %>,
 <br><br>
-Here's a list of all the new hosts available for your visit to <%= @visit.city %>:
+Here's a list of all the new hosts available for your visit to <%= @visit.city %>:<br><br>
 
 <% @host_data.each do |listing| %>
   <%= listing[:host].first_name %> signed up as a host <%= listing[:hosting].distance_from(@visit).round(1) %> mi. from <%= @visit.city || @visit.zipcode %>.
