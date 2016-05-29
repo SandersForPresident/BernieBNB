@@ -4,10 +4,7 @@ require_relative '../support/feature_test_helper'
 
 RSpec.describe "User creates Host", type: :feature do
   before do
-    Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
-    register_new_facebook_user
-
-    Geocoder.configure(:lookup => :test)
+    Geocoder.configure(lookup: :test)
 
     Geocoder::Lookup::Test.add_stub(
       "11211", [{'latitude' => 40.7093358, 'longitude' => -73.9565551, 'city' => 'Brooklyn', 'state' => 'NY'}]
@@ -25,18 +22,26 @@ RSpec.describe "User creates Host", type: :feature do
       "1121", [{'latitude' => 38.6682669, 'longitude' => -90.3230806}]
     )
 
+    stub_request(:post, %r{api.mailgun.net/v3/messages})
+      .to_return(status: 200)
 
+    Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
+    register_new_facebook_user
   end
 
-  scenario "creating a new hosting" do
-    create_host
-    expect(page).to have_content("Brooklyn, NY 10 guests")
+  context "creating a new hosting" do
+    it 'redirects the user to their homepage with link to the hosting record' do
+      create_host
+      expect(page).to have_content("Brooklyn, NY 10 guests")
+    end
   end
 
-  scenario "creating a new hosting with blank fields" do
-    click_link "I Can Host"
-    click_button("Save")
-    expect(page).to have_content t('errors.messages.invalid_zipcode')
+  context "creating a new hosting with blank fields" do
+    it 'displays error messages' do
+      click_link "I Can Host"
+      click_button("Save")
+      expect(page).to have_content t('errors.messages.invalid_zipcode')
+    end
   end
 
   scenario 'creating a new hosting with the wrong zip code' do
