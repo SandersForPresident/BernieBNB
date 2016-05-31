@@ -78,10 +78,15 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.log_level = :debug
   config.action_mailer.default_url_options = { :host => ENV['MAILER_URL'] }
-  config.action_mailer.delivery_method = :mailgun_rails
-  config.action_mailer.mailgun_settings = {
-    api_key: ENV['MAILGUN_API_KEY'],
-    domain: ENV['BASE_DOMAIN']
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => ENV['MAILGUN_SMTP_SERVER'],
+    :port => ENV['MAILGUN_SMTP_PORT'],
+    :domain => ENV['MAILGUN_DOMAIN'],
+    :user_name => ENV['MAILGUN_SMTP_LOGIN'],
+    :password => ENV['MAILGUN_SMTP_PASSWORD']
   }
 
   config.action_mailer.perform_deliveries = true
