@@ -7,13 +7,17 @@ Here's a list of all the new hosts available for your visit to <%= @visit.city %
   <br><br>
 
   <% unless listing[:hosting].comment.empty? %>
-    Message from <%= listing[:host].first_name %>:<br>
-    <%= listing[:hosting].comment %><br>
+    <b>Message from <%= listing[:host].first_name %>:</b><br>
+    <b><%= listing[:hosting].comment %></b><br>
   <% end %>
 
 Do NOT reply to this email! In order to contact these hosts, <%= link_to "follow this link", visit_url(@visit) %><br><br>
 
-We strongly recommend that potential hosts and visitors connect over social media before making any housing plans.<br><br>
+We strongly recommend that potential hosts and visitors connect over social
+<br>
+media before making any housing plans.<br><br>
 
-If you have already found a host or want to stop receiving emails, update your search at: <%= link_to "Your Visit Page", edit_visit_url(@visit) %>
+If you have already found a host or want to stop receiving emails, update
+<br>
+your search at: <%= link_to "Your Visit Page", edit_visit_url(@visit) %>
 <% end %>
