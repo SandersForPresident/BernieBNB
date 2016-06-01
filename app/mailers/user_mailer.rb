@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
 
   def registration_confirmation(user)
     @user = user.decorate
-    
+
     deliver_message(
       from: default_sender_address,
       to: user.email,
@@ -63,7 +63,7 @@ class UserMailer < ApplicationMailer
   end
 
   def default_sender_address
-    "notifications@#{ENV['MAILGUN_DOMAIN']}"
+    "BernieBNB <notifications@#{ENV['MAILGUN_DOMAIN']}>"
   end
 
   def template(path)
