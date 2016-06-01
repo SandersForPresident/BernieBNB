@@ -63,7 +63,7 @@ class UserMailer < ApplicationMailer
   end
 
   def default_sender_address
-    "BernieBNB <notifications@#{ENV['MAILGUN_DOMAIN']}>"
+    "BernieBNB <notifications@#{ENV['BASE_DOMAIN']}>"
   end
 
   def template(path)
