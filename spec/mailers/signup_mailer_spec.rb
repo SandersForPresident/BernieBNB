@@ -18,7 +18,7 @@ RSpec.describe UserMailer, type: :mailer do
       expected_request = a_request(:post, %r{api.mailgun.net/v3/messages}).with do |req|
         body = URI::decode_www_form(req.body).to_h
 
-        body['from'] == "notifications@#{ENV['MAILGUN_DOMAIN']}" &&
+        body['from'] == "BernieBNB <notifications@#{ENV['MAILGUN_DOMAIN']}>" &&
           body['to'] == @user.email &&
           body['subject'] == "#{t('general.bernie').capitalize} BNB - Thanks for signing up!" &&
           body['html'].match(/Hi #{@user.first_name},/) &&
