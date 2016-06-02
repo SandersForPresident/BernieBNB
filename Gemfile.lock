@@ -213,7 +213,7 @@ GEM
     orderly (0.0.3)
       capybara (>= 1.1)
       rspec (>= 2.14)
-    parser (2.3.1.1)
+    parser (2.3.1.2)
       ast (~> 2.2)
     pg (0.18.4)
     pry (0.10.3)
