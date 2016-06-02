@@ -32,23 +32,41 @@ We would love your help.
      https://msdn.microsoft.com/en-us/library/ff428642.aspx
   4. Based on figaro gem, create a config/application.yml file and set values.
 
-> USERNAME: TBD # Used in config/database.yml file.
+> USERNAME: "TBD" # Used in config/database.yml file.
 
-> PASSWORD: TBD # Used in config/database.yml file.
+> PASSWORD: "TBD" # Used in config/database.yml file.
 
-> IP: http://localhost:3000/
+> IP: "http://localhost:3000/"
 
-> MAILER_URL: localhost:3000/
+> MAILER_URL: "localhost:3000/"
 
-> FACEBOOK_KEY: TBD # Used in config/initializers/omniauth.rb file.
+> FACEBOOK_KEY: "TBD" # Used in config/initializers/omniauth.rb file.
 
-> FACEBOOK_SECRET: TBD # Used in config/initializers/omniauth.rb file.
+> FACEBOOK_SECRET: "TBD" # Used in config/initializers/omniauth.rb file.
 
-> GOOGLE_CLIENT_ID: TBD # Used in config/initializers/omniauth.rb file.
+> GOOGLE_CLIENT_ID: "TBD" # Used in config/initializers/omniauth.rb file.
 
-> GOOGLE_CLIENT_SECRET: TBD # Used in config/initializers/omniauth.rb file.
+> GOOGLE_CLIENT_SECRET: "TBD" # Used in config/initializers/omniauth.rb file.
 
-> BING_GEOCODE_ID: TBD # Used in config/initializers/geocoder.rb file.
+> BING_GEOCODE_ID: "TBD" # Used in config/initializers/geocoder.rb file.
+
+* Only for:
+
+> development:
+
+> MAILGUN_API_KEY:       "TBD"
+
+> MAILGUN_DOMAIN:        "TBD
+
+> MAILGUN_PUBLIC_KEY:    "TBD"
+
+> MAILGUN_SMTP_LOGIN:    "TBD"
+
+> MAILGUN_SMTP_PASSWORD: "TBD"
+
+> MAILGUN_SMTP_PORT:     "587"
+
+> MAILGUN_SMTP_SERVER:   "smtp.mailgun.org"
 
   4. To set up development environment, do the following:
     * Fork the repo at https://github.com/SandersForPresident/BernieBNB
