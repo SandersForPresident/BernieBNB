@@ -34,7 +34,9 @@ class ApplicationController < ActionController::Base
 
   def require_current_user
     if current_user.nil?
+      cookies[:redirect_url] = request.fullpath
       redirect_to root_url
+
     elsif params[:user_id] && current_user.id != params[:user_id].to_i
       redirect_to user_url(current_user)
     end

@@ -13,12 +13,15 @@ class SessionsController < ApplicationController
     sign_in!(@user)
 
     if @user.email_confirmed
-      redirect_to user_url(@user),
+      redirect_to cookies[:redirect_url] || user_url(@user),
         notice: "Signed in!"
     else
       redirect_to edit_user_url(@user),
         notice: "Please fill out a few more details."
     end
+
+  ensure
+    cookies.delete(:redirect_url)
   end
 
   def destroy
