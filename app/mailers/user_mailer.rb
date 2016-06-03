@@ -33,6 +33,7 @@ class UserMailer < ApplicationMailer
     deliver_message(
       from: default_sender_address,
       to: @visitor.email,
+      'h:Reply-To' => 'DO-NOT-REPLY@berniebnb.com',
       subject: 'BernieBNB - New hosts for your visit!',
       html: template("user_mailer/new_hosts_digest.html.erb")
     )
@@ -47,6 +48,7 @@ class UserMailer < ApplicationMailer
     deliver_message(
       from: default_sender_address,
       to: @host.email,
+      'h:Reply-To' => 'DO-NOT-REPLY@berniebnb.com',
       subject: "BernieBNB - You've been contacted!",
       html: template("user_mailer/new_contacts_digest.html.erb")
     )
