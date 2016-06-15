@@ -6,7 +6,7 @@ RSpec.describe "User Creates Visit", type: :feature do
   before do
     stub_request(:post, %r{mailgun.net/v3/messages})
       .to_return(status: 201)
-      
+
     Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
     register_new_facebook_user
 
