@@ -54,6 +54,17 @@ class UserMailer < ApplicationMailer
     )
   end
 
+  def goodbye_message(user)
+    @user = user
+
+    deliver_message(
+      from: "BernieBNB <berniebnbinfo@gmail.com>",
+      to: @user.email,
+      subject: "A Message From BernieBNB",
+      html: template("user_mailer/goodbye_message.html.erb")
+    )
+  end
+
   private
 
   def deliver_message(message_params)
