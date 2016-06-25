@@ -7,7 +7,7 @@ addons:
   postgresql: '9.3'
 before_install: gem update bundler rake
 before_script:
-- rake db:setup
+- bundle exec rake db:setup
 script:
 - RAILS_ENV=test COVERAGE=true bundle exec rake --trace db:migrate spec
 cache: bundler
