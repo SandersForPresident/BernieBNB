@@ -1,0 +1,17 @@
+
+Hi <%= @host.first_name %>,
+<br><br>
+Thank you for offering to host volunteers on BernieBNB! Here's all the people who have expressed interest in your offer today, <%= Date.today.strftime('%B %d, %Y') %>:
+<br><br>
+<% @contact_data.map do |cd| %>
+  <%= cd[:visitor].first_name %><br>:
+  Phone: <%= cd[:visitor].phone %><br>
+  Email: <%= mail_to cd[:visitor].email %><br>
+  Dates: <%= cd[:visit].start_and_end_dates %><br>
+  Group of <%= cd[:visit].num_travelers %>
+  <br><br>
+<% end %>
+<br><br>
+We strongly recommend that potential hosts and visitors connect over social media before making any housing plans.
+<br><br>
+You can add, edit or delete your host offers anytime here: <%= link_to "Bernie BNB - Host", edit_hosting_url(@hosting) %>

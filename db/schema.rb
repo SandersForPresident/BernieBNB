@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160122203526) do
+ActiveRecord::Schema.define(version: 20160629233952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blackout_dates", force: :cascade do |t|
+    t.date     "start_date", null: false
+    t.date     "end_date",   null: false
+    t.integer  "hosting_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "blackout_dates", ["hosting_id"], name: "index_blackout_dates_on_hosting_id", using: :btree
 
   create_table "contacts", force: :cascade do |t|
     t.integer  "hosting_id", null: false
@@ -54,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160122203526) do
     t.string   "session_token",                      null: false
     t.boolean  "email_confirmed",    default: false
     t.string   "confirm_token"
+    t.boolean  "blacklisted",        default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
