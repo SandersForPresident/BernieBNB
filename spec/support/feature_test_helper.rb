@@ -53,7 +53,7 @@ module FeatureTestHelper
 
   def delete_host
     click_link "Brooklyn, NY 10 guests"
-    click_link "Delete"
+    click_link "I Am Booked"
   end
 end
 
