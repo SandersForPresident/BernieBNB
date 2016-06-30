@@ -54,6 +54,7 @@ class SessionsController < ApplicationController
   end
 
   def deny_blacklisted_users
-    redirect_to root_url, notice: 'Authentication failed' if user.blacklisted
+    ## 6/30/2016: Commented out to prevent "NoMethodError" exception.
+    #FIXME: redirect_to root_url, notice: 'Authentication failed' if user.blacklisted
   end
 end
