@@ -59,6 +59,18 @@ RSpec.describe "User Signs Up With Facebook", type: :feature do
     expect(page).to have_content( t('information.findahost') )
   end
 
+  scenario 'when a blacklisted user attempts to sign in' do
+    register_new_facebook_user
+
+    click_link 'Sign Out'
+
+    User.last.update(blacklisted: true)
+
+    click_link 'Facebook'
+
+    expect(page).to have_content 'Authentication failed'
+  end
+
   scenario 'delete account' do
     register_new_facebook_user
     click_link '« Profile'
