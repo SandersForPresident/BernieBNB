@@ -36,9 +36,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    acts_as_paranoid (0.5.0.beta2)
-      activerecord (~> 4.0)
-      activesupport (~> 4.0)
+    acts_as_paranoid (0.5.0.rc1)
+      activerecord (>= 4.0, < 5.1)
+      activesupport (>= 4.0, < 5.1)
     addressable (2.4.0)
     arel (6.0.3)
     ast (2.3.0)
@@ -367,7 +367,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_paranoid (= 0.5.0.beta2)
+  acts_as_paranoid (= 0.5.0.rc1)
   bcrypt
   better_errors
   binding_of_caller
