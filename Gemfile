@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+gem 'rails', '4.2.7.rc1'
 
-gem 'rails', '4.2.6'
+ruby '2.3.1'
 
 gem 'pg'
 gem 'bower-rails'
@@ -33,7 +33,7 @@ gem 'jquery-ui-rails'
 gem 'haml'
 gem 'high_voltage'
 gem 'orderly'
-gem 'acts_as_paranoid', '0.5.0.beta2' # TO GET LATEST RELEASED.
+gem 'acts_as_paranoid', '0.5.0.rc1' # TO GET LATEST RELEASED.
 gem 'i18n-spec'
 
 gem 'puma-rails'
@@ -42,7 +42,6 @@ group :development do
   gem 'web-console'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'quiet_assets'
   gem 'pry-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
