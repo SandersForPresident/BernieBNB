@@ -2,15 +2,8 @@
 
 ![Bernie BNB](app/assets/images/bernie-bnb-logo.png)
 
-## Goal
-We want to build an app to allow supporters to share their homes with others from out
-of town and to help supporters on the road find lodging.
-
-## How We're Doing It
-* Rails 4.2.5
-* Devise/ Omniauth for authentication with Facebook and google
-* Geocoder gem to search by zipcode, using Bing geocoding API.
-* Bower for front end asset management
+## About
+BernieBNB is a home-sharing app to help out-of-town volunteers find lodging for the Bernie Sanders Democratic Primary campaign. As the convention is now over, we are no longer maintaining this project. Thank you to everyone involved. We served people across the country who helped make a difference.
 
 ## Contributing
 We have a channel on slack. Please e-mail buddhistsforbernie@gmail.com for an invite.
